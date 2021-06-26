@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>数据仓库整体架构图及介绍 | 浅墨散人</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="浅墨散人,大数据,数据仓库,python,基础,数仓,bigdata,datawarehouse,maven,vuepress,java,hadoop,个人,博客">
+    
+    <link rel="preload" href="/assets/css/0.styles.9894935f.css" as="style"><link rel="preload" href="/assets/js/app.180c00c5.js" as="script"><link rel="preload" href="/assets/js/2.a52632a4.js" as="script"><link rel="preload" href="/assets/js/47.a42dd1d2.js" as="script"><link rel="prefetch" href="/assets/js/10.e8f88356.js"><link rel="prefetch" href="/assets/js/100.d564af88.js"><link rel="prefetch" href="/assets/js/101.ed359fa2.js"><link rel="prefetch" href="/assets/js/102.94fcd251.js"><link rel="prefetch" href="/assets/js/103.02b7b2f9.js"><link rel="prefetch" href="/assets/js/104.24959504.js"><link rel="prefetch" href="/assets/js/105.e0d6c513.js"><link rel="prefetch" href="/assets/js/106.baf829ea.js"><link rel="prefetch" href="/assets/js/107.30956718.js"><link rel="prefetch" href="/assets/js/108.fe4a1842.js"><link rel="prefetch" href="/assets/js/109.c4bab523.js"><link rel="prefetch" href="/assets/js/11.6bcd991e.js"><link rel="prefetch" href="/assets/js/110.77ef5a75.js"><link rel="prefetch" href="/assets/js/111.c88a3e80.js"><link rel="prefetch" href="/assets/js/112.defa6a72.js"><link rel="prefetch" href="/assets/js/113.baffbf93.js"><link rel="prefetch" href="/assets/js/114.c48ed354.js"><link rel="prefetch" href="/assets/js/115.af4c952f.js"><link rel="prefetch" href="/assets/js/116.075913cf.js"><link rel="prefetch" href="/assets/js/117.520ca35f.js"><link rel="prefetch" href="/assets/js/118.3dfffd58.js"><link rel="prefetch" href="/assets/js/119.94e601ba.js"><link rel="prefetch" href="/assets/js/12.4e778070.js"><link rel="prefetch" href="/assets/js/120.91317a15.js"><link rel="prefetch" href="/assets/js/121.a059e4c3.js"><link rel="prefetch" href="/assets/js/122.9f78087b.js"><link rel="prefetch" href="/assets/js/123.b9bb61e0.js"><link rel="prefetch" href="/assets/js/124.4c8994fe.js"><link rel="prefetch" href="/assets/js/125.e8c2c3d9.js"><link rel="prefetch" href="/assets/js/126.0b8a54cc.js"><link rel="prefetch" href="/assets/js/127.d4b342c3.js"><link rel="prefetch" href="/assets/js/128.5bddd0d0.js"><link rel="prefetch" href="/assets/js/129.ae586f13.js"><link rel="prefetch" href="/assets/js/13.b8c77261.js"><link rel="prefetch" href="/assets/js/130.396e6504.js"><link rel="prefetch" href="/assets/js/131.2d55dceb.js"><link rel="prefetch" href="/assets/js/132.900ca269.js"><link rel="prefetch" href="/assets/js/133.062ada46.js"><link rel="prefetch" href="/assets/js/134.b3faeb99.js"><link rel="prefetch" href="/assets/js/135.9097b849.js"><link rel="prefetch" href="/assets/js/136.aa650ff3.js"><link rel="prefetch" href="/assets/js/137.0241ae99.js"><link rel="prefetch" href="/assets/js/138.12b49ab7.js"><link rel="prefetch" href="/assets/js/139.b50d7e75.js"><link rel="prefetch" href="/assets/js/14.2d8e25a1.js"><link rel="prefetch" href="/assets/js/140.3b8b6427.js"><link rel="prefetch" href="/assets/js/141.578527b6.js"><link rel="prefetch" href="/assets/js/142.2d0a60fa.js"><link rel="prefetch" href="/assets/js/143.2e5603d5.js"><link rel="prefetch" href="/assets/js/144.4f0519b8.js"><link rel="prefetch" href="/assets/js/145.ef91129b.js"><link rel="prefetch" href="/assets/js/146.afa67b28.js"><link rel="prefetch" href="/assets/js/147.dbfed115.js"><link rel="prefetch" href="/assets/js/148.52076f62.js"><link rel="prefetch" href="/assets/js/149.413ca0d4.js"><link rel="prefetch" href="/assets/js/15.5c39353a.js"><link rel="prefetch" href="/assets/js/150.5ca28815.js"><link rel="prefetch" href="/assets/js/151.66147548.js"><link rel="prefetch" href="/assets/js/152.e7e8d56f.js"><link rel="prefetch" href="/assets/js/153.10e5489e.js"><link rel="prefetch" href="/assets/js/154.609bedd8.js"><link rel="prefetch" href="/assets/js/155.89b0b0f8.js"><link rel="prefetch" href="/assets/js/156.e817e4b5.js"><link rel="prefetch" href="/assets/js/157.4fe6170a.js"><link rel="prefetch" href="/assets/js/158.0d185e2c.js"><link rel="prefetch" href="/assets/js/159.c57a28b7.js"><link rel="prefetch" href="/assets/js/16.1b28cb6d.js"><link rel="prefetch" href="/assets/js/17.dc692cbc.js"><link rel="prefetch" href="/assets/js/18.b4495b5c.js"><link rel="prefetch" href="/assets/js/19.5bf5eb61.js"><link rel="prefetch" href="/assets/js/20.b4e87a71.js"><link rel="prefetch" href="/assets/js/21.e800ff02.js"><link rel="prefetch" href="/assets/js/22.3445f85c.js"><link rel="prefetch" href="/assets/js/23.7cce4328.js"><link rel="prefetch" href="/assets/js/24.d322e90b.js"><link rel="prefetch" href="/assets/js/25.bfc014f1.js"><link rel="prefetch" href="/assets/js/26.5ebea46f.js"><link rel="prefetch" href="/assets/js/27.914a84c1.js"><link rel="prefetch" href="/assets/js/28.bc782b8d.js"><link rel="prefetch" href="/assets/js/29.62493a18.js"><link rel="prefetch" href="/assets/js/3.f3f7654f.js"><link rel="prefetch" href="/assets/js/30.bad9e501.js"><link rel="prefetch" href="/assets/js/31.4a38bdbd.js"><link rel="prefetch" href="/assets/js/32.903a497d.js"><link rel="prefetch" href="/assets/js/33.03b83687.js"><link rel="prefetch" href="/assets/js/34.f706b788.js"><link rel="prefetch" href="/assets/js/35.99a12707.js"><link rel="prefetch" href="/assets/js/36.90fd2978.js"><link rel="prefetch" href="/assets/js/37.60451941.js"><link rel="prefetch" href="/assets/js/38.28c89a9d.js"><link rel="prefetch" href="/assets/js/39.25838682.js"><link rel="prefetch" href="/assets/js/4.202991e4.js"><link rel="prefetch" href="/assets/js/40.9e68dc50.js"><link rel="prefetch" href="/assets/js/41.d8e72043.js"><link rel="prefetch" href="/assets/js/42.15b4371f.js"><link rel="prefetch" href="/assets/js/43.658c6921.js"><link rel="prefetch" href="/assets/js/44.76f5b021.js"><link rel="prefetch" href="/assets/js/45.a8f9ec74.js"><link rel="prefetch" href="/assets/js/46.5eb0a761.js"><link rel="prefetch" href="/assets/js/48.3845bd0a.js"><link rel="prefetch" href="/assets/js/49.bf2c89ab.js"><link rel="prefetch" href="/assets/js/5.17bb93d9.js"><link rel="prefetch" href="/assets/js/50.52c379d1.js"><link rel="prefetch" href="/assets/js/51.870e4f39.js"><link rel="prefetch" href="/assets/js/52.62a0a49e.js"><link rel="prefetch" href="/assets/js/53.427dbff8.js"><link rel="prefetch" href="/assets/js/54.4635e630.js"><link rel="prefetch" href="/assets/js/55.cd4343b0.js"><link rel="prefetch" href="/assets/js/56.3abdfddd.js"><link rel="prefetch" href="/assets/js/57.0117eb4a.js"><link rel="prefetch" href="/assets/js/58.55ab06d5.js"><link rel="prefetch" href="/assets/js/59.b1e6a01d.js"><link rel="prefetch" href="/assets/js/6.cac134c0.js"><link rel="prefetch" href="/assets/js/60.d9bb9e13.js"><link rel="prefetch" href="/assets/js/61.729595e5.js"><link rel="prefetch" href="/assets/js/62.4fec0c49.js"><link rel="prefetch" href="/assets/js/63.b9c92e6a.js"><link rel="prefetch" href="/assets/js/64.63b8c6b1.js"><link rel="prefetch" href="/assets/js/65.158270ae.js"><link rel="prefetch" href="/assets/js/66.3415f3e3.js"><link rel="prefetch" href="/assets/js/67.f04a4d7a.js"><link rel="prefetch" href="/assets/js/68.23a5849e.js"><link rel="prefetch" href="/assets/js/69.ea5e16f5.js"><link rel="prefetch" href="/assets/js/7.8e78b236.js"><link rel="prefetch" href="/assets/js/70.e857237f.js"><link rel="prefetch" href="/assets/js/71.fa576592.js"><link rel="prefetch" href="/assets/js/72.365c06ee.js"><link rel="prefetch" href="/assets/js/73.0f0f1b47.js"><link rel="prefetch" href="/assets/js/74.69873580.js"><link rel="prefetch" href="/assets/js/75.97e039ae.js"><link rel="prefetch" href="/assets/js/76.cb612fbb.js"><link rel="prefetch" href="/assets/js/77.1ea90dfe.js"><link rel="prefetch" href="/assets/js/78.615aa35c.js"><link rel="prefetch" href="/assets/js/79.aab26661.js"><link rel="prefetch" href="/assets/js/8.4522daab.js"><link rel="prefetch" href="/assets/js/80.1d4975ac.js"><link rel="prefetch" href="/assets/js/81.9c3be0a0.js"><link rel="prefetch" href="/assets/js/82.a1bbb975.js"><link rel="prefetch" href="/assets/js/83.a750334d.js"><link rel="prefetch" href="/assets/js/84.de429a3c.js"><link rel="prefetch" href="/assets/js/85.d041d296.js"><link rel="prefetch" href="/assets/js/86.0e0bbf44.js"><link rel="prefetch" href="/assets/js/87.4f84d9ab.js"><link rel="prefetch" href="/assets/js/88.ccabef36.js"><link rel="prefetch" href="/assets/js/89.2c400fa8.js"><link rel="prefetch" href="/assets/js/9.8def527a.js"><link rel="prefetch" href="/assets/js/90.43053d57.js"><link rel="prefetch" href="/assets/js/91.1e3fdb77.js"><link rel="prefetch" href="/assets/js/92.3f07495e.js"><link rel="prefetch" href="/assets/js/93.6644ee1c.js"><link rel="prefetch" href="/assets/js/94.b1e6ce61.js"><link rel="prefetch" href="/assets/js/95.bb1bd51a.js"><link rel="prefetch" href="/assets/js/96.9e2056ef.js"><link rel="prefetch" href="/assets/js/97.efbeddb2.js"><link rel="prefetch" href="/assets/js/98.ae0038a0.js"><link rel="prefetch" href="/assets/js/99.433a2542.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9894935f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/hero.png" alt="浅墨散人" class="logo"> <span class="site-name can-hide">浅墨散人</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Java/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/Java/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Maven/" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/Java/SpringBoot/" class="nav-link">
+  SpringBoot
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><span class="title">Python</span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Python/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Flask/" class="nav-link">
+  Flask
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Django/" class="nav-link">
+  Diango
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Pandas/" class="nav-link">
+  Pandas
+</a></li><li class="dropdown-item"><!----> <a href="/Python/SqlAlchemy/" class="nav-link">
+  SqlAlchemy
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><span class="title">大数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="大数据" class="mobile-dropdown-title"><span class="title">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BigData/Sqoop/" class="nav-link">
+  Sqoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Flume/" class="nav-link">
+  Flume
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hadoop/" class="nav-link">
+  Hadoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hbase/" class="nav-link">
+  Hbase
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hive/" class="nav-link">
+  Hive
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kylin/" class="nav-link">
+  Kylin
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Zookeeper/" class="nav-link">
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Tez/" class="nav-link">
+  Tez
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/DataBase/MySQL/" class="nav-link">
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/Chrome/" class="nav-link">
+  Chrome
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Eclipse/" class="nav-link">
+  Eclipse
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/iTerm2/" class="nav-link">
+  iTerm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Markdown/" class="nav-link">
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/SublimeText/" class="nav-link">
+  SublimeText
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/VirtualBox/" class="nav-link">
+  VirtualBox
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/WebStrom/" class="nav-link">
+  WebStrom
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系统" class="dropdown-title"><span class="title">系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="系统" class="mobile-dropdown-title"><span class="title">系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/System/Linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/System/Mac/" class="nav-link">
+  Mac
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/Hexo/" class="nav-link">
+  Hexo
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Other/VuePress/" class="nav-link">
+  VuePress
+</a></li><li class="dropdown-item"><!----> <a href="/Other/BlockChain/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Finance/" class="nav-link">
+  金融
+</a></li></ul></div></div><div class="nav-item"><a href="/DatawareHouse/" class="nav-link router-link-active">
+  数据仓库
+</a></div><div class="nav-item"><a href="/About/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/fangzheng0518" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Java/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/Java/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Maven/" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/Java/SpringBoot/" class="nav-link">
+  SpringBoot
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><span class="title">Python</span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Python/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Flask/" class="nav-link">
+  Flask
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Django/" class="nav-link">
+  Diango
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Pandas/" class="nav-link">
+  Pandas
+</a></li><li class="dropdown-item"><!----> <a href="/Python/SqlAlchemy/" class="nav-link">
+  SqlAlchemy
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><span class="title">大数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="大数据" class="mobile-dropdown-title"><span class="title">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BigData/Sqoop/" class="nav-link">
+  Sqoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Flume/" class="nav-link">
+  Flume
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hadoop/" class="nav-link">
+  Hadoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hbase/" class="nav-link">
+  Hbase
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hive/" class="nav-link">
+  Hive
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kylin/" class="nav-link">
+  Kylin
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Zookeeper/" class="nav-link">
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Tez/" class="nav-link">
+  Tez
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/DataBase/MySQL/" class="nav-link">
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/Chrome/" class="nav-link">
+  Chrome
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Eclipse/" class="nav-link">
+  Eclipse
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/iTerm2/" class="nav-link">
+  iTerm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Markdown/" class="nav-link">
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/SublimeText/" class="nav-link">
+  SublimeText
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/VirtualBox/" class="nav-link">
+  VirtualBox
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/WebStrom/" class="nav-link">
+  WebStrom
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系统" class="dropdown-title"><span class="title">系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="系统" class="mobile-dropdown-title"><span class="title">系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/System/Linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/System/Mac/" class="nav-link">
+  Mac
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/Hexo/" class="nav-link">
+  Hexo
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Other/VuePress/" class="nav-link">
+  VuePress
+</a></li><li class="dropdown-item"><!----> <a href="/Other/BlockChain/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Finance/" class="nav-link">
+  金融
+</a></li></ul></div></div><div class="nav-item"><a href="/DatawareHouse/" class="nav-link router-link-active">
+  数据仓库
+</a></div><div class="nav-item"><a href="/About/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/fangzheng0518" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>数据仓库</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/DatawareHouse/" aria-current="page" class="sidebar-link">前言</a></li><li><a href="/DatawareHouse/1.dw-framework.html" aria-current="page" class="active sidebar-link">数据仓库整体架构图及介绍</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/DatawareHouse/1.dw-framework.html#数据仓库" class="sidebar-link">数据仓库</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/1.dw-framework.html#数据仓库的数据来源" class="sidebar-link">数据仓库的数据来源</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/1.dw-framework.html#数据仓库的数据存储" class="sidebar-link">数据仓库的数据存储</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/1.dw-framework.html#数据的聚合" class="sidebar-link">数据的聚合</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/1.dw-framework.html#多维数据模型" class="sidebar-link">多维数据模型</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/1.dw-framework.html#业务模型" class="sidebar-link">业务模型</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/1.dw-framework.html#报表展示" class="sidebar-link">报表展示</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/1.dw-framework.html#即席查询" class="sidebar-link">即席查询</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/1.dw-framework.html#数据分析" class="sidebar-link">数据分析</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/1.dw-framework.html#数据挖掘" class="sidebar-link">数据挖掘</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/1.dw-framework.html#元数据管理" class="sidebar-link">元数据管理</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/1.dw-framework.html#总结" class="sidebar-link">总结</a></li></ul></li><li><a href="/DatawareHouse/2.dw-with-ods-difference.html" class="sidebar-link">DW数据仓库与ODS的区别</a></li><li><a href="/DatawareHouse/3.datawarehouse-specification.html" class="sidebar-link">数仓开发规范</a></li><li><a href="/DatawareHouse/4.how-to-guarantee-data-quality.html" class="sidebar-link">如何保证数据质量问题？</a></li><li><a href="/DatawareHouse/5.how-to-reduce-derivative-demand.html" class="sidebar-link">如何减少&quot;导数&quot;需求？</a></li><li><a href="/DatawareHouse/6.canal+kafka+hbase+hive.html" class="sidebar-link">Canal+Kafka+Hbase+Hive集成</a></li><li><a href="/DatawareHouse/7.data_quality.html" class="sidebar-link">数据质量管理</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="数据仓库"><a href="#数据仓库" class="header-anchor">#</a> 数据仓库</h2> <p><strong>数据仓库</strong>的目的是构建面向分析的集成化数据环境，为企业提供决策支持（Decision Support）。其实数据仓库本身并不“生产”任何数据，同时自身也不需要“消费”任何的数据，数据来源于外部，并且开放给外部应用，这也是为什么叫“仓库”，而不叫“工厂”的原因。因此数据仓库的基本架构主要包含的是数据流入流出的过程，可以分为三层——<strong>源数据、数据仓库、数据应用：</strong> <img src="/img/DatawareHouse/006y8mN6ly1g78fp3v9tkj30vs0g81dd.jpg" alt="">
+从图中可以看出数据仓库的数据来源于不同的源数据，并提供多样的数据应用，数据自上而下流入数据仓库后向上层开放应用，而数据仓库只是中间集成化数据管理的一个平台。</p> <p>数据仓库从各数据源获取数据及在数据仓库内的数据转换和流动都可以认为是ETL（抽取Extra, 转化Transfer, 装载Load）的过程，ETL是数据仓库的流水线，也可以认为是数据仓库的血液，它维系着数据仓库中数据的新陈代谢，而数据仓库日常的管理和维护工作的大部分精力就是保持ETL的正常和稳定。</p> <p>下面主要简单介绍下数据仓库架构中的各个模块，当然这里所介绍的数据仓库主要是指网站数据仓库。</p> <h2 id="数据仓库的数据来源"><a href="#数据仓库的数据来源" class="header-anchor">#</a> 数据仓库的数据来源</h2> <p>对于网站数据仓库而言，点击流日志是一块主要的数据来源，它是网站分析的基础数据；当然网站的数据库数据也并不可少，其记录这网站运营的数据及各种用户操作的结果，对于分析网站Outcome这类数据更加精准；其他是网站内外部可能产生的文档及其它各类对于公司决策有用的数据。</p> <h2 id="数据仓库的数据存储"><a href="#数据仓库的数据存储" class="header-anchor">#</a> 数据仓库的数据存储</h2> <p>源数据通过ETL的日常任务调度导出，并经过转换后以特性的形式存入数据仓库。其实这个过程一直有很大的争议，就是到底数据仓库需不需要储存细节数据，一方的观点是数据仓库面向分析，所以只要存储特定需求的多维分析模型；另一方的观点是数据仓库先要建立和维护细节数据，再根据需求聚合和处理细节数据生成特定的分析模型。我比较偏向后面一个观点：<strong>数据仓库并不需要储存所有的原始数据，但数据仓库需要储存细节数据，并且导入的数据必须经过整理和转换使其面向主题*</strong>*。**简单地解释下：</p> <p>(1).为什么不需要所有原始数据？数据仓库面向分析处理，但是某些源数据对于分析而言没有价值或者其可能产生的价值远低于储存这些数据所需要的数据仓库的实现和性能上的成本。比如我们知道用户的省份、城市足够，至于用户究竟住哪里可能只是物流商关心的事，或者用户在博客的评论内容可能只是文本挖掘会有需要，但将这些冗长的评论文本存在数据仓库就得不偿失；</p> <p>(2).为什么要存细节数据？细节数据是必需的，数据仓库的分析需求会时刻变化，而有了细节数据就可以做到以不变应万变，但如果我们只存储根据某些需求搭建起来的数据模型，那么显然对于频繁变动的需求会手足无措；</p> <p>(3).为什么要面向主题？面向主题是数据仓库的第一特性，主要是指合理地组织数据以方面实现分析。对于源数据而言，其数据组织形式是多样的，像点击流的数据格式是未经优化的，前台数据库的数据是基于OLTP操作组织优化的，这些可能都不适合分析，而整理成面向主题的组织形式才是真正地利于分析的，比如将点击流日志整理成页面（Page）、访问（Visit或Session）、用户（Visitor）三个主题，这样可以明显提升分析的效率。</p> <p>数据仓库基于维护细节数据的基础上在对数据进行处理，使其真正地能够应用于分析。主要包括三个方面：</p> <h2 id="数据的聚合"><a href="#数据的聚合" class="header-anchor">#</a> 数据的聚合</h2> <p>这里的聚合数据指的是基于特定需求的简单聚合（基于多维数据的聚合体现在多维数据模型中），简单聚合可以是网站的总Pageviews、Visits、Unique Visitors等汇总数据，也可以是Avg. time on page、Avg. time on site等平均数据，这些数据可以直接地展示于报表上。</p> <h2 id="多维数据模型"><a href="#多维数据模型" class="header-anchor">#</a> 多维数据模型</h2> <p>多维数据模型提供了多角度多层次的分析应用，比如基于时间维、地域维等构建的销售星形模型、雪花模型，可以实现在各时间维度和地域维度的交叉查询，以及基于时间维和地域维的细分。所以多维数据模型的应用一般都是基于联机分析处理（Online Analytical Process, OLAP）的，而面向特定需求群体的数据集市也会基于多维数据模型进行构建。</p> <h2 id="业务模型"><a href="#业务模型" class="header-anchor">#</a> 业务模型</h2> <p>这里的业务模型指的是基于某些数据分析和决策支持而建立起来的数据模型，比如我之前介绍过的用户评价模型、关联推荐模型、RFM分析模型等，或者是决策支持的线性规划模型、库存模型等；同时，数据挖掘中前期数据的处理也可以在这里完成。</p> <p>数据仓库的数据应用</p> <p>之前的一篇文章——数据仓库的价值中介绍过数据仓库的四大特性上的价值体现，但数据仓库的价值远不止这样，而且其价值真正的体现是在数据仓库的数据应用上。图中罗列的几种应用并未包含所有，其实一切基于数据相关的扩展性应用都可以基于数据仓库来实现。</p> <h2 id="报表展示"><a href="#报表展示" class="header-anchor">#</a> 报表展示</h2> <p>报表几乎是每个数据仓库的必不可少的一类数据应用，将聚合数据和多维分析数据展示到报表，提供了最为简单和直观的数据。</p> <h2 id="即席查询"><a href="#即席查询" class="header-anchor">#</a> 即席查询</h2> <p>理论上数据仓库的所有数据（包括细节数据、聚合数据、多维数据和分析数据）都应该开放即席查询，即席查询提供了足够灵活的数据获取方式，用户可以根据自己的需要查询获取数据，并提供导出到Excel等外部文件的功能。</p> <h2 id="数据分析"><a href="#数据分析" class="header-anchor">#</a> 数据分析</h2> <p>数据分析大部分可以基于构建的业务模型展开，当然也可以使用聚合的数据进行趋势分析、比较分析、相关分析等，而多维数据模型提供了多维分析的数据基础；同时从细节数据中获取一些样本数据进行特定的分析也是较为常见的一种途径。</p> <h2 id="数据挖掘"><a href="#数据挖掘" class="header-anchor">#</a> 数据挖掘</h2> <p>数据挖掘用一些高级的算法可以让数据展现出各种令人惊讶的结果。数据挖掘可以基于数据仓库中已经构建起来的业务模型展开，但大多数时候数据挖掘会直接从细节数据上入手，而数据仓库为挖掘工具诸如SAS、SPSS等提供数据接口。</p> <h2 id="元数据管理"><a href="#元数据管理" class="header-anchor">#</a> 元数据管理</h2> <p>元数据（Meta Date），其实应该叫做解释性数据，即数据的数据。主要记录数据仓库中模型的定义、各层级间的映射关系、监控数据仓库的数据状态及ETL的任务运行状态。一般会通过元数据资料库（Metadata Repository）来统一地存储和管理元数据，其主要目的是使数据仓库的设计、部署、操作和管理能达成协同和一致。</p> <h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p>最后做个Ending，数据仓库本身既不生产数据也不消费数据，只是作为一个中间平台集成化地存储数据；数据仓库实现的难度在于整体架构的构建及ETL的设计，这也是日常管理维护中的重头；而数据仓库的真正价值体现在于基于其的数据应用上，如果没有有效的数据应用也就失去了构建数据仓库的意义。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新时间:</span> <span class="time">2021/5/30 下午1:36:14</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/DatawareHouse/" class="prev router-link-active">
+        前言
+      </a></span> <span class="next"><a href="/DatawareHouse/2.dw-with-ods-difference.html">
+        DW数据仓库与ODS的区别
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><div></div></div></div>
+    <script src="/assets/js/app.180c00c5.js" defer></script><script src="/assets/js/2.a52632a4.js" defer></script><script src="/assets/js/47.a42dd1d2.js" defer></script>
+  </body>
+</html>

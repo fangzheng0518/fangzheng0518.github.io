@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Maven入门-2.Maven一些核心概念介绍 | 浅墨散人</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="浅墨散人,大数据,数据仓库,python,基础,数仓,bigdata,datawarehouse,maven,vuepress,java,hadoop,个人,博客">
+    
+    <link rel="preload" href="/assets/css/0.styles.9894935f.css" as="style"><link rel="preload" href="/assets/js/app.180c00c5.js" as="script"><link rel="preload" href="/assets/js/2.a52632a4.js" as="script"><link rel="preload" href="/assets/js/79.aab26661.js" as="script"><link rel="prefetch" href="/assets/js/10.e8f88356.js"><link rel="prefetch" href="/assets/js/100.d564af88.js"><link rel="prefetch" href="/assets/js/101.ed359fa2.js"><link rel="prefetch" href="/assets/js/102.94fcd251.js"><link rel="prefetch" href="/assets/js/103.02b7b2f9.js"><link rel="prefetch" href="/assets/js/104.24959504.js"><link rel="prefetch" href="/assets/js/105.e0d6c513.js"><link rel="prefetch" href="/assets/js/106.baf829ea.js"><link rel="prefetch" href="/assets/js/107.30956718.js"><link rel="prefetch" href="/assets/js/108.fe4a1842.js"><link rel="prefetch" href="/assets/js/109.c4bab523.js"><link rel="prefetch" href="/assets/js/11.6bcd991e.js"><link rel="prefetch" href="/assets/js/110.77ef5a75.js"><link rel="prefetch" href="/assets/js/111.c88a3e80.js"><link rel="prefetch" href="/assets/js/112.defa6a72.js"><link rel="prefetch" href="/assets/js/113.baffbf93.js"><link rel="prefetch" href="/assets/js/114.c48ed354.js"><link rel="prefetch" href="/assets/js/115.af4c952f.js"><link rel="prefetch" href="/assets/js/116.075913cf.js"><link rel="prefetch" href="/assets/js/117.520ca35f.js"><link rel="prefetch" href="/assets/js/118.3dfffd58.js"><link rel="prefetch" href="/assets/js/119.94e601ba.js"><link rel="prefetch" href="/assets/js/12.4e778070.js"><link rel="prefetch" href="/assets/js/120.91317a15.js"><link rel="prefetch" href="/assets/js/121.a059e4c3.js"><link rel="prefetch" href="/assets/js/122.9f78087b.js"><link rel="prefetch" href="/assets/js/123.b9bb61e0.js"><link rel="prefetch" href="/assets/js/124.4c8994fe.js"><link rel="prefetch" href="/assets/js/125.e8c2c3d9.js"><link rel="prefetch" href="/assets/js/126.0b8a54cc.js"><link rel="prefetch" href="/assets/js/127.d4b342c3.js"><link rel="prefetch" href="/assets/js/128.5bddd0d0.js"><link rel="prefetch" href="/assets/js/129.ae586f13.js"><link rel="prefetch" href="/assets/js/13.b8c77261.js"><link rel="prefetch" href="/assets/js/130.396e6504.js"><link rel="prefetch" href="/assets/js/131.2d55dceb.js"><link rel="prefetch" href="/assets/js/132.900ca269.js"><link rel="prefetch" href="/assets/js/133.062ada46.js"><link rel="prefetch" href="/assets/js/134.b3faeb99.js"><link rel="prefetch" href="/assets/js/135.9097b849.js"><link rel="prefetch" href="/assets/js/136.aa650ff3.js"><link rel="prefetch" href="/assets/js/137.0241ae99.js"><link rel="prefetch" href="/assets/js/138.12b49ab7.js"><link rel="prefetch" href="/assets/js/139.b50d7e75.js"><link rel="prefetch" href="/assets/js/14.2d8e25a1.js"><link rel="prefetch" href="/assets/js/140.3b8b6427.js"><link rel="prefetch" href="/assets/js/141.578527b6.js"><link rel="prefetch" href="/assets/js/142.2d0a60fa.js"><link rel="prefetch" href="/assets/js/143.2e5603d5.js"><link rel="prefetch" href="/assets/js/144.4f0519b8.js"><link rel="prefetch" href="/assets/js/145.ef91129b.js"><link rel="prefetch" href="/assets/js/146.afa67b28.js"><link rel="prefetch" href="/assets/js/147.dbfed115.js"><link rel="prefetch" href="/assets/js/148.52076f62.js"><link rel="prefetch" href="/assets/js/149.413ca0d4.js"><link rel="prefetch" href="/assets/js/15.5c39353a.js"><link rel="prefetch" href="/assets/js/150.5ca28815.js"><link rel="prefetch" href="/assets/js/151.66147548.js"><link rel="prefetch" href="/assets/js/152.e7e8d56f.js"><link rel="prefetch" href="/assets/js/153.10e5489e.js"><link rel="prefetch" href="/assets/js/154.609bedd8.js"><link rel="prefetch" href="/assets/js/155.89b0b0f8.js"><link rel="prefetch" href="/assets/js/156.e817e4b5.js"><link rel="prefetch" href="/assets/js/157.4fe6170a.js"><link rel="prefetch" href="/assets/js/158.0d185e2c.js"><link rel="prefetch" href="/assets/js/159.c57a28b7.js"><link rel="prefetch" href="/assets/js/16.1b28cb6d.js"><link rel="prefetch" href="/assets/js/17.dc692cbc.js"><link rel="prefetch" href="/assets/js/18.b4495b5c.js"><link rel="prefetch" href="/assets/js/19.5bf5eb61.js"><link rel="prefetch" href="/assets/js/20.b4e87a71.js"><link rel="prefetch" href="/assets/js/21.e800ff02.js"><link rel="prefetch" href="/assets/js/22.3445f85c.js"><link rel="prefetch" href="/assets/js/23.7cce4328.js"><link rel="prefetch" href="/assets/js/24.d322e90b.js"><link rel="prefetch" href="/assets/js/25.bfc014f1.js"><link rel="prefetch" href="/assets/js/26.5ebea46f.js"><link rel="prefetch" href="/assets/js/27.914a84c1.js"><link rel="prefetch" href="/assets/js/28.bc782b8d.js"><link rel="prefetch" href="/assets/js/29.62493a18.js"><link rel="prefetch" href="/assets/js/3.f3f7654f.js"><link rel="prefetch" href="/assets/js/30.bad9e501.js"><link rel="prefetch" href="/assets/js/31.4a38bdbd.js"><link rel="prefetch" href="/assets/js/32.903a497d.js"><link rel="prefetch" href="/assets/js/33.03b83687.js"><link rel="prefetch" href="/assets/js/34.f706b788.js"><link rel="prefetch" href="/assets/js/35.99a12707.js"><link rel="prefetch" href="/assets/js/36.90fd2978.js"><link rel="prefetch" href="/assets/js/37.60451941.js"><link rel="prefetch" href="/assets/js/38.28c89a9d.js"><link rel="prefetch" href="/assets/js/39.25838682.js"><link rel="prefetch" href="/assets/js/4.202991e4.js"><link rel="prefetch" href="/assets/js/40.9e68dc50.js"><link rel="prefetch" href="/assets/js/41.d8e72043.js"><link rel="prefetch" href="/assets/js/42.15b4371f.js"><link rel="prefetch" href="/assets/js/43.658c6921.js"><link rel="prefetch" href="/assets/js/44.76f5b021.js"><link rel="prefetch" href="/assets/js/45.a8f9ec74.js"><link rel="prefetch" href="/assets/js/46.5eb0a761.js"><link rel="prefetch" href="/assets/js/47.a42dd1d2.js"><link rel="prefetch" href="/assets/js/48.3845bd0a.js"><link rel="prefetch" href="/assets/js/49.bf2c89ab.js"><link rel="prefetch" href="/assets/js/5.17bb93d9.js"><link rel="prefetch" href="/assets/js/50.52c379d1.js"><link rel="prefetch" href="/assets/js/51.870e4f39.js"><link rel="prefetch" href="/assets/js/52.62a0a49e.js"><link rel="prefetch" href="/assets/js/53.427dbff8.js"><link rel="prefetch" href="/assets/js/54.4635e630.js"><link rel="prefetch" href="/assets/js/55.cd4343b0.js"><link rel="prefetch" href="/assets/js/56.3abdfddd.js"><link rel="prefetch" href="/assets/js/57.0117eb4a.js"><link rel="prefetch" href="/assets/js/58.55ab06d5.js"><link rel="prefetch" href="/assets/js/59.b1e6a01d.js"><link rel="prefetch" href="/assets/js/6.cac134c0.js"><link rel="prefetch" href="/assets/js/60.d9bb9e13.js"><link rel="prefetch" href="/assets/js/61.729595e5.js"><link rel="prefetch" href="/assets/js/62.4fec0c49.js"><link rel="prefetch" href="/assets/js/63.b9c92e6a.js"><link rel="prefetch" href="/assets/js/64.63b8c6b1.js"><link rel="prefetch" href="/assets/js/65.158270ae.js"><link rel="prefetch" href="/assets/js/66.3415f3e3.js"><link rel="prefetch" href="/assets/js/67.f04a4d7a.js"><link rel="prefetch" href="/assets/js/68.23a5849e.js"><link rel="prefetch" href="/assets/js/69.ea5e16f5.js"><link rel="prefetch" href="/assets/js/7.8e78b236.js"><link rel="prefetch" href="/assets/js/70.e857237f.js"><link rel="prefetch" href="/assets/js/71.fa576592.js"><link rel="prefetch" href="/assets/js/72.365c06ee.js"><link rel="prefetch" href="/assets/js/73.0f0f1b47.js"><link rel="prefetch" href="/assets/js/74.69873580.js"><link rel="prefetch" href="/assets/js/75.97e039ae.js"><link rel="prefetch" href="/assets/js/76.cb612fbb.js"><link rel="prefetch" href="/assets/js/77.1ea90dfe.js"><link rel="prefetch" href="/assets/js/78.615aa35c.js"><link rel="prefetch" href="/assets/js/8.4522daab.js"><link rel="prefetch" href="/assets/js/80.1d4975ac.js"><link rel="prefetch" href="/assets/js/81.9c3be0a0.js"><link rel="prefetch" href="/assets/js/82.a1bbb975.js"><link rel="prefetch" href="/assets/js/83.a750334d.js"><link rel="prefetch" href="/assets/js/84.de429a3c.js"><link rel="prefetch" href="/assets/js/85.d041d296.js"><link rel="prefetch" href="/assets/js/86.0e0bbf44.js"><link rel="prefetch" href="/assets/js/87.4f84d9ab.js"><link rel="prefetch" href="/assets/js/88.ccabef36.js"><link rel="prefetch" href="/assets/js/89.2c400fa8.js"><link rel="prefetch" href="/assets/js/9.8def527a.js"><link rel="prefetch" href="/assets/js/90.43053d57.js"><link rel="prefetch" href="/assets/js/91.1e3fdb77.js"><link rel="prefetch" href="/assets/js/92.3f07495e.js"><link rel="prefetch" href="/assets/js/93.6644ee1c.js"><link rel="prefetch" href="/assets/js/94.b1e6ce61.js"><link rel="prefetch" href="/assets/js/95.bb1bd51a.js"><link rel="prefetch" href="/assets/js/96.9e2056ef.js"><link rel="prefetch" href="/assets/js/97.efbeddb2.js"><link rel="prefetch" href="/assets/js/98.ae0038a0.js"><link rel="prefetch" href="/assets/js/99.433a2542.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9894935f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/hero.png" alt="浅墨散人" class="logo"> <span class="site-name can-hide">浅墨散人</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Java/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/Java/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Maven/" class="nav-link router-link-active">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/Java/SpringBoot/" class="nav-link">
+  SpringBoot
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><span class="title">Python</span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Python/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Flask/" class="nav-link">
+  Flask
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Django/" class="nav-link">
+  Diango
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Pandas/" class="nav-link">
+  Pandas
+</a></li><li class="dropdown-item"><!----> <a href="/Python/SqlAlchemy/" class="nav-link">
+  SqlAlchemy
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><span class="title">大数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="大数据" class="mobile-dropdown-title"><span class="title">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BigData/Sqoop/" class="nav-link">
+  Sqoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Flume/" class="nav-link">
+  Flume
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hadoop/" class="nav-link">
+  Hadoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hbase/" class="nav-link">
+  Hbase
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hive/" class="nav-link">
+  Hive
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kylin/" class="nav-link">
+  Kylin
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Zookeeper/" class="nav-link">
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Tez/" class="nav-link">
+  Tez
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/DataBase/MySQL/" class="nav-link">
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/Chrome/" class="nav-link">
+  Chrome
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Eclipse/" class="nav-link">
+  Eclipse
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/iTerm2/" class="nav-link">
+  iTerm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Markdown/" class="nav-link">
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/SublimeText/" class="nav-link">
+  SublimeText
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/VirtualBox/" class="nav-link">
+  VirtualBox
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/WebStrom/" class="nav-link">
+  WebStrom
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系统" class="dropdown-title"><span class="title">系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="系统" class="mobile-dropdown-title"><span class="title">系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/System/Linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/System/Mac/" class="nav-link">
+  Mac
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/Hexo/" class="nav-link">
+  Hexo
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Other/VuePress/" class="nav-link">
+  VuePress
+</a></li><li class="dropdown-item"><!----> <a href="/Other/BlockChain/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Finance/" class="nav-link">
+  金融
+</a></li></ul></div></div><div class="nav-item"><a href="/DatawareHouse/" class="nav-link">
+  数据仓库
+</a></div><div class="nav-item"><a href="/About/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/fangzheng0518" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Java/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/Java/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Maven/" class="nav-link router-link-active">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/Java/SpringBoot/" class="nav-link">
+  SpringBoot
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><span class="title">Python</span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Python/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Flask/" class="nav-link">
+  Flask
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Django/" class="nav-link">
+  Diango
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Pandas/" class="nav-link">
+  Pandas
+</a></li><li class="dropdown-item"><!----> <a href="/Python/SqlAlchemy/" class="nav-link">
+  SqlAlchemy
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><span class="title">大数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="大数据" class="mobile-dropdown-title"><span class="title">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BigData/Sqoop/" class="nav-link">
+  Sqoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Flume/" class="nav-link">
+  Flume
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hadoop/" class="nav-link">
+  Hadoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hbase/" class="nav-link">
+  Hbase
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hive/" class="nav-link">
+  Hive
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kylin/" class="nav-link">
+  Kylin
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Zookeeper/" class="nav-link">
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Tez/" class="nav-link">
+  Tez
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/DataBase/MySQL/" class="nav-link">
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/Chrome/" class="nav-link">
+  Chrome
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Eclipse/" class="nav-link">
+  Eclipse
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/iTerm2/" class="nav-link">
+  iTerm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Markdown/" class="nav-link">
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/SublimeText/" class="nav-link">
+  SublimeText
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/VirtualBox/" class="nav-link">
+  VirtualBox
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/WebStrom/" class="nav-link">
+  WebStrom
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系统" class="dropdown-title"><span class="title">系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="系统" class="mobile-dropdown-title"><span class="title">系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/System/Linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/System/Mac/" class="nav-link">
+  Mac
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/Hexo/" class="nav-link">
+  Hexo
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Other/VuePress/" class="nav-link">
+  VuePress
+</a></li><li class="dropdown-item"><!----> <a href="/Other/BlockChain/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Finance/" class="nav-link">
+  金融
+</a></li></ul></div></div><div class="nav-item"><a href="/DatawareHouse/" class="nav-link">
+  数据仓库
+</a></div><div class="nav-item"><a href="/About/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/fangzheng0518" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Maven</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Java/Maven/" aria-current="page" class="sidebar-link">前言</a></li><li><a href="/Java/Maven/Maven入门-1-介绍及搭建开发环境.html" class="sidebar-link">Maven入门-1.介绍及搭建开发环境</a></li><li><a href="/Java/Maven/Maven入门-2-Maven一些核心概念介绍.html" class="active sidebar-link">Maven入门-2.Maven一些核心概念介绍</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Java/Maven/Maven入门-2-Maven一些核心概念介绍.html#maven仓库" class="sidebar-link">Maven仓库</a></li><li class="sidebar-sub-header"><a href="/Java/Maven/Maven入门-2-Maven一些核心概念介绍.html#maven坐标" class="sidebar-link">Maven坐标</a></li><li class="sidebar-sub-header"><a href="/Java/Maven/Maven入门-2-Maven一些核心概念介绍.html#maven插件和目标" class="sidebar-link">Maven插件和目标</a></li><li class="sidebar-sub-header"><a href="/Java/Maven/Maven入门-2-Maven一些核心概念介绍.html#maven生命周期" class="sidebar-link">Maven生命周期</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Java/Maven/Maven入门-2-Maven一些核心概念介绍.html#clean-清理项目" class="sidebar-link">clean：清理项目</a></li><li class="sidebar-sub-header"><a href="/Java/Maven/Maven入门-2-Maven一些核心概念介绍.html#default-构建项目-重要" class="sidebar-link">default：构建项目（重要）</a></li><li class="sidebar-sub-header"><a href="/Java/Maven/Maven入门-2-Maven一些核心概念介绍.html#site-建立项目站点" class="sidebar-link">site：建立项目站点</a></li></ul></li><li class="sidebar-sub-header"><a href="/Java/Maven/Maven入门-2-Maven一些核心概念介绍.html#maven的依赖" class="sidebar-link">Maven的依赖</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Java/Maven/Maven入门-2-Maven一些核心概念介绍.html#声明依赖" class="sidebar-link">声明依赖</a></li><li class="sidebar-sub-header"><a href="/Java/Maven/Maven入门-2-Maven一些核心概念介绍.html#排除不想要的传递性依赖" class="sidebar-link">排除不想要的传递性依赖</a></li><li class="sidebar-sub-header"><a href="/Java/Maven/Maven入门-2-Maven一些核心概念介绍.html#依赖版本的界限" class="sidebar-link">依赖版本的界限</a></li></ul></li></ul></li><li><a href="/Java/Maven/Maven入门-3-pom文件.html" class="sidebar-link">Maven入门-3.pom文件</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="maven仓库"><a href="#maven仓库" class="header-anchor">#</a> Maven仓库</h2> <p>当第一次使用Maven的时候，Maven会从远程仓库http://repo1.maven.org/maven2 下载所需要的jar包到你本地仓库
+等下次再获取同样的jar包时，Maven会先从你本地仓库获取，如果本地仓库获取不到，则再从远程下载。
+</p> <h2 id="maven坐标"><a href="#maven坐标" class="header-anchor">#</a> Maven坐标</h2> <p>Maven通过groupId, artifactId, version和packaging这四个元素定义了项目的坐标，一个坐标就是在Maven空间里的一个点，是不能重复的。它们用来唯一标识一个项目，一个依赖，一个插件
+groupId：团体、公司、组织、小组这些名词的逆向命名。例：com.baidu.user
+artifactId：定义了一个maven项目的一个模块，一般约定为项目名词作为前缀-模块。例：user-core 其中user为项目名，core为模块名
+version：定义了当前这个项目的版本。
+Maven的版本号约定：&lt;主版本&gt;.&lt;次版本&gt;.&lt;增量版本&gt;-&lt;里程碑版本&gt;  例如：1.3.4-beta-2</p> <ol><li>主版本：表示项目的重大变更，例如Maven1到Maven2，Struts1和Struts2</li> <li>次版本：表示较大范围的功能增加和bug修复</li> <li>增量版本：一般表示重大bug修复</li> <li>里程碑版本：表示一个版本的里程碑
+但是注意：不是这个四个都必须有的，一般情况多会有主版本和次版本，增量和里程碑版本就不一定了。</li></ol> <p>packaging：项目打包类型（默认是jar），<strong>如果是纯粹管理其他子项目的父项目，这个类型需要为pom</strong></p> <h2 id="maven插件和目标"><a href="#maven插件和目标" class="header-anchor">#</a> Maven插件和目标</h2> <p>假如我们现在想通过如下命令来生成一个简单的maven项目</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>mvn archetype:create -DgroupId=com.baidu.user -DartifactId=user-core -DpackageName=com.baidu.user
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>之前我们说过，Maven自身其实是没做什么实际的事情，一切都是由插件完成的。
+像上面的mvn archetype:create 表示运行了archetype插件的create目标。一个插件是一个或多个目标的集合。如下图</p> <p><img src="/img/Java/Maven/006tKfTcgy1fq50z2yqt8j309r03a0sm.jpg" alt=""></p> <p>一个目标才是一个明确的任务，才是maven执行的命令
+其中，目标中定义了一些参数。例如上面命令中的-DgroupId表示参数名称为groupId，值为com.baidu.user
+就Maven的本身来说，它并不知道怎么生成一个jar文件，它只是把这些操作代理给了插件完成。
+**插件目标速记符号：pluginId:goalId **</p> <h2 id="maven生命周期"><a href="#maven生命周期" class="header-anchor">#</a> Maven生命周期</h2> <p>Maven的生命周期中包含了一系列插件的目标操作，例如，我们运行一个mvn package命令，这个命令中并没有指定一个插件的目标，就只有一个package命令。
+而这个package命令就是生命周期中的一个阶段，每个生命周期中都包含了一些阶段，<strong>这些阶段是有依赖关系的</strong>。阶段中运行了一系列插件中的目标操作。
+在Maven中有三套独立的生命周期：</p> <h3 id="clean-清理项目"><a href="#clean-清理项目" class="header-anchor">#</a> clean：清理项目</h3> <p>clean生命周期的目的就是清理项目，包含3个阶段</p> <ol><li>pre-clean 执行一些清理前需要完成的工作。</li> <li>clean 清理上一次生成的字节码文件</li> <li>post-clean 执行一些清理后需要完成的工作</li></ol> <h3 id="default-构建项目-重要"><a href="#default-构建项目-重要" class="header-anchor">#</a> default：构建项目（重要）</h3> <p>default生命周期定义了真正构建时所需要执行的所有步骤，是最核心的部分。包含阶段如下</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>validate
+initialize
+generate-sources
+process-sources 主力项目/src/main/resources目录下的资源文件
+generate-resources
+process-resources
+compile 编译项目src/main/java目录下的源代码
+process-classes
+generate-test-sources
+process-test-sources 处理项目src/test/resources目录下的测试资源文件
+generate-test-resources
+process-test-resources
+test-compile 编译项目src/test/java目录下的测试代码
+process-test-classes
+test 使用单元测试框架运行测试
+prepare-package
+package 接受编译好的代码，打包成可发布的格式jar，war
+pre-integration-test
+integration-test
+post-integration-test
+verify
+install 将包安装到Maven本地仓库，供本地其他Maven项目使用
+deploy 将最终的包复制到远程仓库中，供其他开发人员和Maven项目使用
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><h3 id="site-建立项目站点"><a href="#site-建立项目站点" class="header-anchor">#</a> site：建立项目站点</h3> <p>site生命周期是建立项目的发布站点，一般开发人员用不到。也就是生成一些站点信息</p> <ol><li>pre-site 执行生成站点之前需要完成的工作</li> <li>site 生成项目站点文档</li> <li>post-site 执行生成站点之后需要完成的工作</li> <li>site-deploy 将生成的项目站点发布到服务器上</li></ol> <p>直接使用mvn site命令即可生成一个站点报告。
+从命令行执行生命周期的某些阶段，例如：
+mvn clean ：调用clean生命周期的clean阶段，因为有依赖关系，所以实际上是先执行了pre-clean然后才执行的clean阶段
+mvn test ：调用default生命周期的test阶段，执行test阶段之前就必须执行test之前的那些阶段validate、initialize等等</p> <h2 id="maven的依赖"><a href="#maven的依赖" class="header-anchor">#</a> Maven的依赖</h2> <p>Maven的依赖通过dependencis元素来配置依赖，这是Maven最强大的特性之一。它支持传递性依赖。
+在Maven中一个依赖不仅仅是一个JAR。它是一个POM文件，这个POM可能也声明了对其它构件的依赖。这些依赖的依赖叫做<strong>传递性依赖</strong>
+所谓传递性依赖就是： <strong>如果项目C依赖于项目B，项目B自身依赖于项目A，那么项目C它也依赖于项目A的依赖。</strong>
+假如你的项目中需要依赖一个A库，这个A库自身又依赖了3个其它库。当你在dependencies中配置了A库的依赖的时候，则Maven会自动依赖3个其他库。不用你再自己去依赖了。就像Spring和Hibernate一样。你配置的时候，只需要配置Spring和Hibernate即可。
+Maven在下载相应依赖的jar的时候，还会下载该jar的pom文件。这个文件对于传递性依赖特别重要。
+这个pom文件跟我们现在编写的pom.xml文件没太大区别，打开后其实也是一样。
+如下是hibernate-core-4.3.10.Final.jar的pom文件（hibernate-core-4.3.10.Final.pom）</p> <div class="language-xml line-numbers-mode"><pre class="language-xml"><code><span class="token prolog">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://maven.apache.org/POM/4.0.0<span class="token punctuation">&quot;</span></span> <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd<span class="token punctuation">&quot;</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>modelVersion</span><span class="token punctuation">&gt;</span></span>4.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>modelVersion</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.hibernate<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>hibernate-core<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>4.3.10.Final<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.jboss.logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>jboss-logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>3.1.3.GA<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">&gt;</span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.jboss.logging<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>jboss-logging-annotations<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.2.0.Beta1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">&gt;</span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.jboss.spec.javax.transaction<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>jboss-transaction-api_1.2_spec<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.0.0.Final<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">&gt;</span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>dom4j<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>dom4j<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.6.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">&gt;</span></span>compile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    **********省略部分***********
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>Core Hibernate O/RM functionality<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">&gt;</span></span>The core O/RM functionality as provided by Hibernate<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">&gt;</span></span>http://hibernate.org<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>organization</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>Hibernate.org<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">&gt;</span></span>http://hibernate.org<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>organization</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>issueManagement</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>system</span><span class="token punctuation">&gt;</span></span>jira<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>system</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">&gt;</span></span>https://hibernate.atlassian.net/browse/HHH<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>issueManagement</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scm</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">&gt;</span></span>http://github.com/hibernate/hibernate-orm<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>connection</span><span class="token punctuation">&gt;</span></span>scm:git:http://github.com/hibernate/hibernate-orm.git<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>connection</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>developerConnection</span><span class="token punctuation">&gt;</span></span>scm:git:git@github.com:hibernate/hibernate-orm.git<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>developerConnection</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scm</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>licenses</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>license</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>GNU Lesser General Public License<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">&gt;</span></span>http://www.gnu.org/licenses/lgpl-2.1.html<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>comments</span><span class="token punctuation">&gt;</span></span>See discussion at http://hibernate.org/license for more details.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>comments</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>distribution</span><span class="token punctuation">&gt;</span></span>repo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>distribution</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>license</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>licenses</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>developers</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>developer</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>hibernate-team<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>The Hibernate Development Team<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>organization</span><span class="token punctuation">&gt;</span></span>Hibernate.org<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>organization</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>organizationUrl</span><span class="token punctuation">&gt;</span></span>http://hibernate.org<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>organizationUrl</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>developer</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>developers</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br></div></div><h3 id="声明依赖"><a href="#声明依赖" class="header-anchor">#</a> 声明依赖</h3> <p>在Maven中需要使用在dependencies中定义一个或者多个dependency元素，来声明项目的一个或者多个依赖。
+每个依赖元素包括：</p> <ol><li>groupId、artifactId和version依赖的基本坐标</li> <li>type：依赖的类型，对应项目坐标定义的packaging，默认为jar。大部分情况下不用声明</li> <li>sope：依赖范围</li></ol> <div class="language- line-numbers-mode"><pre class="language-text"><code>compile（默认）：编译依赖范围
+test：测试依赖范围
+provided：已提供范围
+runtime：运行时依赖范围
+system：系统依赖范围
+import：导入依赖范围
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><ol start="4"><li>optional：标记依赖是否可选</li> <li>exclusions：用来排除传递性依赖</li></ol> <h3 id="排除不想要的传递性依赖"><a href="#排除不想要的传递性依赖" class="header-anchor">#</a> 排除不想要的传递性依赖</h3> <p>使用provided范围，让它排除WAR文件中特定的依赖。provided范围告诉Maven一个依赖在编译的时候需要，但是它不应该被捆绑在构建的输出中。
+当你开发web应用的时候provided范围变得十分有用。
+例如：你需要通过Servlet API来编译你的代码，但是你不希望Servlet API的JAR文件包含在你web应用的WEB-INF/lib目录中。因为一般容器中都包含了Servlet API的jar包，以免冲突。所以可以排除它。
+现在假如项目A依赖于项目B，但是项目B依赖于项目C，可能项目A就不想因为传递性的问题直接依赖了项目C。则可以排除掉！</p> <div class="language-xml line-numbers-mode"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>com.baidu.user<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>project-b<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusions</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>exclusion</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>com.baidu.user<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>project-c<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusion</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>exclusions</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h3 id="依赖版本的界限"><a href="#依赖版本的界限" class="header-anchor">#</a> 依赖版本的界限</h3> <p>在依赖某个项目的时候，你可以不必指定特定的某个版本。也可以指定一个版本范围
+(,) 不包含
+[,] 包含
+例如：依赖一个Junit的大于等于3.8 但是小于4.0 的版本</p> <div class="language-xml line-numbers-mode"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>junit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>junit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>[3.8 , 4.0)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新时间:</span> <span class="time">2021/5/30 下午1:36:14</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/Java/Maven/Maven入门-1-介绍及搭建开发环境.html" class="prev">
+        Maven入门-1.介绍及搭建开发环境
+      </a></span> <span class="next"><a href="/Java/Maven/Maven入门-3-pom文件.html">
+        Maven入门-3.pom文件
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><div></div></div></div>
+    <script src="/assets/js/app.180c00c5.js" defer></script><script src="/assets/js/2.a52632a4.js" defer></script><script src="/assets/js/79.aab26661.js" defer></script>
+  </body>
+</html>

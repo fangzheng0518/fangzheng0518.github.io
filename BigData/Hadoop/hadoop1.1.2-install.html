@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hadoop1.1.2伪分布式安装笔记 | 浅墨散人</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="浅墨散人,大数据,数据仓库,python,基础,数仓,bigdata,datawarehouse,maven,vuepress,java,hadoop,个人,博客">
+    
+    <link rel="preload" href="/assets/css/0.styles.9894935f.css" as="style"><link rel="preload" href="/assets/js/app.180c00c5.js" as="script"><link rel="preload" href="/assets/js/2.a52632a4.js" as="script"><link rel="preload" href="/assets/js/17.dc692cbc.js" as="script"><link rel="prefetch" href="/assets/js/10.e8f88356.js"><link rel="prefetch" href="/assets/js/100.d564af88.js"><link rel="prefetch" href="/assets/js/101.ed359fa2.js"><link rel="prefetch" href="/assets/js/102.94fcd251.js"><link rel="prefetch" href="/assets/js/103.02b7b2f9.js"><link rel="prefetch" href="/assets/js/104.24959504.js"><link rel="prefetch" href="/assets/js/105.e0d6c513.js"><link rel="prefetch" href="/assets/js/106.baf829ea.js"><link rel="prefetch" href="/assets/js/107.30956718.js"><link rel="prefetch" href="/assets/js/108.fe4a1842.js"><link rel="prefetch" href="/assets/js/109.c4bab523.js"><link rel="prefetch" href="/assets/js/11.6bcd991e.js"><link rel="prefetch" href="/assets/js/110.77ef5a75.js"><link rel="prefetch" href="/assets/js/111.c88a3e80.js"><link rel="prefetch" href="/assets/js/112.defa6a72.js"><link rel="prefetch" href="/assets/js/113.baffbf93.js"><link rel="prefetch" href="/assets/js/114.c48ed354.js"><link rel="prefetch" href="/assets/js/115.af4c952f.js"><link rel="prefetch" href="/assets/js/116.075913cf.js"><link rel="prefetch" href="/assets/js/117.520ca35f.js"><link rel="prefetch" href="/assets/js/118.3dfffd58.js"><link rel="prefetch" href="/assets/js/119.94e601ba.js"><link rel="prefetch" href="/assets/js/12.4e778070.js"><link rel="prefetch" href="/assets/js/120.91317a15.js"><link rel="prefetch" href="/assets/js/121.a059e4c3.js"><link rel="prefetch" href="/assets/js/122.9f78087b.js"><link rel="prefetch" href="/assets/js/123.b9bb61e0.js"><link rel="prefetch" href="/assets/js/124.4c8994fe.js"><link rel="prefetch" href="/assets/js/125.e8c2c3d9.js"><link rel="prefetch" href="/assets/js/126.0b8a54cc.js"><link rel="prefetch" href="/assets/js/127.d4b342c3.js"><link rel="prefetch" href="/assets/js/128.5bddd0d0.js"><link rel="prefetch" href="/assets/js/129.ae586f13.js"><link rel="prefetch" href="/assets/js/13.b8c77261.js"><link rel="prefetch" href="/assets/js/130.396e6504.js"><link rel="prefetch" href="/assets/js/131.2d55dceb.js"><link rel="prefetch" href="/assets/js/132.900ca269.js"><link rel="prefetch" href="/assets/js/133.062ada46.js"><link rel="prefetch" href="/assets/js/134.b3faeb99.js"><link rel="prefetch" href="/assets/js/135.9097b849.js"><link rel="prefetch" href="/assets/js/136.aa650ff3.js"><link rel="prefetch" href="/assets/js/137.0241ae99.js"><link rel="prefetch" href="/assets/js/138.12b49ab7.js"><link rel="prefetch" href="/assets/js/139.b50d7e75.js"><link rel="prefetch" href="/assets/js/14.2d8e25a1.js"><link rel="prefetch" href="/assets/js/140.3b8b6427.js"><link rel="prefetch" href="/assets/js/141.578527b6.js"><link rel="prefetch" href="/assets/js/142.2d0a60fa.js"><link rel="prefetch" href="/assets/js/143.2e5603d5.js"><link rel="prefetch" href="/assets/js/144.4f0519b8.js"><link rel="prefetch" href="/assets/js/145.ef91129b.js"><link rel="prefetch" href="/assets/js/146.afa67b28.js"><link rel="prefetch" href="/assets/js/147.dbfed115.js"><link rel="prefetch" href="/assets/js/148.52076f62.js"><link rel="prefetch" href="/assets/js/149.413ca0d4.js"><link rel="prefetch" href="/assets/js/15.5c39353a.js"><link rel="prefetch" href="/assets/js/150.5ca28815.js"><link rel="prefetch" href="/assets/js/151.66147548.js"><link rel="prefetch" href="/assets/js/152.e7e8d56f.js"><link rel="prefetch" href="/assets/js/153.10e5489e.js"><link rel="prefetch" href="/assets/js/154.609bedd8.js"><link rel="prefetch" href="/assets/js/155.89b0b0f8.js"><link rel="prefetch" href="/assets/js/156.e817e4b5.js"><link rel="prefetch" href="/assets/js/157.4fe6170a.js"><link rel="prefetch" href="/assets/js/158.0d185e2c.js"><link rel="prefetch" href="/assets/js/159.c57a28b7.js"><link rel="prefetch" href="/assets/js/16.1b28cb6d.js"><link rel="prefetch" href="/assets/js/18.b4495b5c.js"><link rel="prefetch" href="/assets/js/19.5bf5eb61.js"><link rel="prefetch" href="/assets/js/20.b4e87a71.js"><link rel="prefetch" href="/assets/js/21.e800ff02.js"><link rel="prefetch" href="/assets/js/22.3445f85c.js"><link rel="prefetch" href="/assets/js/23.7cce4328.js"><link rel="prefetch" href="/assets/js/24.d322e90b.js"><link rel="prefetch" href="/assets/js/25.bfc014f1.js"><link rel="prefetch" href="/assets/js/26.5ebea46f.js"><link rel="prefetch" href="/assets/js/27.914a84c1.js"><link rel="prefetch" href="/assets/js/28.bc782b8d.js"><link rel="prefetch" href="/assets/js/29.62493a18.js"><link rel="prefetch" href="/assets/js/3.f3f7654f.js"><link rel="prefetch" href="/assets/js/30.bad9e501.js"><link rel="prefetch" href="/assets/js/31.4a38bdbd.js"><link rel="prefetch" href="/assets/js/32.903a497d.js"><link rel="prefetch" href="/assets/js/33.03b83687.js"><link rel="prefetch" href="/assets/js/34.f706b788.js"><link rel="prefetch" href="/assets/js/35.99a12707.js"><link rel="prefetch" href="/assets/js/36.90fd2978.js"><link rel="prefetch" href="/assets/js/37.60451941.js"><link rel="prefetch" href="/assets/js/38.28c89a9d.js"><link rel="prefetch" href="/assets/js/39.25838682.js"><link rel="prefetch" href="/assets/js/4.202991e4.js"><link rel="prefetch" href="/assets/js/40.9e68dc50.js"><link rel="prefetch" href="/assets/js/41.d8e72043.js"><link rel="prefetch" href="/assets/js/42.15b4371f.js"><link rel="prefetch" href="/assets/js/43.658c6921.js"><link rel="prefetch" href="/assets/js/44.76f5b021.js"><link rel="prefetch" href="/assets/js/45.a8f9ec74.js"><link rel="prefetch" href="/assets/js/46.5eb0a761.js"><link rel="prefetch" href="/assets/js/47.a42dd1d2.js"><link rel="prefetch" href="/assets/js/48.3845bd0a.js"><link rel="prefetch" href="/assets/js/49.bf2c89ab.js"><link rel="prefetch" href="/assets/js/5.17bb93d9.js"><link rel="prefetch" href="/assets/js/50.52c379d1.js"><link rel="prefetch" href="/assets/js/51.870e4f39.js"><link rel="prefetch" href="/assets/js/52.62a0a49e.js"><link rel="prefetch" href="/assets/js/53.427dbff8.js"><link rel="prefetch" href="/assets/js/54.4635e630.js"><link rel="prefetch" href="/assets/js/55.cd4343b0.js"><link rel="prefetch" href="/assets/js/56.3abdfddd.js"><link rel="prefetch" href="/assets/js/57.0117eb4a.js"><link rel="prefetch" href="/assets/js/58.55ab06d5.js"><link rel="prefetch" href="/assets/js/59.b1e6a01d.js"><link rel="prefetch" href="/assets/js/6.cac134c0.js"><link rel="prefetch" href="/assets/js/60.d9bb9e13.js"><link rel="prefetch" href="/assets/js/61.729595e5.js"><link rel="prefetch" href="/assets/js/62.4fec0c49.js"><link rel="prefetch" href="/assets/js/63.b9c92e6a.js"><link rel="prefetch" href="/assets/js/64.63b8c6b1.js"><link rel="prefetch" href="/assets/js/65.158270ae.js"><link rel="prefetch" href="/assets/js/66.3415f3e3.js"><link rel="prefetch" href="/assets/js/67.f04a4d7a.js"><link rel="prefetch" href="/assets/js/68.23a5849e.js"><link rel="prefetch" href="/assets/js/69.ea5e16f5.js"><link rel="prefetch" href="/assets/js/7.8e78b236.js"><link rel="prefetch" href="/assets/js/70.e857237f.js"><link rel="prefetch" href="/assets/js/71.fa576592.js"><link rel="prefetch" href="/assets/js/72.365c06ee.js"><link rel="prefetch" href="/assets/js/73.0f0f1b47.js"><link rel="prefetch" href="/assets/js/74.69873580.js"><link rel="prefetch" href="/assets/js/75.97e039ae.js"><link rel="prefetch" href="/assets/js/76.cb612fbb.js"><link rel="prefetch" href="/assets/js/77.1ea90dfe.js"><link rel="prefetch" href="/assets/js/78.615aa35c.js"><link rel="prefetch" href="/assets/js/79.aab26661.js"><link rel="prefetch" href="/assets/js/8.4522daab.js"><link rel="prefetch" href="/assets/js/80.1d4975ac.js"><link rel="prefetch" href="/assets/js/81.9c3be0a0.js"><link rel="prefetch" href="/assets/js/82.a1bbb975.js"><link rel="prefetch" href="/assets/js/83.a750334d.js"><link rel="prefetch" href="/assets/js/84.de429a3c.js"><link rel="prefetch" href="/assets/js/85.d041d296.js"><link rel="prefetch" href="/assets/js/86.0e0bbf44.js"><link rel="prefetch" href="/assets/js/87.4f84d9ab.js"><link rel="prefetch" href="/assets/js/88.ccabef36.js"><link rel="prefetch" href="/assets/js/89.2c400fa8.js"><link rel="prefetch" href="/assets/js/9.8def527a.js"><link rel="prefetch" href="/assets/js/90.43053d57.js"><link rel="prefetch" href="/assets/js/91.1e3fdb77.js"><link rel="prefetch" href="/assets/js/92.3f07495e.js"><link rel="prefetch" href="/assets/js/93.6644ee1c.js"><link rel="prefetch" href="/assets/js/94.b1e6ce61.js"><link rel="prefetch" href="/assets/js/95.bb1bd51a.js"><link rel="prefetch" href="/assets/js/96.9e2056ef.js"><link rel="prefetch" href="/assets/js/97.efbeddb2.js"><link rel="prefetch" href="/assets/js/98.ae0038a0.js"><link rel="prefetch" href="/assets/js/99.433a2542.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9894935f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/hero.png" alt="浅墨散人" class="logo"> <span class="site-name can-hide">浅墨散人</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Java/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/Java/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Maven/" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/Java/SpringBoot/" class="nav-link">
+  SpringBoot
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><span class="title">Python</span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Python/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Flask/" class="nav-link">
+  Flask
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Django/" class="nav-link">
+  Diango
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Pandas/" class="nav-link">
+  Pandas
+</a></li><li class="dropdown-item"><!----> <a href="/Python/SqlAlchemy/" class="nav-link">
+  SqlAlchemy
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><span class="title">大数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="大数据" class="mobile-dropdown-title"><span class="title">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BigData/Sqoop/" class="nav-link">
+  Sqoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Flume/" class="nav-link">
+  Flume
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hadoop/" class="nav-link router-link-active">
+  Hadoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hbase/" class="nav-link">
+  Hbase
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hive/" class="nav-link">
+  Hive
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kylin/" class="nav-link">
+  Kylin
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Zookeeper/" class="nav-link">
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Tez/" class="nav-link">
+  Tez
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/DataBase/MySQL/" class="nav-link">
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/Chrome/" class="nav-link">
+  Chrome
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Eclipse/" class="nav-link">
+  Eclipse
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/iTerm2/" class="nav-link">
+  iTerm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Markdown/" class="nav-link">
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/SublimeText/" class="nav-link">
+  SublimeText
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/VirtualBox/" class="nav-link">
+  VirtualBox
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/WebStrom/" class="nav-link">
+  WebStrom
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系统" class="dropdown-title"><span class="title">系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="系统" class="mobile-dropdown-title"><span class="title">系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/System/Linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/System/Mac/" class="nav-link">
+  Mac
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/Hexo/" class="nav-link">
+  Hexo
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Other/VuePress/" class="nav-link">
+  VuePress
+</a></li><li class="dropdown-item"><!----> <a href="/Other/BlockChain/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Finance/" class="nav-link">
+  金融
+</a></li></ul></div></div><div class="nav-item"><a href="/DatawareHouse/" class="nav-link">
+  数据仓库
+</a></div><div class="nav-item"><a href="/About/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/fangzheng0518" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Java/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/Java/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Maven/" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/Java/SpringBoot/" class="nav-link">
+  SpringBoot
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><span class="title">Python</span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Python/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Flask/" class="nav-link">
+  Flask
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Django/" class="nav-link">
+  Diango
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Pandas/" class="nav-link">
+  Pandas
+</a></li><li class="dropdown-item"><!----> <a href="/Python/SqlAlchemy/" class="nav-link">
+  SqlAlchemy
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><span class="title">大数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="大数据" class="mobile-dropdown-title"><span class="title">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BigData/Sqoop/" class="nav-link">
+  Sqoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Flume/" class="nav-link">
+  Flume
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hadoop/" class="nav-link router-link-active">
+  Hadoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hbase/" class="nav-link">
+  Hbase
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hive/" class="nav-link">
+  Hive
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kylin/" class="nav-link">
+  Kylin
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Zookeeper/" class="nav-link">
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Tez/" class="nav-link">
+  Tez
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/DataBase/MySQL/" class="nav-link">
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/Chrome/" class="nav-link">
+  Chrome
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Eclipse/" class="nav-link">
+  Eclipse
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/iTerm2/" class="nav-link">
+  iTerm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Markdown/" class="nav-link">
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/SublimeText/" class="nav-link">
+  SublimeText
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/VirtualBox/" class="nav-link">
+  VirtualBox
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/WebStrom/" class="nav-link">
+  WebStrom
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系统" class="dropdown-title"><span class="title">系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="系统" class="mobile-dropdown-title"><span class="title">系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/System/Linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/System/Mac/" class="nav-link">
+  Mac
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/Hexo/" class="nav-link">
+  Hexo
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Other/VuePress/" class="nav-link">
+  VuePress
+</a></li><li class="dropdown-item"><!----> <a href="/Other/BlockChain/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Finance/" class="nav-link">
+  金融
+</a></li></ul></div></div><div class="nav-item"><a href="/DatawareHouse/" class="nav-link">
+  数据仓库
+</a></div><div class="nav-item"><a href="/About/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/fangzheng0518" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Hadoop</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/BigData/Hadoop/" aria-current="page" class="sidebar-link">前言</a></li><li><a href="/BigData/Hadoop/hadoop-ecological-system.html" class="sidebar-link">Hadoop生态系统介绍</a></li><li><a href="/BigData/Hadoop/hadoop-hdfs.html" class="sidebar-link">Hadoop的hdfs</a></li><li><a href="/BigData/Hadoop/hadoop-introduce.html" class="sidebar-link">Hadoop介绍</a></li><li><a href="/BigData/Hadoop/hadoop-local-install.html" class="sidebar-link">Hadoop本地安装</a></li><li><a href="/BigData/Hadoop/hadoop1.1.2-install.html" aria-current="page" class="active sidebar-link">Hadoop1.1.2伪分布式安装笔记</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#安装前准备" class="sidebar-link">安装前准备</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#设置linux的静态ip" class="sidebar-link">设置Linux的静态IP</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#修改virtualbox的虚拟网卡地址" class="sidebar-link">修改VirtualBox的虚拟网卡地址</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#修改主机名" class="sidebar-link">修改主机名</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#把hostname和ip绑定" class="sidebar-link">把hostname和ip绑定</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#关闭防火墙" class="sidebar-link">关闭防火墙</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#ssh免密码登陆" class="sidebar-link">SSH免密码登陆</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#生成秘钥文件" class="sidebar-link">生成秘钥文件</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#测试免密码登陆是否成功" class="sidebar-link">测试免密码登陆是否成功</a></li></ul></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#安装jdk" class="sidebar-link">安装JDK</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#授予执行权限" class="sidebar-link">授予执行权限</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#解压缩" class="sidebar-link">解压缩</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#配置环境变量" class="sidebar-link">配置环境变量</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#测试安装" class="sidebar-link">测试安装</a></li></ul></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#安装hadoop" class="sidebar-link">安装Hadoop</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#解压缩hadoop-1-1-2-tar-gz" class="sidebar-link">解压缩hadoop-1.1.2.tar.gz</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#添加到环境变量中" class="sidebar-link">添加到环境变量中</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#使设置立即生效" class="sidebar-link">使设置立即生效</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#修改hadoop的配置文件" class="sidebar-link">修改hadoop的配置文件</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#配置hadoop-env-sh" class="sidebar-link">配置hadoop-env.sh</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#配置core-site-xml" class="sidebar-link">配置core-site.xml</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#配置hdfs-site-xml" class="sidebar-link">配置hdfs-site.xml</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#配置mapred-site-xml" class="sidebar-link">配置mapred-site.xml</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#配置masters" class="sidebar-link">配置masters</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#配置slaves" class="sidebar-link">配置slaves</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#格式化namenode" class="sidebar-link">格式化NameNode</a></li></ul></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#测试hadoop安装是否成功" class="sidebar-link">测试Hadoop安装是否成功</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#启动hadoop" class="sidebar-link">启动Hadoop</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#消除start-all-sh时候的警告信息" class="sidebar-link">消除start-all.sh时候的警告信息</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#查看hadoop的进程" class="sidebar-link">查看Hadoop的进程</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop1.1.2-install.html#登陆web管理页面" class="sidebar-link">登陆WEB管理页面</a></li></ul></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h3 id="目录"><a href="#目录" class="header-anchor">#</a> 目录</h3> <p></p><div class="table-of-contents"><ul><li><a href="#目录">目录</a></li></ul></div><p></p> <h2 id="安装前准备"><a href="#安装前准备" class="header-anchor">#</a> 安装前准备</h2> <p>本次安装所使用软件：
+<strong>虚拟机</strong>：VirtualBox-4.3.8-92456-Win.exe
+<strong>JDK</strong>：jdk-6u24-linux-i586.bin
+<strong>Hadoop</strong>：hadoop-1.1.2.tar.gz
+<strong>Linux版本</strong>：CentOS-5.5-i386-bin-DVD.iso
+
+Hadoop组件依赖关系
+<img src="/img/BigData/Hadoop/006tKfTcly1fq50mbhut0j30sy0s6dk9.jpg" alt="Jietu20180330-164404.jpg">
+Linux系统的安装就不介绍了，下面默认为已经安装好Linux系统了。</p> <h3 id="设置linux的静态ip"><a href="#设置linux的静态ip" class="header-anchor">#</a> 设置Linux的静态IP</h3> <p>编辑/etc/sysconfig/network-scripts/ifcfg-eth0文件，修改为如下内容：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token assign-left variable">DEVICE</span><span class="token operator">=</span>eth0
+<span class="token assign-left variable">BOOTPROTO</span><span class="token operator">=</span><span class="token string">&quot;static&quot;</span>
+<span class="token assign-left variable">HWADDR</span><span class="token operator">=</span>08:00:27:22:13:54
+<span class="token assign-left variable">IPV6INIT</span><span class="token operator">=</span><span class="token string">&quot;no&quot;</span>
+<span class="token assign-left variable">ONBOOT</span><span class="token operator">=</span>yes
+<span class="token assign-left variable">DNS</span><span class="token operator">=</span><span class="token number">192.168</span>.1.1
+<span class="token assign-left variable">IPADDR</span><span class="token operator">=</span><span class="token number">192.168</span>.1.150
+<span class="token assign-left variable">NETMASK</span><span class="token operator">=</span><span class="token number">255.255</span>.255.0
+<span class="token assign-left variable">GATEWAY</span><span class="token operator">=</span><span class="token number">192.168</span>.1.1
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>然后执行网络重启命令：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">service</span> network restart
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>最后执行ifconfig命令查看是否修改成功</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@hadoop-master software<span class="token punctuation">]</span><span class="token comment">## ifconfig</span>
+eth0      Link encap:Ethernet  HWaddr 08:00:27:22:13:54  
+          inet addr:192.168.1.150  Bcast:192.168.1.255  Mask:255.255.255.0
+          inet6 addr: fe80::a00:27ff:fe22:1354/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:3078 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:423 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:230636 <span class="token punctuation">(</span><span class="token number">225.2</span> KiB<span class="token punctuation">)</span>  TX bytes:56128 <span class="token punctuation">(</span><span class="token number">54.8</span> KiB<span class="token punctuation">)</span>
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:76 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:76 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:6266 <span class="token punctuation">(</span><span class="token number">6.1</span> KiB<span class="token punctuation">)</span>  TX bytes:6266 <span class="token punctuation">(</span><span class="token number">6.1</span> KiB<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>root@hadoop-master software<span class="token punctuation">]</span><span class="token comment">##</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><h3 id="修改virtualbox的虚拟网卡地址"><a href="#修改virtualbox的虚拟网卡地址" class="header-anchor">#</a> 修改VirtualBox的虚拟网卡地址</h3> <p>该步骤需保证虚拟机中的Linux能与客户机在同一网段并且ping通。
+设置VirtualBox虚拟机的网络连接方式为Host-Only
+<img src="/img/BigData/Hadoop/006tKfTcly1fq50mca0b7j30z80muq9k.jpg" alt="WX20180330-164504@2x.png">
+再修改VirtualBox虚拟出那块网卡的ip地址
+<img src="/img/BigData/Hadoop/006tKfTcly1fq50md73hcj316s044adt.jpg" alt="WX20180330-164523@2x.png">
+修改为如下内容：
+<img src="/img/BigData/Hadoop/006tKfTcly1fq50mebzzjj317s0oan8x.jpg" alt="WX20180330-164531@2x.png"> <strong>最后需要验证宿主机和虚拟机是否能够互通</strong>
+宿主机ping虚拟机：
+<img src="/img/BigData/Hadoop/006tKfTcly1fq50mfqlxnj30oy0d0whx.jpg" alt="WX20180330-164543@2x.png">
+虚拟机ping宿主机：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@hadoop-master software<span class="token punctuation">]</span><span class="token comment">## ping -c3 192.168.1.100</span>
+PING <span class="token number">192.168</span>.1.100 <span class="token punctuation">(</span><span class="token number">192.168</span>.1.100<span class="token punctuation">)</span> <span class="token number">56</span><span class="token punctuation">(</span><span class="token number">84</span><span class="token punctuation">)</span> bytes of data.
+<span class="token number">64</span> bytes from <span class="token number">192.168</span>.1.100: <span class="token assign-left variable">icmp_seq</span><span class="token operator">=</span><span class="token number">1</span> <span class="token assign-left variable">ttl</span><span class="token operator">=</span><span class="token number">64</span> <span class="token assign-left variable">time</span><span class="token operator">=</span><span class="token number">0.366</span> ms
+<span class="token number">64</span> bytes from <span class="token number">192.168</span>.1.100: <span class="token assign-left variable">icmp_seq</span><span class="token operator">=</span><span class="token number">2</span> <span class="token assign-left variable">ttl</span><span class="token operator">=</span><span class="token number">64</span> <span class="token assign-left variable">time</span><span class="token operator">=</span><span class="token number">0.357</span> ms
+<span class="token number">64</span> bytes from <span class="token number">192.168</span>.1.100: <span class="token assign-left variable">icmp_seq</span><span class="token operator">=</span><span class="token number">3</span> <span class="token assign-left variable">ttl</span><span class="token operator">=</span><span class="token number">64</span> <span class="token assign-left variable">time</span><span class="token operator">=</span><span class="token number">0.189</span> ms
+
+--- <span class="token number">192.168</span>.1.100 <span class="token function">ping</span> statistics ---
+<span class="token number">3</span> packets transmitted, <span class="token number">3</span> received, <span class="token number">0</span>% packet loss, <span class="token function">time</span> 2000ms
+rtt min/avg/max/mdev <span class="token operator">=</span> <span class="token number">0.189</span>/0.304/0.366/0.081 ms
+<span class="token punctuation">[</span>root@hadoop-master software<span class="token punctuation">]</span><span class="token comment">## </span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h3 id="修改主机名"><a href="#修改主机名" class="header-anchor">#</a> 修改主机名</h3> <p>修改当前会话主机名（当前会话生效）：hostname 主机名
+修改配置文件主机名（永久生效）：vi /etc/sysconfig/network</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@hadoop-master software<span class="token punctuation">]</span><span class="token comment">## cat /etc/sysconfig/network</span>
+<span class="token assign-left variable">NETWORKING</span><span class="token operator">=</span>yes
+<span class="token assign-left variable">NETWORKING_IPV6</span><span class="token operator">=</span>no
+<span class="token assign-left variable"><span class="token environment constant">HOSTNAME</span></span><span class="token operator">=</span>hadoop-master
+<span class="token punctuation">[</span>root@hadoop-master software<span class="token punctuation">]</span><span class="token comment">## hostname</span>
+hadoop-master
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h3 id="把hostname和ip绑定"><a href="#把hostname和ip绑定" class="header-anchor">#</a> 把hostname和ip绑定</h3> <p>修改hosts文件：vi /etc/hosts文件，增加一行</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token number">192.168</span>.1.150   hadoop-master
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="关闭防火墙"><a href="#关闭防火墙" class="header-anchor">#</a> 关闭防火墙</h3> <p>service iptables stop</p> <ol><li>查看防火墙状态：service iptables status</li> <li>关闭防火墙：service iptables stop</li> <li>关闭防火墙的自运行：</li> <li>查看自运行状态：chkconfig --list | grep 'iptables'</li></ol> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@hadoop-master sysconfig<span class="token punctuation">]</span><span class="token comment">## chkconfig --list |  grep 'iptables'</span>
+iptables        <span class="token number">0</span>:关闭  <span class="token number">1</span>:关闭  <span class="token number">2</span>:启用  <span class="token number">3</span>:启用  <span class="token number">4</span>:启用   <span class="token number">5</span>:启用  <span class="token number">6</span>:关闭
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><ol start="2"><li>关闭防火墙：chkconfig iptables off</li></ol> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@hadoop-master sysconfig<span class="token punctuation">]</span><span class="token comment">## chkconfig iptables off</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><ol start="3"><li>再次查看自运行状态：chkconfig --list | grep 'iptables'</li></ol> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@hadoop-master sysconfig<span class="token punctuation">]</span><span class="token comment">## chkconfig --list | grep 'iptables'</span>
+iptables        <span class="token number">0</span>:关闭  <span class="token number">1</span>:关闭  <span class="token number">2</span>:关闭  <span class="token number">3</span>:关闭  <span class="token number">4</span>:关闭  <span class="token number">5</span>:关闭  <span class="token number">6</span>:关闭
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>这样下次开机的时候就会不开启防火墙了</p> <h3 id="ssh免密码登陆"><a href="#ssh免密码登陆" class="header-anchor">#</a> SSH免密码登陆</h3> <p>安装前准备</p> <h3 id="生成秘钥文件"><a href="#生成秘钥文件" class="header-anchor">#</a> 生成秘钥文件</h3> <p>进入~/.ssh文件夹，使用ssh-keygen -t rsa命令
+<strong>注意：</strong>
+1.如果没有.ssh文件夹，就使用ssh协议登录一次试试
+2.如果还是没有.ssh文件夹，就自己创建一个。修改文件夹权限为700
+3.authorized_keys文件的权限为644</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@hadoop-master software<span class="token punctuation">]</span><span class="token comment">## cd ~/.ssh/</span>
+<span class="token punctuation">[</span>root@hadoop-master .ssh<span class="token punctuation">]</span><span class="token comment">## ssh-keygen -t rsa</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>查看.ssh文件夹中已经多出了两个文件id_rsa和 id_rsa.pub</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@hadoop-master .ssh<span class="token punctuation">]</span><span class="token comment">## ls</span>
+id_rsa  id_rsa.pub
+<span class="token punctuation">[</span>root@hadoop-master .ssh<span class="token punctuation">]</span><span class="token comment">##</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>将id_rsa.pub公钥文件内容放入到authorized_keys中，变成私钥</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@hadoop-master .ssh<span class="token punctuation">]</span><span class="token comment">## cp ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="测试免密码登陆是否成功"><a href="#测试免密码登陆是否成功" class="header-anchor">#</a> 测试免密码登陆是否成功</h3> <p>使用：ssh localhost命令连接本机，第一次连接时会让输入yes。以后就不用输入了。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@hadoop-master .ssh<span class="token punctuation">]</span><span class="token comment">## ssh localhost</span>
+The authenticity of <span class="token function">host</span> <span class="token string">'localhost (127.0.0.1)'</span> can<span class="token string">'t be established.
+RSA key fingerprint is 8c:f4:bf:b5:c4:95:30:7b:1c:d7:cc:f8:69:15:e1:ab.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '</span>localhost' <span class="token punctuation">(</span>RSA<span class="token punctuation">)</span> to the list of known hosts.
+Last login: Sun Apr  <span class="token number">5</span> <span class="token number">17</span>:45:25 <span class="token number">2015</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h2 id="安装jdk"><a href="#安装jdk" class="header-anchor">#</a> 安装JDK</h2> <p>JDK的安装很简单，解压缩。然后配置环境变量即可。
+安装步骤如下：</p> <h3 id="授予执行权限"><a href="#授予执行权限" class="header-anchor">#</a> 授予执行权限</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@hadoop-master software<span class="token punctuation">]</span><span class="token comment">## chmod u+x jdk-6u24-linux-i586.bin</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="解压缩"><a href="#解压缩" class="header-anchor">#</a> 解压缩</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@hadoop-master software<span class="token punctuation">]</span><span class="token comment">## ./jdk-6u24-linux-i586.bin</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="配置环境变量"><a href="#配置环境变量" class="header-anchor">#</a> 配置环境变量</h3> <p>编辑/etc/profile文件,增加如下代码</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment">## JAVA_HOME</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">JAVA_HOME</span><span class="token operator">=</span>/opt/modules/jdk1.6.0_24
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token variable">$JAVA_HOME</span>/bin:<span class="token environment constant">$PATH</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">CLASS_PATH</span><span class="token operator">=</span>.:<span class="token variable">$JAVA_HOME</span>/lib/rt.jar:<span class="token variable">$JAVA_HOME</span>/lib/dt.jar:<span class="token variable">$JAVA_HOME</span>/lib/tools.jar
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>然后使设置立即生效：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token builtin class-name">source</span> /etc/profile
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="测试安装"><a href="#测试安装" class="header-anchor">#</a> 测试安装</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@hadoop-master software<span class="token punctuation">]</span><span class="token comment">## java -version</span>
+java version <span class="token string">&quot;1.6.0_24&quot;</span>
+Java<span class="token punctuation">(</span>TM<span class="token punctuation">)</span> SE Runtime Environment <span class="token punctuation">(</span>build <span class="token number">1.6</span>.0_24-b07<span class="token punctuation">)</span>
+Java HotSpot<span class="token punctuation">(</span>TM<span class="token punctuation">)</span> Client VM <span class="token punctuation">(</span>build <span class="token number">19.1</span>-b02, mixed mode, sharing<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>root@hadoop-master software<span class="token punctuation">]</span><span class="token comment">##</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h2 id="安装hadoop"><a href="#安装hadoop" class="header-anchor">#</a> 安装Hadoop</h2> <p>Hadoop伪分布式的安装也很简单
+解压缩，配置环境变量。修改配置文件即可</p> <h3 id="解压缩hadoop-1-1-2-tar-gz"><a href="#解压缩hadoop-1-1-2-tar-gz" class="header-anchor">#</a> 解压缩hadoop-1.1.2.tar.gz</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@hadoop-master software<span class="token punctuation">]</span><span class="token comment">## tar -zxvf hadoop-1.1.2.tar.gz</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>解压完成后，可以看下Hadoop1.x的目录结构
+<img src="/img/BigData/Hadoop/006tKfTcly1fq50mh2kz8j318e0ty7j3.jpg" alt="WX20180330-164556@2x.png"></p> <h3 id="添加到环境变量中"><a href="#添加到环境变量中" class="header-anchor">#</a> 添加到环境变量中</h3> <p>编辑/etc/profile文件,在文件最后增加如下内容</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment">## HADOOP_HOME</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">HADOOP_HOME</span><span class="token operator">=</span>/opt/modules/hadoop-1.1.2
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span><span class="token builtin class-name">:</span><span class="token variable">$HADOOP_HOME</span>/bin
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="使设置立即生效"><a href="#使设置立即生效" class="header-anchor">#</a> 使设置立即生效</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token builtin class-name">source</span> /etc/profile
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="修改hadoop的配置文件"><a href="#修改hadoop的配置文件" class="header-anchor">#</a> 修改hadoop的配置文件</h3> <p>伪分布式的安装需要修改Hadoop的6个配置文件（${HADOOP_HOME}/conf），如下：</p> <ol><li>Hadoop脚本配置文件：hadoop-env.sh</li> <li>核心配置文件：core-site.xml</li> <li>HDFS的配置文件：hdfs-site.xml</li> <li>MapReduces的配置文件：mapred-site.xml</li> <li>管理节点配置文件：masters</li> <li>工作节点配置文件：slaves</li></ol> <h3 id="配置hadoop-env-sh"><a href="#配置hadoop-env-sh" class="header-anchor">#</a> 配置hadoop-env.sh</h3> <p>打开${HADOOP_HOME}/conf/hadoop-env.sh
+修改JAVA_HOME变量为自己安装的JDK的位置</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">JAVA_HOME</span><span class="token operator">=</span>/opt/modules/jdk1.6.0_24
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="配置core-site-xml"><a href="#配置core-site-xml" class="header-anchor">#</a> 配置core-site.xml</h3> <p>${HADOOP_HOME}/conf/core-site.xml中需要配置HDFS的默认主机名、端口和hadoop在本地的文件系统目录（<strong>目录需要存在</strong>）</p> <p><strong>为什么要设置HDFS的工作目录呢？</strong>
+因为不设置的话，Hadoop的HDFS默认的工作目录是在Linux系统的/tmp目录下，
+<img src="/img/BigData/Hadoop/006tKfTcly1fq50mhud9kj30yc01owej.jpg" alt="WX20180330-164605@2x.png">
+这个目录在Linux重启后内容会被清空。所以你还需要重新再格式化。所以，这里我们指定HDFS的工作目录为我们自定义的目录。</p> <div class="language-xml line-numbers-mode"><pre class="language-xml"><code><span class="token prolog">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="token prolog">&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;</span>
+<span class="token comment">&lt;!-- Put site-specific property overrides in this file. --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>fs.default.name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>hdfs://hadoop-master:9000<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">&gt;</span></span>hadoop-master<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>hadoop.tmp.dir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>/opt/data/tmp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><h3 id="配置hdfs-site-xml"><a href="#配置hdfs-site-xml" class="header-anchor">#</a> 配置hdfs-site.xml</h3> <p>${HADOOP_HOME}/conf/hdfs-site.xml中主要配置：
+<strong>文件块的副本数（dfs.replication）</strong>：由于是伪分布式，主节点和从节点都在同一台机器上，所以副本数为1
+<strong>是否进行权限检查（dfs.permissions）</strong>：false</p> <div class="language-xml line-numbers-mode"><pre class="language-xml"><code><span class="token prolog">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="token prolog">&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;</span>
+<span class="token comment">&lt;!-- Put site-specific property overrides in this file. --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>dfs.replication<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>dfs.permissions<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h3 id="配置mapred-site-xml"><a href="#配置mapred-site-xml" class="header-anchor">#</a> 配置mapred-site.xml</h3> <p>${HADOOP_HOME}/conf/mapred-site.xml中主要配置MapReduce的jobTracker的主机和端口</p> <div class="language-xml line-numbers-mode"><pre class="language-xml"><code><span class="token prolog">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="token prolog">&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;</span>
+<span class="token comment">&lt;!-- Put site-specific property overrides in this file. --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>mapred.job.tracker<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>hadoop-master:9001<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="配置masters"><a href="#配置masters" class="header-anchor">#</a> 配置masters</h3> <p>指定SecondaryNameNode的位置（主机名）。
+打开${HADOOP_HOME}/conf/masters文件，增加如下内容：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>hadoop-master
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="配置slaves"><a href="#配置slaves" class="header-anchor">#</a> 配置slaves</h3> <p>指定DataNode和TaskTracker的位置（主机名）。
+打开${HADOOP_HOME}/conf/slaves文件，增加如下内容：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>hadoop-master
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="格式化namenode"><a href="#格式化namenode" class="header-anchor">#</a> 格式化NameNode</h3> <p>配置完成后需要格式化NameNode，第一次使用时需要格式化，之后再次使用时就不再需要。
+在${HADOOP_HOME}/bin/目录下执行</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@hadoop-master bin<span class="token punctuation">]</span><span class="token comment">## hadoop namenode -format</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="测试hadoop安装是否成功"><a href="#测试hadoop安装是否成功" class="header-anchor">#</a> 测试Hadoop安装是否成功</h2> <h3 id="启动hadoop"><a href="#启动hadoop" class="header-anchor">#</a> 启动Hadoop</h3> <p>Hadoop的执行命令都在${HADOOP_HOME}/bin目录下，启动和停止的2种方式</p> <ol><li><p>全部启动或停止：
+启动：start-all.sh
+<strong>启动顺序为</strong>：
+NameNode--&gt;DataNode--&gt;SecondaryNameNode--&gt;JobTracker--&gt;TaskTracker</p> <p>停止：stop-all.sh
+<strong>停止顺序为</strong>：
+JobTracker--&gt;TaskTracker--&gt;NameNode--&gt;DataNode--&gt;SecondaryNameNode</p></li> <li><p>单个启动：
+启动：start-dfs.sh start-mapred.sh
+停止：stop-dfs.sh  stop-mapred.sh</p></li></ol> <p>这里我们直接全部启动：start-all.sh</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@hadoop-master bin<span class="token punctuation">]</span><span class="token comment">## start-all.sh</span>
+starting namenode, logging to /opt/modules/hadoop-1.1.2/libexec/<span class="token punctuation">..</span>/logs/hadoop-root-namenode-hadoop-master.out
+hadoop-master: starting datanode, logging to /opt/modules/hadoop-1.1.2/libexec/<span class="token punctuation">..</span>/logs/hadoop-root-datanode-hadoop-master.out
+hadoop-master: starting secondarynamenode, logging to /opt/modules/hadoop-1.1.2/libexec/<span class="token punctuation">..</span>/logs/hadoop-root-secondarynamenode-hadoop-master.out
+starting jobtracker, logging to /opt/modules/hadoop-1.1.2/libexec/<span class="token punctuation">..</span>/logs/hadoop-root-jobtracker-hadoop-master.out
+hadoop-master: starting tasktracker, logging to /opt/modules/hadoop-1.1.2/libexec/<span class="token punctuation">..</span>/logs/hadoop-root-tasktracker-hadoop-master.out
+<span class="token punctuation">[</span>root@hadoop-master bin<span class="token punctuation">]</span><span class="token comment">##</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>可以从控制台看到，启动后的日志信息都存在在了${HADOOP_HOME}/logs/目录下，如果启动报错可以去查看相应的日志信息。
+当然这个日志目录可以自定义。默认是在${HADOOP_HOME}/logs/目录下。打开${HADOOP_HOME}/conf/hadoop-env.sh文件，里面有如下一行配置：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment">## Where log files are stored.  $HADOOP_HOME/logs by default.</span>
+<span class="token comment">## export HADOOP_LOG_DIR=${HADOOP_HOME}/logs</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>日志类型有2种，分别以log和out结尾。</p> <ol><li>以log结尾的日志
+通过log4j采用每日滚动的方式来记录日志，主要记录了启动和停止的日志信息。</li> <li>以out结尾的日志
+记录标准输出和标准错误的日志，内容比较少。</li></ol> <p><strong>日志文件名格式：</strong>
+hadoop-root-datanode-hadoop-master.log
+hadoop-用户名-守护进程名称-运行守护进程的节点名称.log</p> <h3 id="消除start-all-sh时候的警告信息"><a href="#消除start-all-sh时候的警告信息" class="header-anchor">#</a> 消除start-all.sh时候的警告信息</h3> <p>如果启动过程中出现如下警告信息</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>Warning: <span class="token variable">$HADOOP_HOME</span> is deprecated
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>出现该警告的原因为：${HADOOP_HOME}/bin/hadoop-config.sh文件中的如下代码
+<img src="/img/BigData/Hadoop/006tKfTcly1fq50mit5ffj315u050tam.jpg" alt="WX20180330-164618@2x.png">
+主要是：$HADOOP_HOME_WARN_SUPPERSS变量内容为空的原因，
+解决办法是设置其不为空即可！
+修改vi /etc/profile文件，增加如下代码</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token builtin class-name">export</span>  <span class="token assign-left variable">HADOOP_HOME_WARN_SUPPRESS</span><span class="token operator">=</span><span class="token number">1</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>然后使设置生效</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token builtin class-name">source</span> /etc/profile
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="查看hadoop的进程"><a href="#查看hadoop的进程" class="header-anchor">#</a> 查看Hadoop的进程</h3> <p>通过jps命令查看Hadoop的5个守护进程</p> <p>ps表示查看Linux系统中的进程。jps表示查看系统中的Java进程</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@hadoop-master bin<span class="token punctuation">]</span><span class="token comment">## jps</span>
+<span class="token number">6432</span> DataNode
+<span class="token number">6639</span> JobTracker
+<span class="token number">6915</span> Jps
+<span class="token number">6316</span> NameNode
+<span class="token number">6545</span> SecondaryNameNode
+<span class="token number">6791</span> TaskTracker
+<span class="token punctuation">[</span>root@hadoop-master bin<span class="token punctuation">]</span><span class="token comment">## </span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="登陆web管理页面"><a href="#登陆web管理页面" class="header-anchor">#</a> 登陆WEB管理页面</h3> <p>在Windwos系统的hosts文件中配置ip地址和hostname的映射
+打开C:\Windows\System32\drivers\etc\hosts文件，增加如下内容。这样在访问192.168.1.150时，可以直接输入hadoop-master来访问了。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment">## Hadoop1.1.2</span>
+<span class="token number">192.168</span>.1.150 hadoop-master
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h5 id="hdfs的管理页面"><a href="#hdfs的管理页面" class="header-anchor">#</a> HDFS的管理页面</h5> <p>http://hadoop-master:50070
+<img src="/img/BigData/Hadoop/006tKfTcly1fq50mkbo17j31240tqqcd.jpg" alt="WX20180330-164639@2x.png"></p> <h5 id="mapreduce的管理页面"><a href="#mapreduce的管理页面" class="header-anchor">#</a> MapReduce的管理页面</h5> <p>http://hadoop-master:50030
+<img src="/img/BigData/Hadoop/006tKfTcly1fq50mlfddxj31eo114157.jpg" alt="WX20180330-164657@2x.png"></p> <p>各监控页面显示正常的话，表示Hadoop伪分布式安装成功!</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新时间:</span> <span class="time">2021/5/30 下午1:36:14</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/BigData/Hadoop/hadoop-local-install.html" class="prev">
+        Hadoop本地安装
+      </a></span> <!----></p></div> </main></div><div class="global-ui"><!----><div></div></div></div>
+    <script src="/assets/js/app.180c00c5.js" defer></script><script src="/assets/js/2.a52632a4.js" defer></script><script src="/assets/js/17.dc692cbc.js" defer></script>
+  </body>
+</html>

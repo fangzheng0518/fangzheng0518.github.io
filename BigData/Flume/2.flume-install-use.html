@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Flume的安装和使用 | 浅墨散人</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="浅墨散人,大数据,数据仓库,python,基础,数仓,bigdata,datawarehouse,maven,vuepress,java,hadoop,个人,博客">
+    
+    <link rel="preload" href="/assets/css/0.styles.9894935f.css" as="style"><link rel="preload" href="/assets/js/app.180c00c5.js" as="script"><link rel="preload" href="/assets/js/2.a52632a4.js" as="script"><link rel="preload" href="/assets/js/9.8def527a.js" as="script"><link rel="prefetch" href="/assets/js/10.e8f88356.js"><link rel="prefetch" href="/assets/js/100.d564af88.js"><link rel="prefetch" href="/assets/js/101.ed359fa2.js"><link rel="prefetch" href="/assets/js/102.94fcd251.js"><link rel="prefetch" href="/assets/js/103.02b7b2f9.js"><link rel="prefetch" href="/assets/js/104.24959504.js"><link rel="prefetch" href="/assets/js/105.e0d6c513.js"><link rel="prefetch" href="/assets/js/106.baf829ea.js"><link rel="prefetch" href="/assets/js/107.30956718.js"><link rel="prefetch" href="/assets/js/108.fe4a1842.js"><link rel="prefetch" href="/assets/js/109.c4bab523.js"><link rel="prefetch" href="/assets/js/11.6bcd991e.js"><link rel="prefetch" href="/assets/js/110.77ef5a75.js"><link rel="prefetch" href="/assets/js/111.c88a3e80.js"><link rel="prefetch" href="/assets/js/112.defa6a72.js"><link rel="prefetch" href="/assets/js/113.baffbf93.js"><link rel="prefetch" href="/assets/js/114.c48ed354.js"><link rel="prefetch" href="/assets/js/115.af4c952f.js"><link rel="prefetch" href="/assets/js/116.075913cf.js"><link rel="prefetch" href="/assets/js/117.520ca35f.js"><link rel="prefetch" href="/assets/js/118.3dfffd58.js"><link rel="prefetch" href="/assets/js/119.94e601ba.js"><link rel="prefetch" href="/assets/js/12.4e778070.js"><link rel="prefetch" href="/assets/js/120.91317a15.js"><link rel="prefetch" href="/assets/js/121.a059e4c3.js"><link rel="prefetch" href="/assets/js/122.9f78087b.js"><link rel="prefetch" href="/assets/js/123.b9bb61e0.js"><link rel="prefetch" href="/assets/js/124.4c8994fe.js"><link rel="prefetch" href="/assets/js/125.e8c2c3d9.js"><link rel="prefetch" href="/assets/js/126.0b8a54cc.js"><link rel="prefetch" href="/assets/js/127.d4b342c3.js"><link rel="prefetch" href="/assets/js/128.5bddd0d0.js"><link rel="prefetch" href="/assets/js/129.ae586f13.js"><link rel="prefetch" href="/assets/js/13.b8c77261.js"><link rel="prefetch" href="/assets/js/130.396e6504.js"><link rel="prefetch" href="/assets/js/131.2d55dceb.js"><link rel="prefetch" href="/assets/js/132.900ca269.js"><link rel="prefetch" href="/assets/js/133.062ada46.js"><link rel="prefetch" href="/assets/js/134.b3faeb99.js"><link rel="prefetch" href="/assets/js/135.9097b849.js"><link rel="prefetch" href="/assets/js/136.aa650ff3.js"><link rel="prefetch" href="/assets/js/137.0241ae99.js"><link rel="prefetch" href="/assets/js/138.12b49ab7.js"><link rel="prefetch" href="/assets/js/139.b50d7e75.js"><link rel="prefetch" href="/assets/js/14.2d8e25a1.js"><link rel="prefetch" href="/assets/js/140.3b8b6427.js"><link rel="prefetch" href="/assets/js/141.578527b6.js"><link rel="prefetch" href="/assets/js/142.2d0a60fa.js"><link rel="prefetch" href="/assets/js/143.2e5603d5.js"><link rel="prefetch" href="/assets/js/144.4f0519b8.js"><link rel="prefetch" href="/assets/js/145.ef91129b.js"><link rel="prefetch" href="/assets/js/146.afa67b28.js"><link rel="prefetch" href="/assets/js/147.dbfed115.js"><link rel="prefetch" href="/assets/js/148.52076f62.js"><link rel="prefetch" href="/assets/js/149.413ca0d4.js"><link rel="prefetch" href="/assets/js/15.5c39353a.js"><link rel="prefetch" href="/assets/js/150.5ca28815.js"><link rel="prefetch" href="/assets/js/151.66147548.js"><link rel="prefetch" href="/assets/js/152.e7e8d56f.js"><link rel="prefetch" href="/assets/js/153.10e5489e.js"><link rel="prefetch" href="/assets/js/154.609bedd8.js"><link rel="prefetch" href="/assets/js/155.89b0b0f8.js"><link rel="prefetch" href="/assets/js/156.e817e4b5.js"><link rel="prefetch" href="/assets/js/157.4fe6170a.js"><link rel="prefetch" href="/assets/js/158.0d185e2c.js"><link rel="prefetch" href="/assets/js/159.c57a28b7.js"><link rel="prefetch" href="/assets/js/16.1b28cb6d.js"><link rel="prefetch" href="/assets/js/17.dc692cbc.js"><link rel="prefetch" href="/assets/js/18.b4495b5c.js"><link rel="prefetch" href="/assets/js/19.5bf5eb61.js"><link rel="prefetch" href="/assets/js/20.b4e87a71.js"><link rel="prefetch" href="/assets/js/21.e800ff02.js"><link rel="prefetch" href="/assets/js/22.3445f85c.js"><link rel="prefetch" href="/assets/js/23.7cce4328.js"><link rel="prefetch" href="/assets/js/24.d322e90b.js"><link rel="prefetch" href="/assets/js/25.bfc014f1.js"><link rel="prefetch" href="/assets/js/26.5ebea46f.js"><link rel="prefetch" href="/assets/js/27.914a84c1.js"><link rel="prefetch" href="/assets/js/28.bc782b8d.js"><link rel="prefetch" href="/assets/js/29.62493a18.js"><link rel="prefetch" href="/assets/js/3.f3f7654f.js"><link rel="prefetch" href="/assets/js/30.bad9e501.js"><link rel="prefetch" href="/assets/js/31.4a38bdbd.js"><link rel="prefetch" href="/assets/js/32.903a497d.js"><link rel="prefetch" href="/assets/js/33.03b83687.js"><link rel="prefetch" href="/assets/js/34.f706b788.js"><link rel="prefetch" href="/assets/js/35.99a12707.js"><link rel="prefetch" href="/assets/js/36.90fd2978.js"><link rel="prefetch" href="/assets/js/37.60451941.js"><link rel="prefetch" href="/assets/js/38.28c89a9d.js"><link rel="prefetch" href="/assets/js/39.25838682.js"><link rel="prefetch" href="/assets/js/4.202991e4.js"><link rel="prefetch" href="/assets/js/40.9e68dc50.js"><link rel="prefetch" href="/assets/js/41.d8e72043.js"><link rel="prefetch" href="/assets/js/42.15b4371f.js"><link rel="prefetch" href="/assets/js/43.658c6921.js"><link rel="prefetch" href="/assets/js/44.76f5b021.js"><link rel="prefetch" href="/assets/js/45.a8f9ec74.js"><link rel="prefetch" href="/assets/js/46.5eb0a761.js"><link rel="prefetch" href="/assets/js/47.a42dd1d2.js"><link rel="prefetch" href="/assets/js/48.3845bd0a.js"><link rel="prefetch" href="/assets/js/49.bf2c89ab.js"><link rel="prefetch" href="/assets/js/5.17bb93d9.js"><link rel="prefetch" href="/assets/js/50.52c379d1.js"><link rel="prefetch" href="/assets/js/51.870e4f39.js"><link rel="prefetch" href="/assets/js/52.62a0a49e.js"><link rel="prefetch" href="/assets/js/53.427dbff8.js"><link rel="prefetch" href="/assets/js/54.4635e630.js"><link rel="prefetch" href="/assets/js/55.cd4343b0.js"><link rel="prefetch" href="/assets/js/56.3abdfddd.js"><link rel="prefetch" href="/assets/js/57.0117eb4a.js"><link rel="prefetch" href="/assets/js/58.55ab06d5.js"><link rel="prefetch" href="/assets/js/59.b1e6a01d.js"><link rel="prefetch" href="/assets/js/6.cac134c0.js"><link rel="prefetch" href="/assets/js/60.d9bb9e13.js"><link rel="prefetch" href="/assets/js/61.729595e5.js"><link rel="prefetch" href="/assets/js/62.4fec0c49.js"><link rel="prefetch" href="/assets/js/63.b9c92e6a.js"><link rel="prefetch" href="/assets/js/64.63b8c6b1.js"><link rel="prefetch" href="/assets/js/65.158270ae.js"><link rel="prefetch" href="/assets/js/66.3415f3e3.js"><link rel="prefetch" href="/assets/js/67.f04a4d7a.js"><link rel="prefetch" href="/assets/js/68.23a5849e.js"><link rel="prefetch" href="/assets/js/69.ea5e16f5.js"><link rel="prefetch" href="/assets/js/7.8e78b236.js"><link rel="prefetch" href="/assets/js/70.e857237f.js"><link rel="prefetch" href="/assets/js/71.fa576592.js"><link rel="prefetch" href="/assets/js/72.365c06ee.js"><link rel="prefetch" href="/assets/js/73.0f0f1b47.js"><link rel="prefetch" href="/assets/js/74.69873580.js"><link rel="prefetch" href="/assets/js/75.97e039ae.js"><link rel="prefetch" href="/assets/js/76.cb612fbb.js"><link rel="prefetch" href="/assets/js/77.1ea90dfe.js"><link rel="prefetch" href="/assets/js/78.615aa35c.js"><link rel="prefetch" href="/assets/js/79.aab26661.js"><link rel="prefetch" href="/assets/js/8.4522daab.js"><link rel="prefetch" href="/assets/js/80.1d4975ac.js"><link rel="prefetch" href="/assets/js/81.9c3be0a0.js"><link rel="prefetch" href="/assets/js/82.a1bbb975.js"><link rel="prefetch" href="/assets/js/83.a750334d.js"><link rel="prefetch" href="/assets/js/84.de429a3c.js"><link rel="prefetch" href="/assets/js/85.d041d296.js"><link rel="prefetch" href="/assets/js/86.0e0bbf44.js"><link rel="prefetch" href="/assets/js/87.4f84d9ab.js"><link rel="prefetch" href="/assets/js/88.ccabef36.js"><link rel="prefetch" href="/assets/js/89.2c400fa8.js"><link rel="prefetch" href="/assets/js/90.43053d57.js"><link rel="prefetch" href="/assets/js/91.1e3fdb77.js"><link rel="prefetch" href="/assets/js/92.3f07495e.js"><link rel="prefetch" href="/assets/js/93.6644ee1c.js"><link rel="prefetch" href="/assets/js/94.b1e6ce61.js"><link rel="prefetch" href="/assets/js/95.bb1bd51a.js"><link rel="prefetch" href="/assets/js/96.9e2056ef.js"><link rel="prefetch" href="/assets/js/97.efbeddb2.js"><link rel="prefetch" href="/assets/js/98.ae0038a0.js"><link rel="prefetch" href="/assets/js/99.433a2542.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9894935f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/hero.png" alt="浅墨散人" class="logo"> <span class="site-name can-hide">浅墨散人</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Java/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/Java/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Maven/" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/Java/SpringBoot/" class="nav-link">
+  SpringBoot
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><span class="title">Python</span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Python/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Flask/" class="nav-link">
+  Flask
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Django/" class="nav-link">
+  Diango
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Pandas/" class="nav-link">
+  Pandas
+</a></li><li class="dropdown-item"><!----> <a href="/Python/SqlAlchemy/" class="nav-link">
+  SqlAlchemy
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><span class="title">大数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="大数据" class="mobile-dropdown-title"><span class="title">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BigData/Sqoop/" class="nav-link">
+  Sqoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Flume/" class="nav-link router-link-active">
+  Flume
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hadoop/" class="nav-link">
+  Hadoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hbase/" class="nav-link">
+  Hbase
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hive/" class="nav-link">
+  Hive
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kylin/" class="nav-link">
+  Kylin
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Zookeeper/" class="nav-link">
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Tez/" class="nav-link">
+  Tez
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/DataBase/MySQL/" class="nav-link">
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/Chrome/" class="nav-link">
+  Chrome
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Eclipse/" class="nav-link">
+  Eclipse
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/iTerm2/" class="nav-link">
+  iTerm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Markdown/" class="nav-link">
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/SublimeText/" class="nav-link">
+  SublimeText
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/VirtualBox/" class="nav-link">
+  VirtualBox
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/WebStrom/" class="nav-link">
+  WebStrom
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系统" class="dropdown-title"><span class="title">系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="系统" class="mobile-dropdown-title"><span class="title">系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/System/Linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/System/Mac/" class="nav-link">
+  Mac
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/Hexo/" class="nav-link">
+  Hexo
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Other/VuePress/" class="nav-link">
+  VuePress
+</a></li><li class="dropdown-item"><!----> <a href="/Other/BlockChain/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Finance/" class="nav-link">
+  金融
+</a></li></ul></div></div><div class="nav-item"><a href="/DatawareHouse/" class="nav-link">
+  数据仓库
+</a></div><div class="nav-item"><a href="/About/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/fangzheng0518" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Java/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/Java/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Maven/" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/Java/SpringBoot/" class="nav-link">
+  SpringBoot
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><span class="title">Python</span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Python/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Flask/" class="nav-link">
+  Flask
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Django/" class="nav-link">
+  Diango
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Pandas/" class="nav-link">
+  Pandas
+</a></li><li class="dropdown-item"><!----> <a href="/Python/SqlAlchemy/" class="nav-link">
+  SqlAlchemy
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><span class="title">大数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="大数据" class="mobile-dropdown-title"><span class="title">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BigData/Sqoop/" class="nav-link">
+  Sqoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Flume/" class="nav-link router-link-active">
+  Flume
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hadoop/" class="nav-link">
+  Hadoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hbase/" class="nav-link">
+  Hbase
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hive/" class="nav-link">
+  Hive
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kylin/" class="nav-link">
+  Kylin
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Zookeeper/" class="nav-link">
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Tez/" class="nav-link">
+  Tez
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/DataBase/MySQL/" class="nav-link">
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/Chrome/" class="nav-link">
+  Chrome
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Eclipse/" class="nav-link">
+  Eclipse
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/iTerm2/" class="nav-link">
+  iTerm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Markdown/" class="nav-link">
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/SublimeText/" class="nav-link">
+  SublimeText
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/VirtualBox/" class="nav-link">
+  VirtualBox
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/WebStrom/" class="nav-link">
+  WebStrom
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系统" class="dropdown-title"><span class="title">系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="系统" class="mobile-dropdown-title"><span class="title">系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/System/Linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/System/Mac/" class="nav-link">
+  Mac
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/Hexo/" class="nav-link">
+  Hexo
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Other/VuePress/" class="nav-link">
+  VuePress
+</a></li><li class="dropdown-item"><!----> <a href="/Other/BlockChain/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Finance/" class="nav-link">
+  金融
+</a></li></ul></div></div><div class="nav-item"><a href="/DatawareHouse/" class="nav-link">
+  数据仓库
+</a></div><div class="nav-item"><a href="/About/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/fangzheng0518" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Flume</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/BigData/Flume/" aria-current="page" class="sidebar-link">前言</a></li><li><a href="/BigData/Flume/1.flume-introduce.html" class="sidebar-link">Flume的介绍及原理</a></li><li><a href="/BigData/Flume/2.flume-install-use.html" aria-current="page" class="active sidebar-link">Flume的安装和使用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Flume/2.flume-install-use.html#安装" class="sidebar-link">安装</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Flume/2.flume-install-use.html#必要条件" class="sidebar-link">必要条件</a></li></ul></li><li class="sidebar-sub-header"><a href="/BigData/Flume/2.flume-install-use.html#使用flume" class="sidebar-link">使用Flume</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Flume/2.flume-install-use.html#配置agent" class="sidebar-link">配置agent</a></li><li class="sidebar-sub-header"><a href="/BigData/Flume/2.flume-install-use.html#启动agent" class="sidebar-link">启动agent</a></li><li class="sidebar-sub-header"><a href="/BigData/Flume/2.flume-install-use.html#验证结果" class="sidebar-link">验证结果</a></li></ul></li></ul></li><li><a href="/BigData/Flume/3.flume-use-exapmles.html" class="sidebar-link">Flume的使用实例</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="安装"><a href="#安装" class="header-anchor">#</a> 安装</h2> <h3 id="必要条件"><a href="#必要条件" class="header-anchor">#</a> 必要条件</h3> <ol><li>Java1.8及更高版本</li> <li>足够的内存，大部分情况channels都使用的是内存来缓存</li> <li>足够的磁盘空间</li> <li>目录的读写权限</li></ol> <p>Flume的安装很简单，直接下载然后解压使用即可。
+下载地址：<a href="http://www-us.apache.org/dist/flume/1.7.0/apache-flume-1.7.0-bin.tar.gz" target="_blank" rel="noopener noreferrer">http://www-us.apache.org/dist/flume/1.7.0/apache-flume-1.7.0-bin.tar.gz<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>
+本次使用的版本是1.7.0，下载后将Flume解压到你喜欢的目录
+这里我解压到了/usr/local/hadoop/flume-1.7.0目录中。为了以后使用命令方便，我将Flume加入了环境变量中
+<strong>在/etc/profile中增加如下内容</strong></p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">FLUME_HOME</span><span class="token operator">=</span>/usr/local/hadoop/flume-1.7.0
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token environment constant">$PATH</span><span class="token builtin class-name">:</span><span class="token variable">$FLUME_HOME</span>/bin
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>然后执行source /etc/profile使配置立即生效</p> <h2 id="使用flume"><a href="#使用flume" class="header-anchor">#</a> 使用Flume</h2> <p>Flume的原理及架构已经了解的情况下，我们知道要使用Flume需要先配置agent，这里参照官方文档<a href="http://flume.apache.org/FlumeUserGuide.html" target="_blank" rel="noopener noreferrer">http://flume.apache.org/FlumeUserGuide.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>上的一个简单例子。</p> <h3 id="配置agent"><a href="#配置agent" class="header-anchor">#</a> 配置agent</h3> <p>其中，agent的配置如下：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># example.conf: A single-node Flume configuration</span>
+
+<span class="token comment"># Name the components on this agent</span>
+a1.sources <span class="token operator">=</span> r1
+a1.sinks <span class="token operator">=</span> k1
+a1.channels <span class="token operator">=</span> c1
+
+<span class="token comment"># Describe/configure the source</span>
+a1.sources.r1.type <span class="token operator">=</span> netcat
+a1.sources.r1.bind <span class="token operator">=</span> localhost
+a1.sources.r1.port <span class="token operator">=</span> <span class="token number">44444</span>
+
+<span class="token comment"># Describe the sink</span>
+a1.sinks.k1.type <span class="token operator">=</span> logger
+
+<span class="token comment"># Use a channel which buffers events in memory</span>
+a1.channels.c1.type <span class="token operator">=</span> memory
+a1.channels.c1.capacity <span class="token operator">=</span> <span class="token number">1000</span>
+a1.channels.c1.transactionCapacity <span class="token operator">=</span> <span class="token number">100</span>
+
+<span class="token comment"># Bind the source and sink to the channel</span>
+a1.sources.r1.channels <span class="token operator">=</span> c1
+a1.sinks.k1.channel <span class="token operator">=</span> c1
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><p>配置说明：
+以上配置中指定了source，sinks，channels
+<strong>sources</strong>：使用的是netcat命令，监控localhost主机44444端口的输出内容
+<strong>sink</strong>：这里是sink输出到logger中，也就是启动agent后的控制台页面上
+<strong>channels</strong>：这里的管道使用的是内存来缓存信息，最大容量1000</p> <h3 id="启动agent"><a href="#启动agent" class="header-anchor">#</a> 启动agent</h3> <p>参照官网例子，得知启动命令如下</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>$ bin/flume-ng agent -n <span class="token variable">$agent_name</span> -c conf -f conf/flume-conf.properties.template
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>需要传入你要启动的agent的name以及agent配置文件的路径，所以得到如下最终命令：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>$ flume-ng agent --conf conf --conf-file /usr/local/hadoop/flume-1.7.0/conf-example/netcat-console.conf --name a1 -Dflume.root.logger<span class="token operator">=</span>INFO,console
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>--conf-file：命令中指定了配置文件为**/usr/local/hadoop/flume-1.7.0/conf-example/netcat-console.conf** ，如果不加绝对路径表示当前目录
+--name：指定了配置文件中agent的名称是a1
+-Dflume.root.logger：指定了flume日志信息输出到控制台中
+执行以上命令，得到如下效果：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@hadoop1 conf-example<span class="token punctuation">]</span><span class="token comment"># flume-ng agent --conf conf --conf-file /usr/local/hadoop/flume-1.7.0/conf-example/netcat-console.conf --name a1 -Dflume.root.logger=INFO,console</span>
+Info: Including Hadoop libraries found via <span class="token punctuation">(</span>/usr/local/hadoop/hadoop-2.7.4/bin/hadoop<span class="token punctuation">)</span> <span class="token keyword">for</span> HDFS access
+Info: Including Hive libraries found via <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">for</span> Hive access
++ <span class="token builtin class-name">exec</span> /usr/java/jdk1.8.0_131/bin/java -Xmx20m -Dflume.root.logger<span class="token operator">=</span>INFO,console -cp <span class="token string">'conf:/usr/local/hadoop/flume-1.7.0/lib/*:/usr/local/hadoop/hadoop-2.7.4/etc/hadoop:/usr/local/hadoop/hadoop-2.7.4/share/hadoop/common/lib/*:/usr/local/hadoop/hadoop-2.7.4/share/hadoop/common/*:/usr/local/hadoop/hadoop-2.7.4/share/hadoop/hdfs:/usr/local/hadoop/hadoop-2.7.4/share/hadoop/hdfs/lib/*:/usr/local/hadoop/hadoop-2.7.4/share/hadoop/hdfs/*:/usr/local/hadoop/hadoop-2.7.4/share/hadoop/yarn/lib/*:/usr/local/hadoop/hadoop-2.7.4/share/hadoop/yarn/*:/usr/local/hadoop/hadoop-2.7.4/share/hadoop/mapreduce/lib/*:/usr/local/hadoop/hadoop-2.7.4/share/hadoop/mapreduce/*:/usr/local/hadoop/hadoop-2.7.4/contrib/capacity-scheduler/*.jar:/lib/*'</span> -Djava.library.path<span class="token operator">=</span>:/usr/local/hadoop/hadoop-2.7.4/lib org.apache.flume.node.Application --conf-file /usr/local/hadoop/flume-1.7.0/conf-example/netcat-console.conf --name a1
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding <span class="token keyword">in</span> <span class="token punctuation">[</span>jar:file:/usr/local/hadoop/flume-1.7.0/lib/slf4j-log4j12-1.6.1.jar<span class="token operator">!</span>/org/slf4j/impl/StaticLoggerBinder.class<span class="token punctuation">]</span>
+SLF4J: Found binding <span class="token keyword">in</span> <span class="token punctuation">[</span>jar:file:/usr/local/hadoop/hadoop-2.7.4/share/hadoop/common/lib/slf4j-log4j12-1.7.10.jar<span class="token operator">!</span>/org/slf4j/impl/StaticLoggerBinder.class<span class="token punctuation">]</span>
+SLF4J: See http://www.slf4j.org/codes.html<span class="token comment">#multiple_bindings for an explanation.</span>
+<span class="token number">17</span>/10/18 <span class="token number">23</span>:35:32 INFO node.PollingPropertiesFileConfigurationProvider: Configuration provider starting
+<span class="token number">17</span>/10/18 <span class="token number">23</span>:35:32 INFO node.PollingPropertiesFileConfigurationProvider: Reloading configuration file:/usr/local/hadoop/flume-1.7.0/conf-example/netcat-console.conf
+<span class="token number">17</span>/10/18 <span class="token number">23</span>:35:32 INFO conf.FlumeConfiguration: Added sinks: k1 Agent: a1
+<span class="token number">17</span>/10/18 <span class="token number">23</span>:35:32 INFO conf.FlumeConfiguration: Processing:k1
+<span class="token number">17</span>/10/18 <span class="token number">23</span>:35:32 INFO conf.FlumeConfiguration: Processing:k1
+<span class="token number">17</span>/10/18 <span class="token number">23</span>:35:32 INFO conf.FlumeConfiguration: Post-validation flume configuration contains configuration <span class="token keyword">for</span> agents: <span class="token punctuation">[</span>a1<span class="token punctuation">]</span>
+<span class="token number">17</span>/10/18 <span class="token number">23</span>:35:32 INFO node.AbstractConfigurationProvider: Creating channels
+<span class="token number">17</span>/10/18 <span class="token number">23</span>:35:32 INFO channel.DefaultChannelFactory: Creating instance of channel c1 <span class="token builtin class-name">type</span> memory
+<span class="token number">17</span>/10/18 <span class="token number">23</span>:35:32 INFO node.AbstractConfigurationProvider: Created channel c1
+<span class="token number">17</span>/10/18 <span class="token number">23</span>:35:32 INFO source.DefaultSourceFactory: Creating instance of <span class="token builtin class-name">source</span> r1, <span class="token builtin class-name">type</span> netcat
+<span class="token number">17</span>/10/18 <span class="token number">23</span>:35:32 INFO sink.DeflaultSinkFactory: Creating instance of sink: k1, type: logger
+<span class="token number">17</span>/10/18 <span class="token number">23</span>:35:32 INFO node.AbstractConfigurationProvider: Channel c1 connected to <span class="token punctuation">[</span>r1, k1<span class="token punctuation">]</span>
+<span class="token number">17</span>/10/18 <span class="token number">23</span>:35:32 INFO node.Application: Starting new configuration:<span class="token punctuation">{</span> sourceRunners:<span class="token punctuation">{</span>r1<span class="token operator">=</span>EventDrivenSourceRunner: <span class="token punctuation">{</span> source:org.apache.flume.source.NetcatSource<span class="token punctuation">{</span>name:r1,state:IDLE<span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">}</span> sinkRunners:<span class="token punctuation">{</span>k1<span class="token operator">=</span>SinkRunner: <span class="token punctuation">{</span> policy:org.apache.flume.sink.DefaultSinkProcessor@1b4b27c counterGroup:<span class="token punctuation">{</span> name:null counters:<span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">}</span> channels:<span class="token punctuation">{</span>c1<span class="token operator">=</span>org.apache.flume.channel.MemoryChannel<span class="token punctuation">{</span>name: c1<span class="token punctuation">}</span><span class="token punctuation">}</span> <span class="token punctuation">}</span>
+<span class="token number">17</span>/10/18 <span class="token number">23</span>:35:32 INFO node.Application: Starting Channel c1
+<span class="token number">17</span>/10/18 <span class="token number">23</span>:35:32 INFO instrumentation.MonitoredCounterGroup: Monitored counter group <span class="token keyword">for</span> type: CHANNEL, name: c1: Successfully registered new MBean.
+<span class="token number">17</span>/10/18 <span class="token number">23</span>:35:32 INFO instrumentation.MonitoredCounterGroup: Component type: CHANNEL, name: c1 started
+<span class="token number">17</span>/10/18 <span class="token number">23</span>:35:32 INFO node.Application: Starting Sink k1
+<span class="token number">17</span>/10/18 <span class="token number">23</span>:35:32 INFO node.Application: Starting Source r1
+<span class="token number">17</span>/10/18 <span class="token number">23</span>:35:32 INFO source.NetcatSource: Source starting
+<span class="token number">17</span>/10/18 <span class="token number">23</span>:35:32 INFO source.NetcatSource: Created serverSocket:sun.nio.ch.ServerSocketChannelImpl<span class="token punctuation">[</span>/127.0.0.1:44444<span class="token punctuation">]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br></div></div><p>打开一个新终端窗口，连接到localhost的44444端口。这里需要你的环境中安装了telnet工具，如果没装可以使用yum install命令进行安装</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@hadoop1 conf-example<span class="token punctuation">]</span><span class="token comment"># telnet localhost 44444</span>
+Trying ::1<span class="token punctuation">..</span>.
+telnet: connect to address ::1: Connection refused
+Trying <span class="token number">127.0</span>.0.1<span class="token punctuation">..</span>.
+Connected to localhost.
+Escape character is <span class="token string">'^]'</span><span class="token builtin class-name">.</span>
+在这里输入内容，然后回车即可
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="验证结果"><a href="#验证结果" class="header-anchor">#</a> 验证结果</h3> <p>分别查看telnet窗口输入的内容和启动agent终端窗口的输出结果
+<img src="/img/BigData/Flume/0069RVTdgy1fu4fnizxnsj30uc0audhm.jpg" alt="img"> <img src="/img/BigData/Flume/0069RVTdgy1fu4fnl4066j31kw03675m.jpg" alt="img"></p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新时间:</span> <span class="time">2021/5/30 下午1:36:14</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/BigData/Flume/1.flume-introduce.html" class="prev">
+        Flume的介绍及原理
+      </a></span> <span class="next"><a href="/BigData/Flume/3.flume-use-exapmles.html">
+        Flume的使用实例
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><div></div></div></div>
+    <script src="/assets/js/app.180c00c5.js" defer></script><script src="/assets/js/2.a52632a4.js" defer></script><script src="/assets/js/9.8def527a.js" defer></script>
+  </body>
+</html>

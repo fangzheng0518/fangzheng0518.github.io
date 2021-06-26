@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>MySQL的binlog日志 | 浅墨散人</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="浅墨散人,大数据,数据仓库,python,基础,数仓,bigdata,datawarehouse,maven,vuepress,java,hadoop,个人,博客">
+    
+    <link rel="preload" href="/assets/css/0.styles.9894935f.css" as="style"><link rel="preload" href="/assets/js/app.180c00c5.js" as="script"><link rel="preload" href="/assets/js/2.a52632a4.js" as="script"><link rel="preload" href="/assets/js/43.658c6921.js" as="script"><link rel="prefetch" href="/assets/js/10.e8f88356.js"><link rel="prefetch" href="/assets/js/100.d564af88.js"><link rel="prefetch" href="/assets/js/101.ed359fa2.js"><link rel="prefetch" href="/assets/js/102.94fcd251.js"><link rel="prefetch" href="/assets/js/103.02b7b2f9.js"><link rel="prefetch" href="/assets/js/104.24959504.js"><link rel="prefetch" href="/assets/js/105.e0d6c513.js"><link rel="prefetch" href="/assets/js/106.baf829ea.js"><link rel="prefetch" href="/assets/js/107.30956718.js"><link rel="prefetch" href="/assets/js/108.fe4a1842.js"><link rel="prefetch" href="/assets/js/109.c4bab523.js"><link rel="prefetch" href="/assets/js/11.6bcd991e.js"><link rel="prefetch" href="/assets/js/110.77ef5a75.js"><link rel="prefetch" href="/assets/js/111.c88a3e80.js"><link rel="prefetch" href="/assets/js/112.defa6a72.js"><link rel="prefetch" href="/assets/js/113.baffbf93.js"><link rel="prefetch" href="/assets/js/114.c48ed354.js"><link rel="prefetch" href="/assets/js/115.af4c952f.js"><link rel="prefetch" href="/assets/js/116.075913cf.js"><link rel="prefetch" href="/assets/js/117.520ca35f.js"><link rel="prefetch" href="/assets/js/118.3dfffd58.js"><link rel="prefetch" href="/assets/js/119.94e601ba.js"><link rel="prefetch" href="/assets/js/12.4e778070.js"><link rel="prefetch" href="/assets/js/120.91317a15.js"><link rel="prefetch" href="/assets/js/121.a059e4c3.js"><link rel="prefetch" href="/assets/js/122.9f78087b.js"><link rel="prefetch" href="/assets/js/123.b9bb61e0.js"><link rel="prefetch" href="/assets/js/124.4c8994fe.js"><link rel="prefetch" href="/assets/js/125.e8c2c3d9.js"><link rel="prefetch" href="/assets/js/126.0b8a54cc.js"><link rel="prefetch" href="/assets/js/127.d4b342c3.js"><link rel="prefetch" href="/assets/js/128.5bddd0d0.js"><link rel="prefetch" href="/assets/js/129.ae586f13.js"><link rel="prefetch" href="/assets/js/13.b8c77261.js"><link rel="prefetch" href="/assets/js/130.396e6504.js"><link rel="prefetch" href="/assets/js/131.2d55dceb.js"><link rel="prefetch" href="/assets/js/132.900ca269.js"><link rel="prefetch" href="/assets/js/133.062ada46.js"><link rel="prefetch" href="/assets/js/134.b3faeb99.js"><link rel="prefetch" href="/assets/js/135.9097b849.js"><link rel="prefetch" href="/assets/js/136.aa650ff3.js"><link rel="prefetch" href="/assets/js/137.0241ae99.js"><link rel="prefetch" href="/assets/js/138.12b49ab7.js"><link rel="prefetch" href="/assets/js/139.b50d7e75.js"><link rel="prefetch" href="/assets/js/14.2d8e25a1.js"><link rel="prefetch" href="/assets/js/140.3b8b6427.js"><link rel="prefetch" href="/assets/js/141.578527b6.js"><link rel="prefetch" href="/assets/js/142.2d0a60fa.js"><link rel="prefetch" href="/assets/js/143.2e5603d5.js"><link rel="prefetch" href="/assets/js/144.4f0519b8.js"><link rel="prefetch" href="/assets/js/145.ef91129b.js"><link rel="prefetch" href="/assets/js/146.afa67b28.js"><link rel="prefetch" href="/assets/js/147.dbfed115.js"><link rel="prefetch" href="/assets/js/148.52076f62.js"><link rel="prefetch" href="/assets/js/149.413ca0d4.js"><link rel="prefetch" href="/assets/js/15.5c39353a.js"><link rel="prefetch" href="/assets/js/150.5ca28815.js"><link rel="prefetch" href="/assets/js/151.66147548.js"><link rel="prefetch" href="/assets/js/152.e7e8d56f.js"><link rel="prefetch" href="/assets/js/153.10e5489e.js"><link rel="prefetch" href="/assets/js/154.609bedd8.js"><link rel="prefetch" href="/assets/js/155.89b0b0f8.js"><link rel="prefetch" href="/assets/js/156.e817e4b5.js"><link rel="prefetch" href="/assets/js/157.4fe6170a.js"><link rel="prefetch" href="/assets/js/158.0d185e2c.js"><link rel="prefetch" href="/assets/js/159.c57a28b7.js"><link rel="prefetch" href="/assets/js/16.1b28cb6d.js"><link rel="prefetch" href="/assets/js/17.dc692cbc.js"><link rel="prefetch" href="/assets/js/18.b4495b5c.js"><link rel="prefetch" href="/assets/js/19.5bf5eb61.js"><link rel="prefetch" href="/assets/js/20.b4e87a71.js"><link rel="prefetch" href="/assets/js/21.e800ff02.js"><link rel="prefetch" href="/assets/js/22.3445f85c.js"><link rel="prefetch" href="/assets/js/23.7cce4328.js"><link rel="prefetch" href="/assets/js/24.d322e90b.js"><link rel="prefetch" href="/assets/js/25.bfc014f1.js"><link rel="prefetch" href="/assets/js/26.5ebea46f.js"><link rel="prefetch" href="/assets/js/27.914a84c1.js"><link rel="prefetch" href="/assets/js/28.bc782b8d.js"><link rel="prefetch" href="/assets/js/29.62493a18.js"><link rel="prefetch" href="/assets/js/3.f3f7654f.js"><link rel="prefetch" href="/assets/js/30.bad9e501.js"><link rel="prefetch" href="/assets/js/31.4a38bdbd.js"><link rel="prefetch" href="/assets/js/32.903a497d.js"><link rel="prefetch" href="/assets/js/33.03b83687.js"><link rel="prefetch" href="/assets/js/34.f706b788.js"><link rel="prefetch" href="/assets/js/35.99a12707.js"><link rel="prefetch" href="/assets/js/36.90fd2978.js"><link rel="prefetch" href="/assets/js/37.60451941.js"><link rel="prefetch" href="/assets/js/38.28c89a9d.js"><link rel="prefetch" href="/assets/js/39.25838682.js"><link rel="prefetch" href="/assets/js/4.202991e4.js"><link rel="prefetch" href="/assets/js/40.9e68dc50.js"><link rel="prefetch" href="/assets/js/41.d8e72043.js"><link rel="prefetch" href="/assets/js/42.15b4371f.js"><link rel="prefetch" href="/assets/js/44.76f5b021.js"><link rel="prefetch" href="/assets/js/45.a8f9ec74.js"><link rel="prefetch" href="/assets/js/46.5eb0a761.js"><link rel="prefetch" href="/assets/js/47.a42dd1d2.js"><link rel="prefetch" href="/assets/js/48.3845bd0a.js"><link rel="prefetch" href="/assets/js/49.bf2c89ab.js"><link rel="prefetch" href="/assets/js/5.17bb93d9.js"><link rel="prefetch" href="/assets/js/50.52c379d1.js"><link rel="prefetch" href="/assets/js/51.870e4f39.js"><link rel="prefetch" href="/assets/js/52.62a0a49e.js"><link rel="prefetch" href="/assets/js/53.427dbff8.js"><link rel="prefetch" href="/assets/js/54.4635e630.js"><link rel="prefetch" href="/assets/js/55.cd4343b0.js"><link rel="prefetch" href="/assets/js/56.3abdfddd.js"><link rel="prefetch" href="/assets/js/57.0117eb4a.js"><link rel="prefetch" href="/assets/js/58.55ab06d5.js"><link rel="prefetch" href="/assets/js/59.b1e6a01d.js"><link rel="prefetch" href="/assets/js/6.cac134c0.js"><link rel="prefetch" href="/assets/js/60.d9bb9e13.js"><link rel="prefetch" href="/assets/js/61.729595e5.js"><link rel="prefetch" href="/assets/js/62.4fec0c49.js"><link rel="prefetch" href="/assets/js/63.b9c92e6a.js"><link rel="prefetch" href="/assets/js/64.63b8c6b1.js"><link rel="prefetch" href="/assets/js/65.158270ae.js"><link rel="prefetch" href="/assets/js/66.3415f3e3.js"><link rel="prefetch" href="/assets/js/67.f04a4d7a.js"><link rel="prefetch" href="/assets/js/68.23a5849e.js"><link rel="prefetch" href="/assets/js/69.ea5e16f5.js"><link rel="prefetch" href="/assets/js/7.8e78b236.js"><link rel="prefetch" href="/assets/js/70.e857237f.js"><link rel="prefetch" href="/assets/js/71.fa576592.js"><link rel="prefetch" href="/assets/js/72.365c06ee.js"><link rel="prefetch" href="/assets/js/73.0f0f1b47.js"><link rel="prefetch" href="/assets/js/74.69873580.js"><link rel="prefetch" href="/assets/js/75.97e039ae.js"><link rel="prefetch" href="/assets/js/76.cb612fbb.js"><link rel="prefetch" href="/assets/js/77.1ea90dfe.js"><link rel="prefetch" href="/assets/js/78.615aa35c.js"><link rel="prefetch" href="/assets/js/79.aab26661.js"><link rel="prefetch" href="/assets/js/8.4522daab.js"><link rel="prefetch" href="/assets/js/80.1d4975ac.js"><link rel="prefetch" href="/assets/js/81.9c3be0a0.js"><link rel="prefetch" href="/assets/js/82.a1bbb975.js"><link rel="prefetch" href="/assets/js/83.a750334d.js"><link rel="prefetch" href="/assets/js/84.de429a3c.js"><link rel="prefetch" href="/assets/js/85.d041d296.js"><link rel="prefetch" href="/assets/js/86.0e0bbf44.js"><link rel="prefetch" href="/assets/js/87.4f84d9ab.js"><link rel="prefetch" href="/assets/js/88.ccabef36.js"><link rel="prefetch" href="/assets/js/89.2c400fa8.js"><link rel="prefetch" href="/assets/js/9.8def527a.js"><link rel="prefetch" href="/assets/js/90.43053d57.js"><link rel="prefetch" href="/assets/js/91.1e3fdb77.js"><link rel="prefetch" href="/assets/js/92.3f07495e.js"><link rel="prefetch" href="/assets/js/93.6644ee1c.js"><link rel="prefetch" href="/assets/js/94.b1e6ce61.js"><link rel="prefetch" href="/assets/js/95.bb1bd51a.js"><link rel="prefetch" href="/assets/js/96.9e2056ef.js"><link rel="prefetch" href="/assets/js/97.efbeddb2.js"><link rel="prefetch" href="/assets/js/98.ae0038a0.js"><link rel="prefetch" href="/assets/js/99.433a2542.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9894935f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/hero.png" alt="浅墨散人" class="logo"> <span class="site-name can-hide">浅墨散人</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Java/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/Java/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Maven/" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/Java/SpringBoot/" class="nav-link">
+  SpringBoot
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><span class="title">Python</span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Python/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Flask/" class="nav-link">
+  Flask
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Django/" class="nav-link">
+  Diango
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Pandas/" class="nav-link">
+  Pandas
+</a></li><li class="dropdown-item"><!----> <a href="/Python/SqlAlchemy/" class="nav-link">
+  SqlAlchemy
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><span class="title">大数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="大数据" class="mobile-dropdown-title"><span class="title">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BigData/Sqoop/" class="nav-link">
+  Sqoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Flume/" class="nav-link">
+  Flume
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hadoop/" class="nav-link">
+  Hadoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hbase/" class="nav-link">
+  Hbase
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hive/" class="nav-link">
+  Hive
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kylin/" class="nav-link">
+  Kylin
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Zookeeper/" class="nav-link">
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Tez/" class="nav-link">
+  Tez
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/DataBase/MySQL/" class="nav-link router-link-active">
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/Chrome/" class="nav-link">
+  Chrome
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Eclipse/" class="nav-link">
+  Eclipse
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/iTerm2/" class="nav-link">
+  iTerm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Markdown/" class="nav-link">
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/SublimeText/" class="nav-link">
+  SublimeText
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/VirtualBox/" class="nav-link">
+  VirtualBox
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/WebStrom/" class="nav-link">
+  WebStrom
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系统" class="dropdown-title"><span class="title">系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="系统" class="mobile-dropdown-title"><span class="title">系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/System/Linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/System/Mac/" class="nav-link">
+  Mac
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/Hexo/" class="nav-link">
+  Hexo
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Other/VuePress/" class="nav-link">
+  VuePress
+</a></li><li class="dropdown-item"><!----> <a href="/Other/BlockChain/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Finance/" class="nav-link">
+  金融
+</a></li></ul></div></div><div class="nav-item"><a href="/DatawareHouse/" class="nav-link">
+  数据仓库
+</a></div><div class="nav-item"><a href="/About/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/fangzheng0518" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Java/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/Java/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Maven/" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/Java/SpringBoot/" class="nav-link">
+  SpringBoot
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><span class="title">Python</span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Python/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Flask/" class="nav-link">
+  Flask
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Django/" class="nav-link">
+  Diango
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Pandas/" class="nav-link">
+  Pandas
+</a></li><li class="dropdown-item"><!----> <a href="/Python/SqlAlchemy/" class="nav-link">
+  SqlAlchemy
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><span class="title">大数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="大数据" class="mobile-dropdown-title"><span class="title">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BigData/Sqoop/" class="nav-link">
+  Sqoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Flume/" class="nav-link">
+  Flume
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hadoop/" class="nav-link">
+  Hadoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hbase/" class="nav-link">
+  Hbase
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hive/" class="nav-link">
+  Hive
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kylin/" class="nav-link">
+  Kylin
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Zookeeper/" class="nav-link">
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Tez/" class="nav-link">
+  Tez
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/DataBase/MySQL/" class="nav-link router-link-active">
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/Chrome/" class="nav-link">
+  Chrome
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Eclipse/" class="nav-link">
+  Eclipse
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/iTerm2/" class="nav-link">
+  iTerm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Markdown/" class="nav-link">
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/SublimeText/" class="nav-link">
+  SublimeText
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/VirtualBox/" class="nav-link">
+  VirtualBox
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/WebStrom/" class="nav-link">
+  WebStrom
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系统" class="dropdown-title"><span class="title">系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="系统" class="mobile-dropdown-title"><span class="title">系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/System/Linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/System/Mac/" class="nav-link">
+  Mac
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/Hexo/" class="nav-link">
+  Hexo
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Other/VuePress/" class="nav-link">
+  VuePress
+</a></li><li class="dropdown-item"><!----> <a href="/Other/BlockChain/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Finance/" class="nav-link">
+  金融
+</a></li></ul></div></div><div class="nav-item"><a href="/DatawareHouse/" class="nav-link">
+  数据仓库
+</a></div><div class="nav-item"><a href="/About/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/fangzheng0518" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>MySQL</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/DataBase/MySQL/" aria-current="page" class="sidebar-link">前言</a></li><li><a href="/DataBase/MySQL/1.centos6-10-install-mysql5-6.html" class="sidebar-link">Centos6.10安装mysql5.6</a></li><li><a href="/DataBase/MySQL/2.mysql-binlog.html" aria-current="page" class="active sidebar-link">MySQL的binlog日志</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/DataBase/MySQL/2.mysql-binlog.html#binlog介绍" class="sidebar-link">binlog介绍</a></li><li class="sidebar-sub-header"><a href="/DataBase/MySQL/2.mysql-binlog.html#binlog使用" class="sidebar-link">binlog使用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/DataBase/MySQL/2.mysql-binlog.html#启用binlog" class="sidebar-link">启用binlog</a></li><li class="sidebar-sub-header"><a href="/DataBase/MySQL/2.mysql-binlog.html#重启mysql" class="sidebar-link">重启mysql</a></li><li class="sidebar-sub-header"><a href="/DataBase/MySQL/2.mysql-binlog.html#查看binlog开启状态" class="sidebar-link">查看binlog开启状态</a></li><li class="sidebar-sub-header"><a href="/DataBase/MySQL/2.mysql-binlog.html#查看master状态" class="sidebar-link">查看master状态</a></li><li class="sidebar-sub-header"><a href="/DataBase/MySQL/2.mysql-binlog.html#查看binlog日志" class="sidebar-link">查看binlog日志</a></li></ul></li><li class="sidebar-sub-header"><a href="/DataBase/MySQL/2.mysql-binlog.html#binlog的解析" class="sidebar-link">binlog的解析</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/DataBase/MySQL/2.mysql-binlog.html#canal、maxwell、mysql-streamer对比" class="sidebar-link">canal、maxwell、mysql_streamer对比</a></li><li class="sidebar-sub-header"><a href="/DataBase/MySQL/2.mysql-binlog.html#maxwell" class="sidebar-link">Maxwell</a></li><li class="sidebar-sub-header"><a href="/DataBase/MySQL/2.mysql-binlog.html#canal" class="sidebar-link">canal</a></li></ul></li><li class="sidebar-sub-header"><a href="/DataBase/MySQL/2.mysql-binlog.html#附录" class="sidebar-link">附录</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/DataBase/MySQL/2.mysql-binlog.html#binlog常用命令" class="sidebar-link">binlog常用命令</a></li><li class="sidebar-sub-header"><a href="/DataBase/MySQL/2.mysql-binlog.html#my-cnf文件位置" class="sidebar-link">my.cnf文件位置</a></li><li class="sidebar-sub-header"><a href="/DataBase/MySQL/2.mysql-binlog.html#mysql5-7的my-cnf文件配置示例" class="sidebar-link">MySQL5.7的my.cnf文件配置示例</a></li></ul></li></ul></li><li><a href="/DataBase/MySQL/3.mysql-binlog-with-canal.html" class="sidebar-link">binlog+canal+kakfa</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="binlog介绍"><a href="#binlog介绍" class="header-anchor">#</a> binlog介绍</h2> <p>binlog是Mysql sever数据库维护的一种<code>二进制</code>日志，与innodb引擎中的redo/undo log是完全不同的日志；其主要是用来记录对mysql数据更新或潜在发生更新的SQL语句（查询的日志不记录），并以<strong>事务</strong>的形式保存在磁盘中。</p> <p>MySQL Server 有四种类型的日志:</p> <ol><li><p><code>Error Log</code></p> <p>错误日志，记录 mysqld 的一些错误信息。</p></li> <li><p><code>General Query Log</code></p> <p>一般查询日志，记录 mysqld 正在做的事情，比如客户端的连接和断开、来自客户端每条 Sql Statement 记录信息；例如：查看客户端到底传了什么信息给服务端，这个日志就非常管用了，不过它非常影响性能</p></li> <li><p><code>Binary Log</code></p> <p>包含了一些事件，这些事件描述了数据库的改动，如建表、数据改动等，也包括一些潜在改动，比如<code>DELETE FROM ran WHERE bing = luan;</code></p> <p><strong>Binlog 就有了两个重要的用途——复制和恢复。比如主从表的复制，和备份恢复。</strong></p></li> <li><p><code>Slow Query Log</code></p> <p>慢查询日志，记录一些查询比较慢的 SQL 语句——这种日志非常常用，主要是给开发者调优用的。</p></li></ol> <h2 id="binlog使用"><a href="#binlog使用" class="header-anchor">#</a> binlog使用</h2> <h3 id="启用binlog"><a href="#启用binlog" class="header-anchor">#</a> 启用binlog</h3> <p>要启用binlog，必须在mysql的<code>/etc/my.cnf</code>文件中进行配置。</p> <p><strong>编辑my.cnf文件</strong></p> <p>默认情况 MySQL 的 binlog是关闭状态的，所以需要先启动binlog。</p> <p>修改 <code>my.cnf</code>，然后在<code>mysqld</code>选项下添加如下值：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>mysqld<span class="token punctuation">]</span>
+<span class="token comment">## binlog日志文件的前缀</span>
+log-bin<span class="token operator">=</span>mysql-bin
+<span class="token comment">## binlog的index文件的名称</span>
+log-bin-index<span class="token operator">=</span>mysql-bin.index
+<span class="token comment">## binlog的工作模式</span>
+<span class="token assign-left variable">binlog_format</span><span class="token operator">=</span><span class="token string">'ROW'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h4 id="mysql-binlog的三种工作模式"><a href="#mysql-binlog的三种工作模式" class="header-anchor">#</a> MySQL binlog的三种工作模式</h4> <ol><li><p><code>Row level</code></p> <p>日志中会记录每一行数据被修改的情况，然后在slave端对相同的数据进行修改。</p> <p><strong>优点</strong>：能清楚的记录每一行数据修改的细节</p> <p><strong>缺点</strong>：数据量太大</p></li> <li><p><code>Statement level（默认）</code></p> <p>每一条被修改数据的sql都会记录到master的bin-log中，slave在复制的时候sql进程会解析成和原来master端执行过的相同的sql再次执行</p> <p><strong>优点</strong>：解决了 Row level下的缺点，不需要记录每一行的数据变化，减少bin-log日志量，节约磁盘IO，提高新能</p> <p><strong>缺点</strong>：容易出现主从复制不一致</p></li> <li><p><code>Mixed（混合模式）</code></p> <p>结合了Row level和Statement level的优点</p></li></ol> <h3 id="重启mysql"><a href="#重启mysql" class="header-anchor">#</a> 重启mysql</h3> <p><span style="color:red;font-size:20px;font-weight:bold;">注意：对mysql的/etc/my.cnf文件的修改，需要重启MySQL服务！</span></p> <p><strong>centos下重启命令：</strong></p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@mini1 ~<span class="token punctuation">]</span><span class="token comment"># service mysqld restart</span>
+Stopping mysqld:                                           <span class="token punctuation">[</span>  OK  <span class="token punctuation">]</span>
+Starting mysqld:                                           <span class="token punctuation">[</span>  OK  <span class="token punctuation">]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p><strong>mac下重启命令：</strong></p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 启动MySQL服务</span>
+<span class="token function">sudo</span> /usr/local/MySQL/support-files/mysql.server start
+
+<span class="token comment"># 停止MySQL服务</span>
+<span class="token function">sudo</span> /usr/local/mysql/support-files/mysql.server stop
+
+<span class="token comment"># 重启MySQL服务</span>
+<span class="token function">sudo</span> /usr/local/mysql/support-files/mysql.server restart
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p>Mac下也可以通过偏好设置里来启动和停止MySQL</p> <p><img src="/img/DataBase/MySQL/006tNbRwly1fvndcxf4qrj31140hg784.jpg" alt="image-20180926234103957"></p> <h3 id="查看binlog开启状态"><a href="#查看binlog开启状态" class="header-anchor">#</a> <strong>查看binlog开启状态</strong></h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>mysql<span class="token operator">&gt;</span> SHOW VARIABLES LIKE <span class="token string">'%log_bin%'</span><span class="token punctuation">;</span>
++---------------------------------+--------------------------------+
+<span class="token operator">|</span> Variable_name                   <span class="token operator">|</span> Value                          <span class="token operator">|</span>
++---------------------------------+--------------------------------+
+<span class="token operator">|</span> log_bin                         <span class="token operator">|</span> ON                             <span class="token operator">|</span>
+<span class="token operator">|</span> log_bin_basename                <span class="token operator">|</span> /var/lib/mysql/mysql-bin       <span class="token operator">|</span>
+<span class="token operator">|</span> log_bin_index                   <span class="token operator">|</span> /var/lib/mysql/mysql-bin.index <span class="token operator">|</span>
+<span class="token operator">|</span> log_bin_trust_function_creators <span class="token operator">|</span> OFF                            <span class="token operator">|</span>
+<span class="token operator">|</span> log_bin_use_v1_row_events       <span class="token operator">|</span> OFF                            <span class="token operator">|</span>
+<span class="token operator">|</span> sql_log_bin                     <span class="token operator">|</span> ON                             <span class="token operator">|</span>
++---------------------------------+--------------------------------+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>log_bin等于on表示成功开启了binlog</p></div> <h3 id="查看master状态"><a href="#查看master状态" class="header-anchor">#</a> <strong>查看master状态</strong></h3> <p>即最后（最新）一个binlog日志的编号名称，及其最后一个操作事件pos结束点(Position)值。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>mysql<span class="token operator">&gt;</span> show master status<span class="token punctuation">;</span>
++------------------+----------+--------------+------------------+-------------------------------------------------+
+<span class="token operator">|</span> File             <span class="token operator">|</span> Position <span class="token operator">|</span> Binlog_Do_DB <span class="token operator">|</span> Binlog_Ignore_DB <span class="token operator">|</span> Executed_Gtid_Set                               <span class="token operator">|</span>
++------------------+----------+--------------+------------------+-------------------------------------------------+
+<span class="token operator">|</span> mysql-bin.000020 <span class="token operator">|</span> <span class="token number">56217764</span> <span class="token operator">|</span>              <span class="token operator">|</span>                  <span class="token operator">|</span> ad9a34e4-bd71-11e9-b5b2-00163e143f99:1-19076813 <span class="token operator">|</span>
++------------------+----------+--------------+------------------+-------------------------------------------------+
+<span class="token number">1</span> row <span class="token keyword">in</span> <span class="token builtin class-name">set</span> <span class="token punctuation">(</span><span class="token number">0.03</span> sec<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="查看binlog日志"><a href="#查看binlog日志" class="header-anchor">#</a> <strong>查看binlog日志</strong></h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@mini1 ~<span class="token punctuation">]</span><span class="token comment"># cd /var/lib/mysql/</span>
+<span class="token punctuation">[</span>root@mini1 mysql<span class="token punctuation">]</span><span class="token comment"># ll</span>
+total <span class="token number">176152</span>
+-rw-rw----. <span class="token number">1</span> mysql mysql       <span class="token number">56</span> Apr <span class="token number">19</span> <span class="token number">17</span>:56 auto.cnf
+drwx------. <span class="token number">2</span> mysql mysql     <span class="token number">4096</span> Jun <span class="token number">23</span> 03:40 hive_metadata
+-rw-rw----. <span class="token number">1</span> mysql mysql <span class="token number">79691776</span> Sep <span class="token number">27</span> 00:07 ibdata1
+-rw-rw----. <span class="token number">1</span> mysql mysql <span class="token number">50331648</span> Sep <span class="token number">27</span> 00:07 ib_logfile0
+-rw-rw----. <span class="token number">1</span> mysql mysql <span class="token number">50331648</span> Apr <span class="token number">19</span> <span class="token number">17</span>:56 ib_logfile1
+drwx------. <span class="token number">2</span> mysql mysql     <span class="token number">4096</span> Apr <span class="token number">19</span> <span class="token number">17</span>:56 mysql
+-rw-rw----. <span class="token number">1</span> mysql mysql      <span class="token number">120</span> Sep <span class="token number">27</span> 00:07 mysql-bin.000001
+-rw-rw----. <span class="token number">1</span> mysql mysql       <span class="token number">19</span> Sep <span class="token number">27</span> 00:07 mysql-bin.index
+srwxrwxrwx. <span class="token number">1</span> mysql mysql        <span class="token number">0</span> Sep <span class="token number">27</span> 00:07 mysql.sock
+drwx------. <span class="token number">2</span> mysql mysql     <span class="token number">4096</span> Apr <span class="token number">19</span> <span class="token number">17</span>:56 performance_schema
+<span class="token punctuation">[</span>root@mini1 mysql<span class="token punctuation">]</span><span class="token comment"># mysqlbinlog mysql-bin.000001</span>
+mysqlbinlog: unknown variable <span class="token string">'default-character-set=utf8'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p><span style="color:red;font-size:20px;font-weight:bold;">mysqlbinlog: unknown variable 'default-character-set=utf8'</span></p> <p>直接cd进到刚才binlog存储的目录，发现使用mysqlbinlog工具查看的时候，出现了个错误。<code>mysqlbinlog: unknown variable 'default-character-set=utf8'</code></p> <p>原因是：mysqlbinlog这个工具无法识别binlog中的配置中的<code>default-character-set=utf8</code>这个指令</p> <p><strong>解决办法：</strong></p> <ol><li><p>把my.cnf文件中client下的<code>default-character-set=utf8</code>修改成<code>character-set-server = utf8</code></p> <p>然后重启MySQL服务永久生效</p></li> <li><p>无需重启环境，使用<code>--no-defaults</code></p> <p>使用<code>mysqlbinlog --no-defaults mysql-bin.000001</code>的<code>--no-defaults</code>选项来查看binlog日志</p></li></ol> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@mini1 mysql<span class="token punctuation">]</span><span class="token comment"># mysqlbinlog --no-defaults mysql-bin.000001</span>
+/*<span class="token operator">!</span><span class="token number">50530</span> SET @@<span class="token environment constant">SESSION</span>.PSEUDO_SLAVE_MODE<span class="token operator">=</span><span class="token number">1</span>*/<span class="token punctuation">;</span>
+/*<span class="token operator">!</span><span class="token number">40019</span> SET @@session.max_insert_delayed_threads<span class="token operator">=</span><span class="token number">0</span>*/<span class="token punctuation">;</span>
+/*<span class="token operator">!</span><span class="token number">50003</span> SET @OLD_COMPLETION_TYPE<span class="token operator">=</span>@@COMPLETION_TYPE,COMPLETION_TYPE<span class="token operator">=</span><span class="token number">0</span>*/<span class="token punctuation">;</span>
+DELIMITER /*<span class="token operator">!</span>*/<span class="token punctuation">;</span>
+<span class="token comment"># at 4</span>
+<span class="token comment">#180927  0:07:30 server id 1  end_log_pos 120 CRC32 0xcbc08ea5 	Start: binlog v 4, server v 5.6.40-log created 180927  0:07:30 at startup</span>
+ROLLBACK/*<span class="token operator">!</span>*/<span class="token punctuation">;</span>
+BINLOG <span class="token string">'
+wq6rWw8BAAAAdAAAAHgAAAAAAAQANS42LjQwLWxvZwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAADCrqtbEzgNAAgAEgAEBAQEEgAAXAAEGggAAAAICAgCAAAACgoKGRkAAaWO
+wMs=
+'</span>/*<span class="token operator">!</span>*/<span class="token punctuation">;</span>
+<span class="token comment"># at 120</span>
+<span class="token comment">#180927  0:09:43 server id 1  end_log_pos 167 CRC32 0xb760697c 	Rotate to mysql-bin.000002  pos: 4</span>
+DELIMITER <span class="token punctuation">;</span>
+<span class="token comment"># End of log file</span>
+ROLLBACK /* added by mysqlbinlog */<span class="token punctuation">;</span>
+/*<span class="token operator">!</span><span class="token number">50003</span> SET <span class="token assign-left variable">COMPLETION_TYPE</span><span class="token operator">=</span>@OLD_COMPLETION_TYPE*/<span class="token punctuation">;</span>
+/*<span class="token operator">!</span><span class="token number">50530</span> SET @@<span class="token environment constant">SESSION</span>.PSEUDO_SLAVE_MODE<span class="token operator">=</span><span class="token number">0</span>*/<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h2 id="binlog的解析"><a href="#binlog的解析" class="header-anchor">#</a> binlog的解析</h2> <p>对应MySQL的<code>binlog</code>的解析，可先通过如下文章了解<code>binlog</code>的组成。</p> <p><a href="https://www.cnblogs.com/mysql-dba/p/9901655.html" target="_blank" rel="noopener noreferrer">MySQL Binlog解析（1）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><a href="https://www.cnblogs.com/mysql-dba/p/9901659.html" target="_blank" rel="noopener noreferrer">MySQL Binlog解析（2）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>实际工作中，可使用<code>canal</code>、<code>maxwell</code>、<code>mysql_streamer</code>等工具来解析<code>binlog</code>日志</p> <h3 id="canal、maxwell、mysql-streamer对比"><a href="#canal、maxwell、mysql-streamer对比" class="header-anchor">#</a> canal、maxwell、mysql_streamer对比</h3> <p><img src="/img/DataBase/MySQL/parse-binlog.png" alt="canal、maxwell、mysql_streamer对比"></p> <h3 id="maxwell"><a href="#maxwell" class="header-anchor">#</a> Maxwell</h3> <p><strong>maxwell 简介</strong></p> <p>Maxwell是一个能实时读取MySQL二进制日志binlog，并生成 JSON 格式的消息，作为生产者发送给 Kafka</p> <p>Kinesis、RabbitMQ、Redis、Google Cloud Pub/Sub、文件或其它平台的应用程序。它的常见应用场景有ETL、维护</p> <p>缓存、收集表级别的dml指标、增量到搜索引擎、数据分区迁移、切库binlog回滚方案等。<a href="http://maxwells-daemon.io" target="_blank" rel="noopener noreferrer">官网<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>、<a href="https://github.com/zendesk/maxwell" target="_blank" rel="noopener noreferrer">GitHub<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><strong>Maxwell主要提供了下列功能：</strong></p> <ul><li>支持 <code>SELECT * FROM table</code> 的方式进行全量数据初始化</li> <li>支持在主库发生failover后，自动恢复binlog位置(GTID)</li> <li>可以对数据进行分区，解决数据倾斜问题，发送到kafka的数据支持database、table、column等级别的数据分区</li> <li>工作方式是伪装为Slave，接收binlog events，然后根据schemas信息拼装，可以接受ddl、xid、row等各种event</li></ul> <h3 id="canal"><a href="#canal" class="header-anchor">#</a> canal</h3> <p>canal 是阿里巴巴开源的由Java开发的一个MySQL的增量订阅&amp;消费组件。分为服务端和客户端，拥有众多的衍生应用，性能稳定，功能强大；</p> <p>官网：<a href="https://github.com/alibaba/canal" target="_blank" rel="noopener noreferrer">canal<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>canal 需要自己编写客户端来消费canal解析到的数据。</p> <p><code>maxwell</code>相对于<code>canal</code>的优势是使用简单，它直接将数据变更输出为json字符串，不需要再编写客户端。而canal可以自定义客户端，可以将获取到的增量数据直接发送到MQ（kafka）中。</p> <p><img src="https://camo.githubusercontent.com/a9d41336a07581745beaa933f28a8f1860cb4eda/68747470733a2f2f696d672d626c6f672e6373646e696d672e636e2f32303139313130343130313733353934372e706e67" alt="avatar"></p> <h2 id="附录"><a href="#附录" class="header-anchor">#</a> 附录</h2> <h3 id="binlog常用命令"><a href="#binlog常用命令" class="header-anchor">#</a> binlog常用命令</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment">## 查看binlog日志状态:即最后(最新)一个binlog日志的编号名称，及其最后一个操作事件pos结束点(Position)值</span>
+mysql<span class="token operator">&gt;</span> show master status<span class="token punctuation">;</span>
+<span class="token comment">## 查看所有binlog日志列表</span>
+mysql<span class="token operator">&gt;</span> show master logs<span class="token punctuation">;</span>
+<span class="token comment">## 刷新binlog日志文件:刷新之后会新建一个新的Binlog日志</span>
+mysql<span class="token operator">&gt;</span> flush logs<span class="token punctuation">;</span>
+<span class="token comment">## 清空日志文件</span>
+mysql<span class="token operator">&gt;</span> reset master<span class="token punctuation">;</span>
+<span class="token comment">## 查看binlog日志文件</span>
+$ mysqlbinlog --no-defaults mysql-bin.000002
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><h3 id="my-cnf文件位置"><a href="#my-cnf文件位置" class="header-anchor">#</a> my.cnf文件位置</h3> <p>默认情况下，MySQL将会按照给定的顺序从以下位置查找my.cnf文件</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>$ mysql --help or mysql --help <span class="token operator">|</span> <span class="token function">grep</span> my.cnf
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><div class="language- line-numbers-mode"><pre class="language-text"><code>/etc/my.cnf
+/etc/mysql/my.cnf 
+/usr/local/mysql/etc/my.cnf 
+/usr/local/mysql/my.cnf 
+~/.my.cnf
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p><strong>创建my.cnf文件</strong></p> <p>在5.7.18版本之前，MySQL默认在<code>/usr/local/mysql/support-files</code>这个文件夹中提供了一个<code>/usr/local/mysql/support-files/my-default.cnf</code>文件，将该文件copy至MySQL扫描的那几个目录即可。</p> <p>但是：在5.7.18版本的MySQL之后，它不提供<code>support-files</code>目录中的默认配置文件。因此，您可以在MySQL将要读取的位置<strong>手动</strong>创建<code>my.cnf</code>文件，例如<code>/etc/mysql/my.cnf</code>，并在文件中添加要添加的配置。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>$ <span class="token function">sudo</span> <span class="token function">vi</span> /etc/my.cnf
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="mysql5-7的my-cnf文件配置示例"><a href="#mysql5-7的my-cnf文件配置示例" class="header-anchor">#</a> MySQL5.7的my.cnf文件配置示例</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>client<span class="token punctuation">]</span>
+port <span class="token operator">=</span> <span class="token number">3306</span>
+default-character-set<span class="token operator">=</span>utf8mb4
+<span class="token assign-left variable">socket</span><span class="token operator">=</span>/var/lib/mysql/mysql.sock
+
+<span class="token punctuation">[</span>mysql<span class="token punctuation">]</span>
+port <span class="token operator">=</span> <span class="token number">3306</span>
+default-character-set<span class="token operator">=</span>utf8mb4
+<span class="token assign-left variable">socket</span><span class="token operator">=</span>/var/lib/mysql/mysql.sock
+
+<span class="token punctuation">[</span>mysqld<span class="token punctuation">]</span>
+<span class="token comment">##################</span>
+<span class="token comment"># summary</span>
+<span class="token comment">##################</span>
+bind-address <span class="token operator">=</span> <span class="token number">0.0</span>.0.0
+port <span class="token operator">=</span> <span class="token number">3306</span>
+<span class="token assign-left variable">basedir</span><span class="token operator">=</span>/usr/local/mysql
+<span class="token assign-left variable">datadir</span><span class="token operator">=</span>/var/lib/mysql
+<span class="token assign-left variable">socket</span><span class="token operator">=</span>/var/lib/mysql/mysql.sock
+tmpdir <span class="token operator">=</span> /tmp
+pid-file<span class="token operator">=</span>/tmp/mysqld.pid
+<span class="token comment">#skip-grant-tables</span>
+<span class="token comment">#skip-networking</span>
+
+<span class="token assign-left variable">explicit_defaults_for_timestamp</span><span class="token operator">=</span><span class="token number">1</span>
+<span class="token assign-left variable">lower_case_table_names</span><span class="token operator">=</span><span class="token number">1</span>
+
+table_open_cache <span class="token operator">=</span> <span class="token number">8000</span>
+
+<span class="token comment">##################</span>
+<span class="token comment"># time out</span>
+<span class="token comment">##################</span>
+connect_timeout <span class="token operator">=</span> <span class="token number">20</span>
+wait_timeout <span class="token operator">=</span> <span class="token number">86400</span>
+
+<span class="token comment">##################</span>
+<span class="token comment"># connection</span>
+<span class="token comment">##################</span>
+max_connections <span class="token operator">=</span> <span class="token number">2000</span>
+max_user_connections <span class="token operator">=</span> <span class="token number">1900</span>
+max_connect_errors <span class="token operator">=</span> <span class="token number">100000</span>
+max_allowed_packet <span class="token operator">=</span> 1G
+
+<span class="token comment">##################</span>
+<span class="token comment"># character set</span>
+<span class="token comment">##################</span>
+character-set-server <span class="token operator">=</span> utf8mb4
+collation-server <span class="token operator">=</span> utf8mb4_bin
+
+<span class="token comment">##################</span>
+<span class="token comment"># log bin</span>
+<span class="token comment">##################</span>
+server-id <span class="token operator">=</span> <span class="token number">1</span>
+log_bin <span class="token operator">=</span> mysql-bin
+binlog_format <span class="token operator">=</span> MIXED
+sync_binlog <span class="token operator">=</span> <span class="token number">1</span>
+expire_logs_days <span class="token operator">=</span><span class="token number">7</span>
+binlog_cache_size <span class="token operator">=</span> 128m
+max_binlog_cache_size <span class="token operator">=</span>512m
+max_binlog_size <span class="token operator">=</span>256M
+
+<span class="token assign-left variable">binlog_ignore_db</span><span class="token operator">=</span>mysql
+<span class="token assign-left variable">binlog_ignore_db</span><span class="token operator">=</span>information_schema
+<span class="token assign-left variable">binlog_ignore_db</span><span class="token operator">=</span>performation_schema
+<span class="token assign-left variable">binlog_ignore_db</span><span class="token operator">=</span>sys
+
+<span class="token comment">##################</span>
+<span class="token comment"># log relay</span>
+<span class="token comment">##################</span>
+relay_log <span class="token operator">=</span> mysql-relay-bin
+relay_log_purge <span class="token operator">=</span> on
+relay_log_recovery <span class="token operator">=</span> on
+max_relay_log_size <span class="token operator">=</span> 1G
+
+<span class="token comment">##################</span>
+<span class="token comment"># log error</span>
+<span class="token comment">##################</span>
+<span class="token assign-left variable">log_error</span><span class="token operator">=</span>/var/log/mysqld_error.log
+
+<span class="token comment">##################</span>
+<span class="token comment"># log slow</span>
+<span class="token comment">##################</span>
+slow_query_log <span class="token operator">=</span> on
+slow_query_log_file <span class="token operator">=</span> /var/log/mysqld_slow.log
+long_query_time <span class="token operator">=</span> <span class="token number">2</span>
+log_queries_not_using_indexes <span class="token operator">=</span> on
+
+<span class="token comment">##################</span>
+<span class="token comment"># log general</span>
+<span class="token comment">##################</span>
+general_log <span class="token operator">=</span> on
+general_log_file <span class="token operator">=</span> /var/log/mysqld_gener.log
+
+
+<span class="token comment">##################</span>
+<span class="token comment"># thread pool</span>
+<span class="token comment">##################</span>
+<span class="token comment">#thread_handling=pool-of-threads</span>
+<span class="token comment">#thread_handling=one-thread-per-connection</span>
+<span class="token comment">#thread_pool_oversubscribe=8 </span>
+
+<span class="token comment">##################</span>
+<span class="token comment"># innodb</span>
+<span class="token comment">##################</span>
+<span class="token assign-left variable">innodb_file_per_table</span><span class="token operator">=</span><span class="token number">1</span>
+<span class="token assign-left variable">innodb_log_file_size</span><span class="token operator">=</span>1024M
+<span class="token assign-left variable">innodb_log_buffer_size</span><span class="token operator">=</span>64M
+
+
+<span class="token comment">##################</span>
+<span class="token comment"># password policy</span>
+<span class="token comment"># after init </span>
+<span class="token comment">##################</span>
+<span class="token comment">#validate_password_length=4         </span>
+<span class="token comment">#validate_password_mixed_case_count=0</span>
+<span class="token comment">#validate_password_number_count=0</span>
+<span class="token comment">#validate_password_policy=0</span>
+<span class="token comment">#validate_password_special_char_count=0</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新时间:</span> <span class="time">2021/5/30 下午1:36:14</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/DataBase/MySQL/1.centos6-10-install-mysql5-6.html" class="prev">
+        Centos6.10安装mysql5.6
+      </a></span> <span class="next"><a href="/DataBase/MySQL/3.mysql-binlog-with-canal.html">
+        binlog+canal+kakfa
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><div></div></div></div>
+    <script src="/assets/js/app.180c00c5.js" defer></script><script src="/assets/js/2.a52632a4.js" defer></script><script src="/assets/js/43.658c6921.js" defer></script>
+  </body>
+</html>

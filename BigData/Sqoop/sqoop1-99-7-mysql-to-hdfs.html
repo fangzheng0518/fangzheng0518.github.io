@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Sqoop1.99.7将mysql数据导入到hdfs | 浅墨散人</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="浅墨散人,大数据,数据仓库,python,基础,数仓,bigdata,datawarehouse,maven,vuepress,java,hadoop,个人,博客">
+    
+    <link rel="preload" href="/assets/css/0.styles.9894935f.css" as="style"><link rel="preload" href="/assets/js/app.180c00c5.js" as="script"><link rel="preload" href="/assets/js/2.a52632a4.js" as="script"><link rel="preload" href="/assets/js/36.90fd2978.js" as="script"><link rel="prefetch" href="/assets/js/10.e8f88356.js"><link rel="prefetch" href="/assets/js/100.d564af88.js"><link rel="prefetch" href="/assets/js/101.ed359fa2.js"><link rel="prefetch" href="/assets/js/102.94fcd251.js"><link rel="prefetch" href="/assets/js/103.02b7b2f9.js"><link rel="prefetch" href="/assets/js/104.24959504.js"><link rel="prefetch" href="/assets/js/105.e0d6c513.js"><link rel="prefetch" href="/assets/js/106.baf829ea.js"><link rel="prefetch" href="/assets/js/107.30956718.js"><link rel="prefetch" href="/assets/js/108.fe4a1842.js"><link rel="prefetch" href="/assets/js/109.c4bab523.js"><link rel="prefetch" href="/assets/js/11.6bcd991e.js"><link rel="prefetch" href="/assets/js/110.77ef5a75.js"><link rel="prefetch" href="/assets/js/111.c88a3e80.js"><link rel="prefetch" href="/assets/js/112.defa6a72.js"><link rel="prefetch" href="/assets/js/113.baffbf93.js"><link rel="prefetch" href="/assets/js/114.c48ed354.js"><link rel="prefetch" href="/assets/js/115.af4c952f.js"><link rel="prefetch" href="/assets/js/116.075913cf.js"><link rel="prefetch" href="/assets/js/117.520ca35f.js"><link rel="prefetch" href="/assets/js/118.3dfffd58.js"><link rel="prefetch" href="/assets/js/119.94e601ba.js"><link rel="prefetch" href="/assets/js/12.4e778070.js"><link rel="prefetch" href="/assets/js/120.91317a15.js"><link rel="prefetch" href="/assets/js/121.a059e4c3.js"><link rel="prefetch" href="/assets/js/122.9f78087b.js"><link rel="prefetch" href="/assets/js/123.b9bb61e0.js"><link rel="prefetch" href="/assets/js/124.4c8994fe.js"><link rel="prefetch" href="/assets/js/125.e8c2c3d9.js"><link rel="prefetch" href="/assets/js/126.0b8a54cc.js"><link rel="prefetch" href="/assets/js/127.d4b342c3.js"><link rel="prefetch" href="/assets/js/128.5bddd0d0.js"><link rel="prefetch" href="/assets/js/129.ae586f13.js"><link rel="prefetch" href="/assets/js/13.b8c77261.js"><link rel="prefetch" href="/assets/js/130.396e6504.js"><link rel="prefetch" href="/assets/js/131.2d55dceb.js"><link rel="prefetch" href="/assets/js/132.900ca269.js"><link rel="prefetch" href="/assets/js/133.062ada46.js"><link rel="prefetch" href="/assets/js/134.b3faeb99.js"><link rel="prefetch" href="/assets/js/135.9097b849.js"><link rel="prefetch" href="/assets/js/136.aa650ff3.js"><link rel="prefetch" href="/assets/js/137.0241ae99.js"><link rel="prefetch" href="/assets/js/138.12b49ab7.js"><link rel="prefetch" href="/assets/js/139.b50d7e75.js"><link rel="prefetch" href="/assets/js/14.2d8e25a1.js"><link rel="prefetch" href="/assets/js/140.3b8b6427.js"><link rel="prefetch" href="/assets/js/141.578527b6.js"><link rel="prefetch" href="/assets/js/142.2d0a60fa.js"><link rel="prefetch" href="/assets/js/143.2e5603d5.js"><link rel="prefetch" href="/assets/js/144.4f0519b8.js"><link rel="prefetch" href="/assets/js/145.ef91129b.js"><link rel="prefetch" href="/assets/js/146.afa67b28.js"><link rel="prefetch" href="/assets/js/147.dbfed115.js"><link rel="prefetch" href="/assets/js/148.52076f62.js"><link rel="prefetch" href="/assets/js/149.413ca0d4.js"><link rel="prefetch" href="/assets/js/15.5c39353a.js"><link rel="prefetch" href="/assets/js/150.5ca28815.js"><link rel="prefetch" href="/assets/js/151.66147548.js"><link rel="prefetch" href="/assets/js/152.e7e8d56f.js"><link rel="prefetch" href="/assets/js/153.10e5489e.js"><link rel="prefetch" href="/assets/js/154.609bedd8.js"><link rel="prefetch" href="/assets/js/155.89b0b0f8.js"><link rel="prefetch" href="/assets/js/156.e817e4b5.js"><link rel="prefetch" href="/assets/js/157.4fe6170a.js"><link rel="prefetch" href="/assets/js/158.0d185e2c.js"><link rel="prefetch" href="/assets/js/159.c57a28b7.js"><link rel="prefetch" href="/assets/js/16.1b28cb6d.js"><link rel="prefetch" href="/assets/js/17.dc692cbc.js"><link rel="prefetch" href="/assets/js/18.b4495b5c.js"><link rel="prefetch" href="/assets/js/19.5bf5eb61.js"><link rel="prefetch" href="/assets/js/20.b4e87a71.js"><link rel="prefetch" href="/assets/js/21.e800ff02.js"><link rel="prefetch" href="/assets/js/22.3445f85c.js"><link rel="prefetch" href="/assets/js/23.7cce4328.js"><link rel="prefetch" href="/assets/js/24.d322e90b.js"><link rel="prefetch" href="/assets/js/25.bfc014f1.js"><link rel="prefetch" href="/assets/js/26.5ebea46f.js"><link rel="prefetch" href="/assets/js/27.914a84c1.js"><link rel="prefetch" href="/assets/js/28.bc782b8d.js"><link rel="prefetch" href="/assets/js/29.62493a18.js"><link rel="prefetch" href="/assets/js/3.f3f7654f.js"><link rel="prefetch" href="/assets/js/30.bad9e501.js"><link rel="prefetch" href="/assets/js/31.4a38bdbd.js"><link rel="prefetch" href="/assets/js/32.903a497d.js"><link rel="prefetch" href="/assets/js/33.03b83687.js"><link rel="prefetch" href="/assets/js/34.f706b788.js"><link rel="prefetch" href="/assets/js/35.99a12707.js"><link rel="prefetch" href="/assets/js/37.60451941.js"><link rel="prefetch" href="/assets/js/38.28c89a9d.js"><link rel="prefetch" href="/assets/js/39.25838682.js"><link rel="prefetch" href="/assets/js/4.202991e4.js"><link rel="prefetch" href="/assets/js/40.9e68dc50.js"><link rel="prefetch" href="/assets/js/41.d8e72043.js"><link rel="prefetch" href="/assets/js/42.15b4371f.js"><link rel="prefetch" href="/assets/js/43.658c6921.js"><link rel="prefetch" href="/assets/js/44.76f5b021.js"><link rel="prefetch" href="/assets/js/45.a8f9ec74.js"><link rel="prefetch" href="/assets/js/46.5eb0a761.js"><link rel="prefetch" href="/assets/js/47.a42dd1d2.js"><link rel="prefetch" href="/assets/js/48.3845bd0a.js"><link rel="prefetch" href="/assets/js/49.bf2c89ab.js"><link rel="prefetch" href="/assets/js/5.17bb93d9.js"><link rel="prefetch" href="/assets/js/50.52c379d1.js"><link rel="prefetch" href="/assets/js/51.870e4f39.js"><link rel="prefetch" href="/assets/js/52.62a0a49e.js"><link rel="prefetch" href="/assets/js/53.427dbff8.js"><link rel="prefetch" href="/assets/js/54.4635e630.js"><link rel="prefetch" href="/assets/js/55.cd4343b0.js"><link rel="prefetch" href="/assets/js/56.3abdfddd.js"><link rel="prefetch" href="/assets/js/57.0117eb4a.js"><link rel="prefetch" href="/assets/js/58.55ab06d5.js"><link rel="prefetch" href="/assets/js/59.b1e6a01d.js"><link rel="prefetch" href="/assets/js/6.cac134c0.js"><link rel="prefetch" href="/assets/js/60.d9bb9e13.js"><link rel="prefetch" href="/assets/js/61.729595e5.js"><link rel="prefetch" href="/assets/js/62.4fec0c49.js"><link rel="prefetch" href="/assets/js/63.b9c92e6a.js"><link rel="prefetch" href="/assets/js/64.63b8c6b1.js"><link rel="prefetch" href="/assets/js/65.158270ae.js"><link rel="prefetch" href="/assets/js/66.3415f3e3.js"><link rel="prefetch" href="/assets/js/67.f04a4d7a.js"><link rel="prefetch" href="/assets/js/68.23a5849e.js"><link rel="prefetch" href="/assets/js/69.ea5e16f5.js"><link rel="prefetch" href="/assets/js/7.8e78b236.js"><link rel="prefetch" href="/assets/js/70.e857237f.js"><link rel="prefetch" href="/assets/js/71.fa576592.js"><link rel="prefetch" href="/assets/js/72.365c06ee.js"><link rel="prefetch" href="/assets/js/73.0f0f1b47.js"><link rel="prefetch" href="/assets/js/74.69873580.js"><link rel="prefetch" href="/assets/js/75.97e039ae.js"><link rel="prefetch" href="/assets/js/76.cb612fbb.js"><link rel="prefetch" href="/assets/js/77.1ea90dfe.js"><link rel="prefetch" href="/assets/js/78.615aa35c.js"><link rel="prefetch" href="/assets/js/79.aab26661.js"><link rel="prefetch" href="/assets/js/8.4522daab.js"><link rel="prefetch" href="/assets/js/80.1d4975ac.js"><link rel="prefetch" href="/assets/js/81.9c3be0a0.js"><link rel="prefetch" href="/assets/js/82.a1bbb975.js"><link rel="prefetch" href="/assets/js/83.a750334d.js"><link rel="prefetch" href="/assets/js/84.de429a3c.js"><link rel="prefetch" href="/assets/js/85.d041d296.js"><link rel="prefetch" href="/assets/js/86.0e0bbf44.js"><link rel="prefetch" href="/assets/js/87.4f84d9ab.js"><link rel="prefetch" href="/assets/js/88.ccabef36.js"><link rel="prefetch" href="/assets/js/89.2c400fa8.js"><link rel="prefetch" href="/assets/js/9.8def527a.js"><link rel="prefetch" href="/assets/js/90.43053d57.js"><link rel="prefetch" href="/assets/js/91.1e3fdb77.js"><link rel="prefetch" href="/assets/js/92.3f07495e.js"><link rel="prefetch" href="/assets/js/93.6644ee1c.js"><link rel="prefetch" href="/assets/js/94.b1e6ce61.js"><link rel="prefetch" href="/assets/js/95.bb1bd51a.js"><link rel="prefetch" href="/assets/js/96.9e2056ef.js"><link rel="prefetch" href="/assets/js/97.efbeddb2.js"><link rel="prefetch" href="/assets/js/98.ae0038a0.js"><link rel="prefetch" href="/assets/js/99.433a2542.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9894935f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/hero.png" alt="浅墨散人" class="logo"> <span class="site-name can-hide">浅墨散人</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Java/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/Java/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Maven/" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/Java/SpringBoot/" class="nav-link">
+  SpringBoot
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><span class="title">Python</span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Python/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Flask/" class="nav-link">
+  Flask
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Django/" class="nav-link">
+  Diango
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Pandas/" class="nav-link">
+  Pandas
+</a></li><li class="dropdown-item"><!----> <a href="/Python/SqlAlchemy/" class="nav-link">
+  SqlAlchemy
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><span class="title">大数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="大数据" class="mobile-dropdown-title"><span class="title">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BigData/Sqoop/" class="nav-link router-link-active">
+  Sqoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Flume/" class="nav-link">
+  Flume
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hadoop/" class="nav-link">
+  Hadoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hbase/" class="nav-link">
+  Hbase
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hive/" class="nav-link">
+  Hive
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kylin/" class="nav-link">
+  Kylin
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Zookeeper/" class="nav-link">
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Tez/" class="nav-link">
+  Tez
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/DataBase/MySQL/" class="nav-link">
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/Chrome/" class="nav-link">
+  Chrome
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Eclipse/" class="nav-link">
+  Eclipse
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/iTerm2/" class="nav-link">
+  iTerm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Markdown/" class="nav-link">
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/SublimeText/" class="nav-link">
+  SublimeText
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/VirtualBox/" class="nav-link">
+  VirtualBox
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/WebStrom/" class="nav-link">
+  WebStrom
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系统" class="dropdown-title"><span class="title">系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="系统" class="mobile-dropdown-title"><span class="title">系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/System/Linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/System/Mac/" class="nav-link">
+  Mac
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/Hexo/" class="nav-link">
+  Hexo
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Other/VuePress/" class="nav-link">
+  VuePress
+</a></li><li class="dropdown-item"><!----> <a href="/Other/BlockChain/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Finance/" class="nav-link">
+  金融
+</a></li></ul></div></div><div class="nav-item"><a href="/DatawareHouse/" class="nav-link">
+  数据仓库
+</a></div><div class="nav-item"><a href="/About/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/fangzheng0518" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Java/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/Java/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Maven/" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/Java/SpringBoot/" class="nav-link">
+  SpringBoot
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><span class="title">Python</span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Python/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Flask/" class="nav-link">
+  Flask
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Django/" class="nav-link">
+  Diango
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Pandas/" class="nav-link">
+  Pandas
+</a></li><li class="dropdown-item"><!----> <a href="/Python/SqlAlchemy/" class="nav-link">
+  SqlAlchemy
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><span class="title">大数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="大数据" class="mobile-dropdown-title"><span class="title">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BigData/Sqoop/" class="nav-link router-link-active">
+  Sqoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Flume/" class="nav-link">
+  Flume
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hadoop/" class="nav-link">
+  Hadoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hbase/" class="nav-link">
+  Hbase
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hive/" class="nav-link">
+  Hive
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kylin/" class="nav-link">
+  Kylin
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Zookeeper/" class="nav-link">
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Tez/" class="nav-link">
+  Tez
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/DataBase/MySQL/" class="nav-link">
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/Chrome/" class="nav-link">
+  Chrome
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Eclipse/" class="nav-link">
+  Eclipse
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/iTerm2/" class="nav-link">
+  iTerm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Markdown/" class="nav-link">
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/SublimeText/" class="nav-link">
+  SublimeText
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/VirtualBox/" class="nav-link">
+  VirtualBox
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/WebStrom/" class="nav-link">
+  WebStrom
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系统" class="dropdown-title"><span class="title">系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="系统" class="mobile-dropdown-title"><span class="title">系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/System/Linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/System/Mac/" class="nav-link">
+  Mac
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/Hexo/" class="nav-link">
+  Hexo
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Other/VuePress/" class="nav-link">
+  VuePress
+</a></li><li class="dropdown-item"><!----> <a href="/Other/BlockChain/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Finance/" class="nav-link">
+  金融
+</a></li></ul></div></div><div class="nav-item"><a href="/DatawareHouse/" class="nav-link">
+  数据仓库
+</a></div><div class="nav-item"><a href="/About/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/fangzheng0518" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Sqoop</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/BigData/Sqoop/" aria-current="page" class="sidebar-link">前言</a></li><li><a href="/BigData/Sqoop/sqoop-Unable-to-find-valid-Kerberos-ticket-cache.html" class="sidebar-link">Sqoop错误：CLIENT_0004:Unable to find valid Kerberos ticket cache (kinit)</a></li><li><a href="/BigData/Sqoop/sqoop1-99-7-mysql-to-hdfs.html" aria-current="page" class="active sidebar-link">Sqoop1.99.7将mysql数据导入到hdfs</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Sqoop/sqoop1-99-7-mysql-to-hdfs.html#准备" class="sidebar-link">准备</a></li><li class="sidebar-sub-header"><a href="/BigData/Sqoop/sqoop1-99-7-mysql-to-hdfs.html#开始" class="sidebar-link">开始</a></li><li class="sidebar-sub-header"><a href="/BigData/Sqoop/sqoop1-99-7-mysql-to-hdfs.html#创建link" class="sidebar-link">创建link</a></li><li class="sidebar-sub-header"><a href="/BigData/Sqoop/sqoop1-99-7-mysql-to-hdfs.html#创建mysql-link" class="sidebar-link">创建mysql-link</a></li><li class="sidebar-sub-header"><a href="/BigData/Sqoop/sqoop1-99-7-mysql-to-hdfs.html#创建hdfs-link" class="sidebar-link">创建hdfs-link</a></li><li class="sidebar-sub-header"><a href="/BigData/Sqoop/sqoop1-99-7-mysql-to-hdfs.html#创建job" class="sidebar-link">创建job</a></li><li class="sidebar-sub-header"><a href="/BigData/Sqoop/sqoop1-99-7-mysql-to-hdfs.html#启动job" class="sidebar-link">启动job</a></li><li class="sidebar-sub-header"><a href="/BigData/Sqoop/sqoop1-99-7-mysql-to-hdfs.html#验证是否导入成功" class="sidebar-link">验证是否导入成功</a></li><li class="sidebar-sub-header"><a href="/BigData/Sqoop/sqoop1-99-7-mysql-to-hdfs.html#期间遇到的问题及解决方案" class="sidebar-link">期间遇到的问题及解决方案</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Sqoop/sqoop1-99-7-mysql-to-hdfs.html#_1-host-10-25-40-37-is-not-allowed-to-connect-to-this-mysql-server" class="sidebar-link">1. Host '10.25.40.37' is not allowed to connect to this MySQL server</a></li><li class="sidebar-sub-header"><a href="/BigData/Sqoop/sqoop1-99-7-mysql-to-hdfs.html#_2-user-root-is-not-allowed-to-impersonate-root" class="sidebar-link">2. User: root is not allowed to impersonate root</a></li><li class="sidebar-sub-header"><a href="/BigData/Sqoop/sqoop1-99-7-mysql-to-hdfs.html#_3-generic-hdfs-connector-0007-invalid-input-output-directory-unexpected-exception" class="sidebar-link">3. GENERICHDFSCONNECTOR_0007:Invalid input/output directory - Unexpected exception</a></li><li class="sidebar-sub-header"><a href="/BigData/Sqoop/sqoop1-99-7-mysql-to-hdfs.html#_4-there-are-0-datanode-s-running-and-no-node-s-are-excluded-in-this-operation" class="sidebar-link">4. There are 0 datanode(s) running and no node(s) are excluded in this operation</a></li><li class="sidebar-sub-header"><a href="/BigData/Sqoop/sqoop1-99-7-mysql-to-hdfs.html#_5-call-from-hadoop1-192-168-56-110-to-0-0-0-0-10020-failed-on-connection-exception" class="sidebar-link">5. Call From hadoop1/192.168.56.110 to 0.0.0.0:10020 failed on connection exception</a></li><li class="sidebar-sub-header"><a href="/BigData/Sqoop/sqoop1-99-7-mysql-to-hdfs.html#_6-generic-hdfs-connector-0007-invalid-input-output-directory-output-directory-is-not-empty" class="sidebar-link">6. GENERICHDFSCONNECTOR_0007:Invalid input/output directory - Output directory is not empty</a></li></ul></li></ul></li><li><a href="/BigData/Sqoop/sqoop2-install.html" class="sidebar-link">Sqoop2安装</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="准备"><a href="#准备" class="header-anchor">#</a> 准备</h2> <p>本示例将实现从MySQL数据库中将数据导入到HDFS中</p> <p>参考文档：
+<a href="http://sqoop.apache.org/docs/1.99.7/user/Sqoop5MinutesDemo.html" target="_blank" rel="noopener noreferrer">http://sqoop.apache.org/docs/1.99.7/user/Sqoop5MinutesDemo.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <a href="http://blog.csdn.net/m_signals/article/details/53190965" target="_blank" rel="noopener noreferrer">http://blog.csdn.net/m_signals/article/details/53190965<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <a href="http://blog.csdn.net/lazythinker/article/details/52064165" target="_blank" rel="noopener noreferrer">http://blog.csdn.net/lazythinker/article/details/52064165<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <a href="http://blog.sina.com.cn/s/blog_61d8d9640102whof.html" target="_blank" rel="noopener noreferrer">http://blog.sina.com.cn/s/blog_61d8d9640102whof.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p><strong>mysql数据库信息：</strong>
+test库中user表中的记录（共1条）</p> <p><img src="/img/BigData/Sqoop/006tNc79ly1fz7o14apn2j30pk076jrq.jpg" alt="img"></p> <p><strong>HDFS数据情况</strong> <img src="/img/BigData/Sqoop/006tNc79ly1fz7o0280glj322802s0tu.jpg" alt="img"></p> <p>创建了一个/root/test的空目录</p> <p><strong>实现目标：</strong>
+本示例需要实现将上方MySQL数据库中的数据导入到HDFS中</p> <h2 id="开始"><a href="#开始" class="header-anchor">#</a> 开始</h2> <p>启动Hadoop，启动sqoop，命令行进入sqoop</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment">## 设置交互的命令行打印更多信息，打印的异常信息更多</span>
+<span class="token builtin class-name">set</span> option --name verbose --value <span class="token boolean">true</span>
+<span class="token comment">## 连接sqoop，其中hadoop1是需要连接的sqoop的主机名</span>
+<span class="token builtin class-name">set</span> server --host hadoop1 --port <span class="token number">12000</span> --webapp sqoop
+<span class="token comment">## 查看连接</span>
+show version --all
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h2 id="创建link"><a href="#创建link" class="header-anchor">#</a> 创建link</h2> <p>如果需要使用sqoop进行导入导出操作，需要先创建连接， 使用show conncetor命令可以查看sqoop支持的连接器， 而sqoop中默认提供了如下几种连接。</p> <p><img src="/img/BigData/Sqoop/006tNc79ly1fz7o2zu1i4j31p40e479z.jpg" alt="img"></p> <h2 id="创建mysql-link"><a href="#创建mysql-link" class="header-anchor">#</a> 创建mysql-link</h2> <p>本例实现mysql--&gt;hdfs的数据导入操作，所以需要创建一个mysql的link和hdfs的link。</p> <p><strong>注意：在创建mysql-link的时候需要将mysql的jar包放入到$SQOOP2_HOME/server/lib/extra-lib目录中</strong></p> <p>首先创建mysql-link，过程如下</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>sqoop:00<span class="token operator"><span class="token file-descriptor important">0</span>&gt;</span> create <span class="token function">link</span> -connector generic-jdbc-connector
+Creating <span class="token function">link</span> <span class="token keyword">for</span> connector with name generic-jdbc-connector
+Please fill following values to create new <span class="token function">link</span> object
+Name: mysql-link
+
+Database connection
+
+Driver class: com.mysql.jdbc.Driver
+Connection String: jdbc:mysql://10.25.40.37/test
+Username: root
+Password: *********
+Fetch Size:
+Connection Properties:
+There are currently <span class="token number">0</span> values <span class="token keyword">in</span> the map:
+entry<span class="token comment">## protocol=tcp</span>
+There are currently <span class="token number">1</span> values <span class="token keyword">in</span> the map:
+protocol <span class="token operator">=</span> tcp
+entry<span class="token comment">##</span>
+
+SQL Dialect
+
+Identifier enclose:
+New <span class="token function">link</span> was successfully created with validation status OK and name mysql-link
+sqoop:00<span class="token operator"><span class="token file-descriptor important">0</span>&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><p>以上输入项说明，下图中红色的表示需要输入的内容。</p> <p>注意Identifier enclose项需要输入一个空格，然后回车</p> <p><img src="/img/BigData/Sqoop/006tNc79ly1fz7nzzb7tnj311a0pk48j.jpg" alt="img"></p> <h2 id="创建hdfs-link"><a href="#创建hdfs-link" class="header-anchor">#</a> 创建hdfs-link</h2> <p>创建HDFS的link的配置就比较简单，配置HDFS访问地址和hadoop配置文件目录路径即可</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>sqoop:00<span class="token operator"><span class="token file-descriptor important">0</span>&gt;</span> create <span class="token function">link</span> -connector hdfs-connector
+Creating <span class="token function">link</span> <span class="token keyword">for</span> connector with name hdfs-connector
+Please fill following values to create new <span class="token function">link</span> object
+Name: hdfs-link
+
+HDFS cluster
+
+URI: hdfs://hadoop1:9000
+Conf directory: /usr/local/hadoop/hadoop-2.7.4/etc/hadoop
+Additional configs::
+There are currently <span class="token number">0</span> values <span class="token keyword">in</span> the map:
+entry<span class="token comment">##</span>
+New <span class="token function">link</span> was successfully created with validation status OK and name hdfs-link
+sqoop:00<span class="token operator"><span class="token file-descriptor important">0</span>&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p><img src="/img/BigData/Sqoop/006tNc79ly1fz7nzrkmd8j315a0g8n1h.jpg" alt="img"></p> <h2 id="创建job"><a href="#创建job" class="header-anchor">#</a> 创建job</h2> <p>创建job时，配置项较多。
+命令:</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment">## create job -f formLinkName -t toLinkName</span>
+create job -f mysql-link -t hdfs-link
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p><strong>注意下面中文部分</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>sqoop:000&gt; create job -f mysql-link -t hdfs-link 
+Creating job for links with from name mysql-link and to name hdfs-link 
+Please fill following values to create new job object 
+Name: test1（job名称）
+
+Database source
+
+Schema name: test（数据库的schema名称） 
+Table name: user（数据库表名） 
+SQL statement: 
+Column names: 
+There are currently 0 values in the list: 
+element## 
+Partition column: 
+Partition column nullable: 
+Boundary query:
+
+Incremental read
+
+Check column: 
+Last value:
+
+Target configuration
+
+Override null value: 
+Null value: 
+File format: 
+  0 : TEXT_FILE 
+  1 : SEQUENCE_FILE 
+  2 : PARQUET_FILE 
+Choose: 0（选择文本文件） 
+Compression codec: 
+  0 : NONE 
+  1 : DEFAULT 
+  2 : DEFLATE 
+  3 : GZIP 
+  4 : BZIP2 
+  5 : LZO 
+  6 : LZ4 
+  7 : SNAPPY 
+  8 : CUSTOM 
+Choose: 0（选择NONE） 
+Custom codec: 
+Output directory: /root/test（这里输入HDFS文件的目录，需要是空目录） 
+Append mode:
+
+Throttling resources
+
+Extractors: 2（这里是参考官网填的2） 
+Loaders: 2（这里是参考官网填的2）
+
+Classpath configuration
+
+Extra mapper jars: 
+There are currently 0 values in the list: 
+element## 
+New job was successfully created with validation status OK  and name test1 
+sqoop:000&gt;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br></div></div><h2 id="启动job"><a href="#启动job" class="header-anchor">#</a> 启动job</h2> <p>命令</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment">## start job -name jobName</span>
+start job -name test1
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h2 id="验证是否导入成功"><a href="#验证是否导入成功" class="header-anchor">#</a> 验证是否导入成功</h2> <p>查看HDFS中的/root/test/目录中的数据，共出现了2个文件</p> <p><img src="/img/BigData/Sqoop/006tNc79ly1fz7o04yd22j323e068tcj.jpg" alt="img"></p> <p>查看文件内容</p> <p><img src="/img/BigData/Sqoop/006tNc79ly1fz7odlo6pxj3274078q85.jpg" alt="img">
+可以看到2ea38d69-e9e4-4364-adfc-67d88f5c8153.txt文件中已经存在了导入的数据，而8962bce1-08e7-4ebc-939e-4839d05eb145.txt是个空文件。</p> <h2 id="期间遇到的问题及解决方案"><a href="#期间遇到的问题及解决方案" class="header-anchor">#</a> 期间遇到的问题及解决方案</h2> <p>以下问题均是创建完link和job后，开始启动job时报的错。</p> <h3 id="_1-host-10-25-40-37-is-not-allowed-to-connect-to-this-mysql-server"><a href="#_1-host-10-25-40-37-is-not-allowed-to-connect-to-this-mysql-server" class="header-anchor">#</a> 1. Host '10.25.40.37' is not allowed to connect to this MySQL server</h3> <p><span style="color:red;">Host '10.25.40.37' is not allowed to connect to this MySQL server</span></p> <p><img src="/img/BigData/Sqoop/006tNc79ly1fz7o01f09mj323m02gt9k.jpg" alt="img"></p> <p>错误原因：
+这问题表示主机10.25.40.37没有授权外部访问其MySQL</p> <p><strong>解决方案</strong>：</p> <p>将连接的MySQL主机中的授权信息改了</p> <ol><li>直接改mysql库中user表root的那条记录，将其值改为%（表示任何主机都可访问）
+<img src="/img/BigData/Sqoop/006tNc79ly1fz7nzsdxhvj30qc08adgs.jpg" alt="img"></li> <li>使用授权命令，授权指定的主机可访问该数据库（推荐：更安全）</li></ol> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>mysql<span class="token operator">&gt;</span> GRANT ALL PRIVILEGES ON *.* TO <span class="token string">'username'</span>@<span class="token string">'%'</span> IDENTIFIED BY <span class="token string">'password'</span> WITH GRANT OPTION<span class="token punctuation">;</span>
+mysql<span class="token operator">&gt;</span> FLUSH PRIVILEGES<span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>详细操作步骤可自行百度。</p> <h3 id="_2-user-root-is-not-allowed-to-impersonate-root"><a href="#_2-user-root-is-not-allowed-to-impersonate-root" class="header-anchor">#</a> 2. User: root is not allowed to impersonate root</h3> <p><span style="color:red;">User: root is not allowed to impersonate root</span></p> <p><img src="/img/BigData/Sqoop/006tNc79ly1fz7o9l8wtbj31e802qmxs.jpg" alt="img"></p> <p>错误原因：
+该错误是因为在安装sqoop时，在hadoop的core-site.xml配置文件中配置的用户权限错误
+在之前的sqoop安装文章里，按照官网的配置如下。其中hadoop.proxyuser.sqoop2.hosts中的sqoop2是用户的意思，同理hadoop.proxyuser.sqoop2.groups中的sqoop2是用户组的意思。</p> <div class="language-xml line-numbers-mode"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>hadoop.proxyuser.sqoop2.hosts<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>hadoop.proxyuser.sqoop2.groups<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><p><strong>解决方案：</strong></p> <p>将sqoop2改为root即可，改完后如下：（PS:这里的解决方案感觉还是有问题不完美，没有深入了解）</p> <div class="language-xml line-numbers-mode"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>hadoop.proxyuser.root.hosts<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>hadoop.proxyuser.root.groups<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h3 id="_3-generic-hdfs-connector-0007-invalid-input-output-directory-unexpected-exception"><a href="#_3-generic-hdfs-connector-0007-invalid-input-output-directory-unexpected-exception" class="header-anchor">#</a> 3. GENERIC_HDFS_CONNECTOR_0007:Invalid input/output directory - Unexpected exception</h3> <p><span style="color:red;">GENERIC_HDFS_CONNECTOR_0007:Invalid input/output directory - Unexpected exception</span></p> <p>输入输出目录有问题，检查HDFS中是否存在相应目录即可</p> <h3 id="_4-there-are-0-datanode-s-running-and-no-node-s-are-excluded-in-this-operation"><a href="#_4-there-are-0-datanode-s-running-and-no-node-s-are-excluded-in-this-operation" class="header-anchor">#</a> 4. There are 0 datanode(s) running and no node(s) are excluded in this operation</h3> <p><span style="color:red;">There are 0 datanode(s) running and no node(s) are excluded in this operation</span></p> <p><img src="/img/BigData/Sqoop/006tNc79ly1fz7o9wgeqxj327405umzq.jpg" alt="img"></p> <p>错误原因：
+启动job的时候报的错，这应该是datanode节点数据的问题</p> <p><strong>解决方案：</strong></p> <ol><li>配置dfs.datanode.data.dir和core-site.xml里面的hadoop.tmp.dir一致
+hdfs-site.xml里面的
+​     dfs.datanode.data.dir
+​     /tmp/hdfs_tmp
+与core-site.xml里面的
+​     hadoop.tmp.dir
+​     /tmp/hdfs_tmp
+两个配置应该是指向同一个目录地址，而且必须是一个已经存在的linux目录(不存在目录的话，在启动hadoop时，必须手动创建，否则put文件到hdfs系统时就会报错)，今天报这个错就是因为两个配置没有指向同一个目录地址，且两个地址还不存在对应的目录</li></ol> <p>参考：  <a href="http://blog.sina.com.cn/s/blog_61d8d9640102whof.html" target="_blank" rel="noopener noreferrer">http://blog.sina.com.cn/s/blog_61d8d9640102whof.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <ol start="2"><li>删除dfs.namenode.data.dir中的current文件夹中的内容，格式化namenode，重新启动hadoop
+参考： <a href="http://blog.csdn.net/qiruiduni/article/details/50280943" target="_blank" rel="noopener noreferrer">http://blog.csdn.net/qiruiduni/article/details/50280943<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ol> <p>最后我使用了1解决方案后问题解决了，但是不知道以后会不会有其他问题。</p> <h3 id="_5-call-from-hadoop1-192-168-56-110-to-0-0-0-0-10020-failed-on-connection-exception"><a href="#_5-call-from-hadoop1-192-168-56-110-to-0-0-0-0-10020-failed-on-connection-exception" class="header-anchor">#</a> 5. Call From hadoop1/192.168.56.110 to 0.0.0.0:10020 failed on connection exception</h3> <p><span style="color:red;">Call From hadoop1/192.168.56.110 to 0.0.0.0:10020 failed on connection exception</span></p> <p><img src="/img/BigData/Sqoop/006tNc79ly1fz7obcmda2j326m040q4x.jpg" alt="img"></p> <p>问题原因：</p> <p>报错信息提示，在访问端口 100020的时候出错，这表示DataNode 需要访问 MapReduce JobHistory Server，而默认值是： 0.0.0.0:10020 。</p> <p><strong>解决方案：</strong></p> <p>找到{HADOOP_HOME}/etc/hadoop/mapred-site.xml配置文件 ,增加如下配置：</p> <div class="language-xml line-numbers-mode"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>mapreduce.jobhistory.address<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- 配置实际的主机名和端口--&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>{namenode}:10020<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>这里我的主机名是hadoop1，所以配置的值是hadoop1:10020</p> <p><img src="/img/BigData/Sqoop/006tNc79ly1fz7nzok0tgj30pa04q0tg.jpg" alt="img"></p> <p>参考： <a href="http://blog.csdn.net/lazythinker/article/details/52064165" target="_blank" rel="noopener noreferrer">http://blog.csdn.net/lazythinker/article/details/52064165<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="_6-generic-hdfs-connector-0007-invalid-input-output-directory-output-directory-is-not-empty"><a href="#_6-generic-hdfs-connector-0007-invalid-input-output-directory-output-directory-is-not-empty" class="header-anchor">#</a> 6. GENERIC_HDFS_CONNECTOR_0007:Invalid input/output directory - Output directory is not empty</h3> <p><span style="color:red;">GENERIC_HDFS_CONNECTOR_0007:Invalid input/output directory - Output directory is not empty</span></p> <p><img src="/img/BigData/Sqoop/006tNc79ly1fz7od4oqxij326y02ut9v.jpg" alt="img"></p> <p>错误原因：
+输入或者输出目录不是空目录，本示例的错误原因是之前启动job后，在HDFS里已经导入过一些数据进去。没删除，所以报这个错。</p> <p><strong>解决方案：</strong>
+删除该目录下的内容即可
+清空上方创建job时指定的output目录（/root/test）中内容即可。</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新时间:</span> <span class="time">2021/5/30 下午1:36:14</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/BigData/Sqoop/sqoop-Unable-to-find-valid-Kerberos-ticket-cache.html" class="prev">
+        Sqoop错误：CLIENT_0004:Unable to find valid Kerberos ticket cache (kinit)
+      </a></span> <span class="next"><a href="/BigData/Sqoop/sqoop2-install.html">
+        Sqoop2安装
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><div></div></div></div>
+    <script src="/assets/js/app.180c00c5.js" defer></script><script src="/assets/js/2.a52632a4.js" defer></script><script src="/assets/js/36.90fd2978.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Canal+Kafka+Hbase+Hive集成 | 浅墨散人</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="浅墨散人,大数据,数据仓库,python,基础,数仓,bigdata,datawarehouse,maven,vuepress,java,hadoop,个人,博客">
+    
+    <link rel="preload" href="/assets/css/0.styles.9894935f.css" as="style"><link rel="preload" href="/assets/js/app.180c00c5.js" as="script"><link rel="preload" href="/assets/js/2.a52632a4.js" as="script"><link rel="preload" href="/assets/js/52.62a0a49e.js" as="script"><link rel="prefetch" href="/assets/js/10.e8f88356.js"><link rel="prefetch" href="/assets/js/100.d564af88.js"><link rel="prefetch" href="/assets/js/101.ed359fa2.js"><link rel="prefetch" href="/assets/js/102.94fcd251.js"><link rel="prefetch" href="/assets/js/103.02b7b2f9.js"><link rel="prefetch" href="/assets/js/104.24959504.js"><link rel="prefetch" href="/assets/js/105.e0d6c513.js"><link rel="prefetch" href="/assets/js/106.baf829ea.js"><link rel="prefetch" href="/assets/js/107.30956718.js"><link rel="prefetch" href="/assets/js/108.fe4a1842.js"><link rel="prefetch" href="/assets/js/109.c4bab523.js"><link rel="prefetch" href="/assets/js/11.6bcd991e.js"><link rel="prefetch" href="/assets/js/110.77ef5a75.js"><link rel="prefetch" href="/assets/js/111.c88a3e80.js"><link rel="prefetch" href="/assets/js/112.defa6a72.js"><link rel="prefetch" href="/assets/js/113.baffbf93.js"><link rel="prefetch" href="/assets/js/114.c48ed354.js"><link rel="prefetch" href="/assets/js/115.af4c952f.js"><link rel="prefetch" href="/assets/js/116.075913cf.js"><link rel="prefetch" href="/assets/js/117.520ca35f.js"><link rel="prefetch" href="/assets/js/118.3dfffd58.js"><link rel="prefetch" href="/assets/js/119.94e601ba.js"><link rel="prefetch" href="/assets/js/12.4e778070.js"><link rel="prefetch" href="/assets/js/120.91317a15.js"><link rel="prefetch" href="/assets/js/121.a059e4c3.js"><link rel="prefetch" href="/assets/js/122.9f78087b.js"><link rel="prefetch" href="/assets/js/123.b9bb61e0.js"><link rel="prefetch" href="/assets/js/124.4c8994fe.js"><link rel="prefetch" href="/assets/js/125.e8c2c3d9.js"><link rel="prefetch" href="/assets/js/126.0b8a54cc.js"><link rel="prefetch" href="/assets/js/127.d4b342c3.js"><link rel="prefetch" href="/assets/js/128.5bddd0d0.js"><link rel="prefetch" href="/assets/js/129.ae586f13.js"><link rel="prefetch" href="/assets/js/13.b8c77261.js"><link rel="prefetch" href="/assets/js/130.396e6504.js"><link rel="prefetch" href="/assets/js/131.2d55dceb.js"><link rel="prefetch" href="/assets/js/132.900ca269.js"><link rel="prefetch" href="/assets/js/133.062ada46.js"><link rel="prefetch" href="/assets/js/134.b3faeb99.js"><link rel="prefetch" href="/assets/js/135.9097b849.js"><link rel="prefetch" href="/assets/js/136.aa650ff3.js"><link rel="prefetch" href="/assets/js/137.0241ae99.js"><link rel="prefetch" href="/assets/js/138.12b49ab7.js"><link rel="prefetch" href="/assets/js/139.b50d7e75.js"><link rel="prefetch" href="/assets/js/14.2d8e25a1.js"><link rel="prefetch" href="/assets/js/140.3b8b6427.js"><link rel="prefetch" href="/assets/js/141.578527b6.js"><link rel="prefetch" href="/assets/js/142.2d0a60fa.js"><link rel="prefetch" href="/assets/js/143.2e5603d5.js"><link rel="prefetch" href="/assets/js/144.4f0519b8.js"><link rel="prefetch" href="/assets/js/145.ef91129b.js"><link rel="prefetch" href="/assets/js/146.afa67b28.js"><link rel="prefetch" href="/assets/js/147.dbfed115.js"><link rel="prefetch" href="/assets/js/148.52076f62.js"><link rel="prefetch" href="/assets/js/149.413ca0d4.js"><link rel="prefetch" href="/assets/js/15.5c39353a.js"><link rel="prefetch" href="/assets/js/150.5ca28815.js"><link rel="prefetch" href="/assets/js/151.66147548.js"><link rel="prefetch" href="/assets/js/152.e7e8d56f.js"><link rel="prefetch" href="/assets/js/153.10e5489e.js"><link rel="prefetch" href="/assets/js/154.609bedd8.js"><link rel="prefetch" href="/assets/js/155.89b0b0f8.js"><link rel="prefetch" href="/assets/js/156.e817e4b5.js"><link rel="prefetch" href="/assets/js/157.4fe6170a.js"><link rel="prefetch" href="/assets/js/158.0d185e2c.js"><link rel="prefetch" href="/assets/js/159.c57a28b7.js"><link rel="prefetch" href="/assets/js/16.1b28cb6d.js"><link rel="prefetch" href="/assets/js/17.dc692cbc.js"><link rel="prefetch" href="/assets/js/18.b4495b5c.js"><link rel="prefetch" href="/assets/js/19.5bf5eb61.js"><link rel="prefetch" href="/assets/js/20.b4e87a71.js"><link rel="prefetch" href="/assets/js/21.e800ff02.js"><link rel="prefetch" href="/assets/js/22.3445f85c.js"><link rel="prefetch" href="/assets/js/23.7cce4328.js"><link rel="prefetch" href="/assets/js/24.d322e90b.js"><link rel="prefetch" href="/assets/js/25.bfc014f1.js"><link rel="prefetch" href="/assets/js/26.5ebea46f.js"><link rel="prefetch" href="/assets/js/27.914a84c1.js"><link rel="prefetch" href="/assets/js/28.bc782b8d.js"><link rel="prefetch" href="/assets/js/29.62493a18.js"><link rel="prefetch" href="/assets/js/3.f3f7654f.js"><link rel="prefetch" href="/assets/js/30.bad9e501.js"><link rel="prefetch" href="/assets/js/31.4a38bdbd.js"><link rel="prefetch" href="/assets/js/32.903a497d.js"><link rel="prefetch" href="/assets/js/33.03b83687.js"><link rel="prefetch" href="/assets/js/34.f706b788.js"><link rel="prefetch" href="/assets/js/35.99a12707.js"><link rel="prefetch" href="/assets/js/36.90fd2978.js"><link rel="prefetch" href="/assets/js/37.60451941.js"><link rel="prefetch" href="/assets/js/38.28c89a9d.js"><link rel="prefetch" href="/assets/js/39.25838682.js"><link rel="prefetch" href="/assets/js/4.202991e4.js"><link rel="prefetch" href="/assets/js/40.9e68dc50.js"><link rel="prefetch" href="/assets/js/41.d8e72043.js"><link rel="prefetch" href="/assets/js/42.15b4371f.js"><link rel="prefetch" href="/assets/js/43.658c6921.js"><link rel="prefetch" href="/assets/js/44.76f5b021.js"><link rel="prefetch" href="/assets/js/45.a8f9ec74.js"><link rel="prefetch" href="/assets/js/46.5eb0a761.js"><link rel="prefetch" href="/assets/js/47.a42dd1d2.js"><link rel="prefetch" href="/assets/js/48.3845bd0a.js"><link rel="prefetch" href="/assets/js/49.bf2c89ab.js"><link rel="prefetch" href="/assets/js/5.17bb93d9.js"><link rel="prefetch" href="/assets/js/50.52c379d1.js"><link rel="prefetch" href="/assets/js/51.870e4f39.js"><link rel="prefetch" href="/assets/js/53.427dbff8.js"><link rel="prefetch" href="/assets/js/54.4635e630.js"><link rel="prefetch" href="/assets/js/55.cd4343b0.js"><link rel="prefetch" href="/assets/js/56.3abdfddd.js"><link rel="prefetch" href="/assets/js/57.0117eb4a.js"><link rel="prefetch" href="/assets/js/58.55ab06d5.js"><link rel="prefetch" href="/assets/js/59.b1e6a01d.js"><link rel="prefetch" href="/assets/js/6.cac134c0.js"><link rel="prefetch" href="/assets/js/60.d9bb9e13.js"><link rel="prefetch" href="/assets/js/61.729595e5.js"><link rel="prefetch" href="/assets/js/62.4fec0c49.js"><link rel="prefetch" href="/assets/js/63.b9c92e6a.js"><link rel="prefetch" href="/assets/js/64.63b8c6b1.js"><link rel="prefetch" href="/assets/js/65.158270ae.js"><link rel="prefetch" href="/assets/js/66.3415f3e3.js"><link rel="prefetch" href="/assets/js/67.f04a4d7a.js"><link rel="prefetch" href="/assets/js/68.23a5849e.js"><link rel="prefetch" href="/assets/js/69.ea5e16f5.js"><link rel="prefetch" href="/assets/js/7.8e78b236.js"><link rel="prefetch" href="/assets/js/70.e857237f.js"><link rel="prefetch" href="/assets/js/71.fa576592.js"><link rel="prefetch" href="/assets/js/72.365c06ee.js"><link rel="prefetch" href="/assets/js/73.0f0f1b47.js"><link rel="prefetch" href="/assets/js/74.69873580.js"><link rel="prefetch" href="/assets/js/75.97e039ae.js"><link rel="prefetch" href="/assets/js/76.cb612fbb.js"><link rel="prefetch" href="/assets/js/77.1ea90dfe.js"><link rel="prefetch" href="/assets/js/78.615aa35c.js"><link rel="prefetch" href="/assets/js/79.aab26661.js"><link rel="prefetch" href="/assets/js/8.4522daab.js"><link rel="prefetch" href="/assets/js/80.1d4975ac.js"><link rel="prefetch" href="/assets/js/81.9c3be0a0.js"><link rel="prefetch" href="/assets/js/82.a1bbb975.js"><link rel="prefetch" href="/assets/js/83.a750334d.js"><link rel="prefetch" href="/assets/js/84.de429a3c.js"><link rel="prefetch" href="/assets/js/85.d041d296.js"><link rel="prefetch" href="/assets/js/86.0e0bbf44.js"><link rel="prefetch" href="/assets/js/87.4f84d9ab.js"><link rel="prefetch" href="/assets/js/88.ccabef36.js"><link rel="prefetch" href="/assets/js/89.2c400fa8.js"><link rel="prefetch" href="/assets/js/9.8def527a.js"><link rel="prefetch" href="/assets/js/90.43053d57.js"><link rel="prefetch" href="/assets/js/91.1e3fdb77.js"><link rel="prefetch" href="/assets/js/92.3f07495e.js"><link rel="prefetch" href="/assets/js/93.6644ee1c.js"><link rel="prefetch" href="/assets/js/94.b1e6ce61.js"><link rel="prefetch" href="/assets/js/95.bb1bd51a.js"><link rel="prefetch" href="/assets/js/96.9e2056ef.js"><link rel="prefetch" href="/assets/js/97.efbeddb2.js"><link rel="prefetch" href="/assets/js/98.ae0038a0.js"><link rel="prefetch" href="/assets/js/99.433a2542.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9894935f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/hero.png" alt="浅墨散人" class="logo"> <span class="site-name can-hide">浅墨散人</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Java/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/Java/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Maven/" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/Java/SpringBoot/" class="nav-link">
+  SpringBoot
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><span class="title">Python</span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Python/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Flask/" class="nav-link">
+  Flask
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Django/" class="nav-link">
+  Diango
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Pandas/" class="nav-link">
+  Pandas
+</a></li><li class="dropdown-item"><!----> <a href="/Python/SqlAlchemy/" class="nav-link">
+  SqlAlchemy
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><span class="title">大数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="大数据" class="mobile-dropdown-title"><span class="title">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BigData/Sqoop/" class="nav-link">
+  Sqoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Flume/" class="nav-link">
+  Flume
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hadoop/" class="nav-link">
+  Hadoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hbase/" class="nav-link">
+  Hbase
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hive/" class="nav-link">
+  Hive
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kylin/" class="nav-link">
+  Kylin
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Zookeeper/" class="nav-link">
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Tez/" class="nav-link">
+  Tez
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/DataBase/MySQL/" class="nav-link">
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/Chrome/" class="nav-link">
+  Chrome
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Eclipse/" class="nav-link">
+  Eclipse
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/iTerm2/" class="nav-link">
+  iTerm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Markdown/" class="nav-link">
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/SublimeText/" class="nav-link">
+  SublimeText
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/VirtualBox/" class="nav-link">
+  VirtualBox
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/WebStrom/" class="nav-link">
+  WebStrom
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系统" class="dropdown-title"><span class="title">系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="系统" class="mobile-dropdown-title"><span class="title">系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/System/Linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/System/Mac/" class="nav-link">
+  Mac
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/Hexo/" class="nav-link">
+  Hexo
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Other/VuePress/" class="nav-link">
+  VuePress
+</a></li><li class="dropdown-item"><!----> <a href="/Other/BlockChain/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Finance/" class="nav-link">
+  金融
+</a></li></ul></div></div><div class="nav-item"><a href="/DatawareHouse/" class="nav-link router-link-active">
+  数据仓库
+</a></div><div class="nav-item"><a href="/About/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/fangzheng0518" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Java/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/Java/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Maven/" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/Java/SpringBoot/" class="nav-link">
+  SpringBoot
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><span class="title">Python</span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Python/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Flask/" class="nav-link">
+  Flask
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Django/" class="nav-link">
+  Diango
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Pandas/" class="nav-link">
+  Pandas
+</a></li><li class="dropdown-item"><!----> <a href="/Python/SqlAlchemy/" class="nav-link">
+  SqlAlchemy
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><span class="title">大数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="大数据" class="mobile-dropdown-title"><span class="title">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BigData/Sqoop/" class="nav-link">
+  Sqoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Flume/" class="nav-link">
+  Flume
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hadoop/" class="nav-link">
+  Hadoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hbase/" class="nav-link">
+  Hbase
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hive/" class="nav-link">
+  Hive
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kylin/" class="nav-link">
+  Kylin
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Zookeeper/" class="nav-link">
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Tez/" class="nav-link">
+  Tez
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/DataBase/MySQL/" class="nav-link">
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/Chrome/" class="nav-link">
+  Chrome
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Eclipse/" class="nav-link">
+  Eclipse
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/iTerm2/" class="nav-link">
+  iTerm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Markdown/" class="nav-link">
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/SublimeText/" class="nav-link">
+  SublimeText
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/VirtualBox/" class="nav-link">
+  VirtualBox
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/WebStrom/" class="nav-link">
+  WebStrom
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系统" class="dropdown-title"><span class="title">系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="系统" class="mobile-dropdown-title"><span class="title">系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/System/Linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/System/Mac/" class="nav-link">
+  Mac
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/Hexo/" class="nav-link">
+  Hexo
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Other/VuePress/" class="nav-link">
+  VuePress
+</a></li><li class="dropdown-item"><!----> <a href="/Other/BlockChain/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Finance/" class="nav-link">
+  金融
+</a></li></ul></div></div><div class="nav-item"><a href="/DatawareHouse/" class="nav-link router-link-active">
+  数据仓库
+</a></div><div class="nav-item"><a href="/About/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/fangzheng0518" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>数据仓库</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/DatawareHouse/" aria-current="page" class="sidebar-link">前言</a></li><li><a href="/DatawareHouse/1.dw-framework.html" class="sidebar-link">数据仓库整体架构图及介绍</a></li><li><a href="/DatawareHouse/2.dw-with-ods-difference.html" class="sidebar-link">DW数据仓库与ODS的区别</a></li><li><a href="/DatawareHouse/3.datawarehouse-specification.html" class="sidebar-link">数仓开发规范</a></li><li><a href="/DatawareHouse/4.how-to-guarantee-data-quality.html" class="sidebar-link">如何保证数据质量问题？</a></li><li><a href="/DatawareHouse/5.how-to-reduce-derivative-demand.html" class="sidebar-link">如何减少&quot;导数&quot;需求？</a></li><li><a href="/DatawareHouse/6.canal+kafka+hbase+hive.html" aria-current="page" class="active sidebar-link">Canal+Kafka+Hbase+Hive集成</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/DatawareHouse/6.canal+kafka+hbase+hive.html#前言" class="sidebar-link">前言</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/6.canal+kafka+hbase+hive.html#依赖的环境" class="sidebar-link">依赖的环境</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/DatawareHouse/6.canal+kafka+hbase+hive.html#安装mysql" class="sidebar-link">安装MySQL</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/6.canal+kafka+hbase+hive.html#安装hadoop集群" class="sidebar-link">安装Hadoop集群</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/6.canal+kafka+hbase+hive.html#安装kakfa集群" class="sidebar-link">安装Kakfa集群</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/6.canal+kafka+hbase+hive.html#安装hbase集群" class="sidebar-link">安装Hbase集群</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/6.canal+kafka+hbase+hive.html#安装hive" class="sidebar-link">安装Hive</a></li></ul></li><li class="sidebar-sub-header"><a href="/DatawareHouse/6.canal+kafka+hbase+hive.html#安装及配置" class="sidebar-link">安装及配置</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/DatawareHouse/6.canal+kafka+hbase+hive.html#canal" class="sidebar-link">canal</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/6.canal+kafka+hbase+hive.html#启动canal" class="sidebar-link">启动canal</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/6.canal+kafka+hbase+hive.html#kafka消费" class="sidebar-link">kafka消费</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/6.canal+kafka+hbase+hive.html#消费kafka数据然后写入到hbase中" class="sidebar-link">消费kafka数据然后写入到hbase中</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/6.canal+kafka+hbase+hive.html#建立hive外部表" class="sidebar-link">建立Hive外部表</a></li><li class="sidebar-sub-header"><a href="/DatawareHouse/6.canal+kafka+hbase+hive.html#将hbase数据库的数据映射到hive中" class="sidebar-link">将Hbase数据库的数据映射到Hive中</a></li></ul></li></ul></li><li><a href="/DatawareHouse/7.data_quality.html" class="sidebar-link">数据质量管理</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <p>本文主要记录了将MySQL中的数据<strong>实时</strong>抽取到Hive中的过程。</p> <h2 id="依赖的环境"><a href="#依赖的环境" class="header-anchor">#</a> 依赖的环境</h2> <h3 id="安装mysql"><a href="#安装mysql" class="header-anchor">#</a> 安装MySQL</h3> <p><a href="http://fangzheng.tech/DataBase/MySQL/1.centos6-10-install-mysql5-6.html" target="_blank" rel="noopener noreferrer">Centos6.10安装mysql5.6<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="安装hadoop集群"><a href="#安装hadoop集群" class="header-anchor">#</a> 安装Hadoop集群</h3> <p><a href="http://fangzheng.tech/BigData/Hadoop/hadoop1.1.2-install.html" target="_blank" rel="noopener noreferrer">Hadoop1.1.2伪分布式安装笔记<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="安装kakfa集群"><a href="#安装kakfa集群" class="header-anchor">#</a> 安装Kakfa集群</h3> <p><a href="http://fangzheng.tech/BigData/Kafka/kafka-install.html#%E9%9B%86%E7%BE%A4%E6%A8%A1%E5%BC%8F%E5%AE%89%E8%A3%85" target="_blank" rel="noopener noreferrer">kafka集群安装<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="安装hbase集群"><a href="#安装hbase集群" class="header-anchor">#</a> 安装Hbase集群</h3> <p><a href="http://fangzheng.tech/BigData/Hbase/1.hbase-install-introduce.html" target="_blank" rel="noopener noreferrer">Hbase介绍及安装<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="安装hive"><a href="#安装hive" class="header-anchor">#</a> 安装Hive</h3> <p><a href="http://fangzheng.tech/BigData/Hive/1.hive-introduce-install.html" target="_blank" rel="noopener noreferrer">Hive介绍及安装<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="安装及配置"><a href="#安装及配置" class="header-anchor">#</a> 安装及配置</h2> <h3 id="canal"><a href="#canal" class="header-anchor">#</a> canal</h3> <p><a href="https://github.com/alibaba/canal/" target="_blank" rel="noopener noreferrer">canal官网<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>可参考canal的quick-start</p> <p>以下是我配置的一些信息</p> <div class="language-properties line-numbers-mode"><pre class="language-properties"><code><span class="token comment">#################################################</span>
+<span class="token comment">######### 		common argument		#############</span>
+<span class="token comment">#################################################</span>
+<span class="token comment"># tcp bind ip</span>
+<span class="token attr-name">canal.ip</span> <span class="token attr-value">=</span>
+<span class="token comment"># register ip to zookeeper</span>
+<span class="token attr-name">canal.register.ip</span> <span class="token attr-value">=</span>
+<span class="token attr-name">canal.port</span> <span class="token punctuation">=</span> <span class="token attr-value">11111</span>
+<span class="token attr-name">canal.metrics.pull.port</span> <span class="token punctuation">=</span> <span class="token attr-value">11112</span>
+<span class="token comment"># canal instance user/passwd</span>
+<span class="token comment"># canal.user = canal</span>
+<span class="token comment"># canal.passwd = E3619321C1A937C46A0D8BD1DAC39F93B27D4458</span>
+
+<span class="token comment"># canal admin config</span>
+<span class="token comment">#canal.admin.manager = 127.0.0.1:8089</span>
+<span class="token attr-name">canal.admin.port</span> <span class="token punctuation">=</span> <span class="token attr-value">11110</span>
+<span class="token attr-name">canal.admin.user</span> <span class="token punctuation">=</span> <span class="token attr-value">admin</span>
+<span class="token attr-name">canal.admin.passwd</span> <span class="token punctuation">=</span> <span class="token attr-value">4ACFE3202A5FF5CF467898FC58AAB1D615029441</span>
+
+<span class="token comment">## 【【zookeeper配置】】</span>
+<span class="token attr-name">canal.zkServers</span> <span class="token punctuation">=</span> <span class="token attr-value">192.168.56.111:2181,192.168.56.112:2181,192.168.56.113:2181</span>
+<span class="token comment"># flush data to zk</span>
+<span class="token attr-name">canal.zookeeper.flush.period</span> <span class="token punctuation">=</span> <span class="token attr-value">1000</span>
+<span class="token attr-name">canal.withoutNetty</span> <span class="token punctuation">=</span> <span class="token attr-value">false</span>
+<span class="token comment"># tcp, kafka, RocketMQ</span>
+<span class="token comment"># 【【模式改为kafka】】</span>
+<span class="token attr-name">canal.serverMode</span> <span class="token punctuation">=</span> <span class="token attr-value">kafka</span>
+<span class="token comment"># flush meta cursor/parse position to file</span>
+<span class="token attr-name">canal.file.data.dir</span> <span class="token punctuation">=</span> <span class="token attr-value">${canal.conf.dir}</span>
+<span class="token attr-name">canal.file.flush.period</span> <span class="token punctuation">=</span> <span class="token attr-value">1000</span>
+<span class="token comment">## memory store RingBuffer size, should be Math.pow(2,n)</span>
+<span class="token attr-name">canal.instance.memory.buffer.size</span> <span class="token punctuation">=</span> <span class="token attr-value">16384</span>
+<span class="token comment">## memory store RingBuffer used memory unit size , default 1kb</span>
+<span class="token attr-name">canal.instance.memory.buffer.memunit</span> <span class="token punctuation">=</span> <span class="token attr-value">1024 </span>
+<span class="token comment">## meory store gets mode used MEMSIZE or ITEMSIZE</span>
+<span class="token attr-name">canal.instance.memory.batch.mode</span> <span class="token punctuation">=</span> <span class="token attr-value">MEMSIZE</span>
+<span class="token attr-name">canal.instance.memory.rawEntry</span> <span class="token punctuation">=</span> <span class="token attr-value">true</span>
+
+<span class="token comment">## detecing config</span>
+<span class="token attr-name">canal.instance.detecting.enable</span> <span class="token punctuation">=</span> <span class="token attr-value">false</span>
+<span class="token comment">#canal.instance.detecting.sql = insert into retl.xdual values(1,now()) on duplicate key update x=now()</span>
+<span class="token attr-name">canal.instance.detecting.sql</span> <span class="token punctuation">=</span> <span class="token attr-value">select 1</span>
+<span class="token attr-name">canal.instance.detecting.interval.time</span> <span class="token punctuation">=</span> <span class="token attr-value">3</span>
+<span class="token attr-name">canal.instance.detecting.retry.threshold</span> <span class="token punctuation">=</span> <span class="token attr-value">3</span>
+<span class="token attr-name">canal.instance.detecting.heartbeatHaEnable</span> <span class="token punctuation">=</span> <span class="token attr-value">false</span>
+
+<span class="token comment"># support maximum transaction size, more than the size of the transaction will be cut into multiple transactions delivery</span>
+<span class="token attr-name">canal.instance.transaction.size</span> <span class="token punctuation">=</span>  <span class="token attr-value">1024</span>
+<span class="token comment"># mysql fallback connected to new master should fallback times</span>
+<span class="token attr-name">canal.instance.fallbackIntervalInSeconds</span> <span class="token punctuation">=</span> <span class="token attr-value">60</span>
+
+<span class="token comment"># network config</span>
+<span class="token attr-name">canal.instance.network.receiveBufferSize</span> <span class="token punctuation">=</span> <span class="token attr-value">16384</span>
+<span class="token attr-name">canal.instance.network.sendBufferSize</span> <span class="token punctuation">=</span> <span class="token attr-value">16384</span>
+<span class="token attr-name">canal.instance.network.soTimeout</span> <span class="token punctuation">=</span> <span class="token attr-value">30</span>
+
+<span class="token comment"># binlog filter config</span>
+<span class="token attr-name">canal.instance.filter.druid.ddl</span> <span class="token punctuation">=</span> <span class="token attr-value">true</span>
+<span class="token attr-name">canal.instance.filter.query.dcl</span> <span class="token punctuation">=</span> <span class="token attr-value">false</span>
+<span class="token attr-name">canal.instance.filter.query.dml</span> <span class="token punctuation">=</span> <span class="token attr-value">false</span>
+<span class="token attr-name">canal.instance.filter.query.ddl</span> <span class="token punctuation">=</span> <span class="token attr-value">false</span>
+<span class="token attr-name">canal.instance.filter.table.error</span> <span class="token punctuation">=</span> <span class="token attr-value">false</span>
+<span class="token attr-name">canal.instance.filter.rows</span> <span class="token punctuation">=</span> <span class="token attr-value">false</span>
+<span class="token attr-name">canal.instance.filter.transaction.entry</span> <span class="token punctuation">=</span> <span class="token attr-value">false</span>
+
+<span class="token comment"># binlog format/image check</span>
+<span class="token attr-name">canal.instance.binlog.format</span> <span class="token punctuation">=</span> <span class="token attr-value">ROW,STATEMENT,MIXED </span>
+<span class="token attr-name">canal.instance.binlog.image</span> <span class="token punctuation">=</span> <span class="token attr-value">FULL,MINIMAL,NOBLOB</span>
+
+<span class="token comment"># binlog ddl isolation</span>
+<span class="token attr-name">canal.instance.get.ddl.isolation</span> <span class="token punctuation">=</span> <span class="token attr-value">false</span>
+
+<span class="token comment"># parallel parser config</span>
+<span class="token attr-name">canal.instance.parser.parallel</span> <span class="token punctuation">=</span> <span class="token attr-value">true</span>
+<span class="token comment">## concurrent thread number, default 60% available processors, suggest not to exceed Runtime.getRuntime().availableProcessors()</span>
+<span class="token comment">#canal.instance.parser.parallelThreadSize = 16</span>
+<span class="token comment">## disruptor ringbuffer size, must be power of 2</span>
+<span class="token attr-name">canal.instance.parser.parallelBufferSize</span> <span class="token punctuation">=</span> <span class="token attr-value">256</span>
+
+<span class="token comment"># table meta tsdb info</span>
+<span class="token attr-name">canal.instance.tsdb.enable</span> <span class="token punctuation">=</span> <span class="token attr-value">true</span>
+<span class="token attr-name">canal.instance.tsdb.dir</span> <span class="token punctuation">=</span> <span class="token attr-value">${canal.file.data.dir:../conf}/${canal.instance.destination:}</span>
+<span class="token attr-name">canal.instance.tsdb.url</span> <span class="token punctuation">=</span> <span class="token attr-value">jdbc:h2:${canal.instance.tsdb.dir}/h2;CACHE_SIZE=1000;MODE=MYSQL;</span>
+<span class="token attr-name">canal.instance.tsdb.dbUsername</span> <span class="token punctuation">=</span> <span class="token attr-value">canal</span>
+<span class="token attr-name">canal.instance.tsdb.dbPassword</span> <span class="token punctuation">=</span> <span class="token attr-value">canal</span>
+<span class="token comment"># dump snapshot interval, default 24 hour</span>
+<span class="token attr-name">canal.instance.tsdb.snapshot.interval</span> <span class="token punctuation">=</span> <span class="token attr-value">24</span>
+<span class="token comment"># purge snapshot expire , default 360 hour(15 days)</span>
+<span class="token attr-name">canal.instance.tsdb.snapshot.expire</span> <span class="token punctuation">=</span> <span class="token attr-value">360</span>
+
+<span class="token comment"># aliyun ak/sk , support rds/mq</span>
+<span class="token attr-name">canal.aliyun.accessKey</span> <span class="token attr-value">=</span>
+<span class="token attr-name">canal.aliyun.secretKey</span> <span class="token attr-value">=</span>
+
+<span class="token comment">#################################################</span>
+<span class="token comment">######### 		destinations		#############</span>
+<span class="token comment">#################################################</span>
+<span class="token comment">#【【kafka的topic配置】】</span>
+<span class="token attr-name">canal.destinations</span> <span class="token punctuation">=</span> <span class="token attr-value">example</span>
+<span class="token comment"># conf root dir</span>
+<span class="token attr-name">canal.conf.dir</span> <span class="token punctuation">=</span> <span class="token attr-value">../conf</span>
+<span class="token comment"># auto scan instance dir add/remove and start/stop instance</span>
+<span class="token attr-name">canal.auto.scan</span> <span class="token punctuation">=</span> <span class="token attr-value">true</span>
+<span class="token attr-name">canal.auto.scan.interval</span> <span class="token punctuation">=</span> <span class="token attr-value">5</span>
+
+<span class="token attr-name">canal.instance.tsdb.spring.xml</span> <span class="token punctuation">=</span> <span class="token attr-value">classpath:spring/tsdb/h2-tsdb.xml</span>
+<span class="token comment">#canal.instance.tsdb.spring.xml = classpath:spring/tsdb/mysql-tsdb.xml</span>
+
+<span class="token attr-name">canal.instance.global.mode</span> <span class="token punctuation">=</span> <span class="token attr-value">spring</span>
+<span class="token attr-name">canal.instance.global.lazy</span> <span class="token punctuation">=</span> <span class="token attr-value">false</span>
+<span class="token attr-name">canal.instance.global.manager.address</span> <span class="token punctuation">=</span> <span class="token attr-value">${canal.admin.manager}</span>
+<span class="token comment">#canal.instance.global.spring.xml = classpath:spring/memory-instance.xml</span>
+<span class="token attr-name">canal.instance.global.spring.xml</span> <span class="token punctuation">=</span> <span class="token attr-value">classpath:spring/file-instance.xml</span>
+<span class="token comment">#canal.instance.global.spring.xml = classpath:spring/default-instance.xml</span>
+
+<span class="token comment">##################################################</span>
+<span class="token comment">######### 		     MQ 		     #############</span>
+<span class="token comment">##################################################</span>
+
+<span class="token comment">#【【kafka配置】】</span>
+<span class="token attr-name">canal.mq.servers</span> <span class="token punctuation">=</span> <span class="token attr-value">192.168.56.111:9092,192.168.56.112:9092,192.168.56.113:9092</span>
+<span class="token attr-name">canal.mq.retries</span> <span class="token punctuation">=</span> <span class="token attr-value">0</span>
+<span class="token attr-name">canal.mq.batchSize</span> <span class="token punctuation">=</span> <span class="token attr-value">16384</span>
+<span class="token attr-name">canal.mq.maxRequestSize</span> <span class="token punctuation">=</span> <span class="token attr-value">1048576</span>
+<span class="token attr-name">canal.mq.lingerMs</span> <span class="token punctuation">=</span> <span class="token attr-value">100</span>
+<span class="token attr-name">canal.mq.bufferMemory</span> <span class="token punctuation">=</span> <span class="token attr-value">33554432</span>
+<span class="token attr-name">canal.mq.canalBatchSize</span> <span class="token punctuation">=</span> <span class="token attr-value">50</span>
+<span class="token attr-name">canal.mq.canalGetTimeout</span> <span class="token punctuation">=</span> <span class="token attr-value">100</span>
+<span class="token attr-name">canal.mq.flatMessage</span> <span class="token punctuation">=</span> <span class="token attr-value">true</span>
+<span class="token attr-name">canal.mq.compressionType</span> <span class="token punctuation">=</span> <span class="token attr-value">none</span>
+<span class="token attr-name">canal.mq.acks</span> <span class="token punctuation">=</span> <span class="token attr-value">all</span>
+<span class="token comment">#canal.mq.properties. =</span>
+<span class="token attr-name">canal.mq.producerGroup</span> <span class="token punctuation">=</span> <span class="token attr-value">test</span>
+<span class="token comment"># Set this value to &quot;cloud&quot;, if you want open message trace feature in aliyun.</span>
+<span class="token attr-name">canal.mq.accessChannel</span> <span class="token punctuation">=</span> <span class="token attr-value">local</span>
+<span class="token comment"># aliyun mq namespace</span>
+<span class="token comment">#canal.mq.namespace =</span>
+
+<span class="token comment">##################################################</span>
+<span class="token comment">#########     Kafka Kerberos Info    #############</span>
+<span class="token comment">##################################################</span>
+<span class="token attr-name">canal.mq.kafka.kerberos.enable</span> <span class="token punctuation">=</span> <span class="token attr-value">false</span>
+<span class="token attr-name">canal.mq.kafka.kerberos.krb5FilePath</span> <span class="token punctuation">=</span> <span class="token attr-value">&quot;../conf/kerberos/krb5.conf&quot;</span>
+<span class="token attr-name">canal.mq.kafka.kerberos.jaasFilePath</span> <span class="token punctuation">=</span> <span class="token attr-value">&quot;../conf/kerberos/jaas.conf&quot;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br></div></div><h3 id="启动canal"><a href="#启动canal" class="header-anchor">#</a> 启动canal</h3> <p>在<code>/canal.deployer-1.1.4/bin</code>目录下，执行<code>startup.sh</code>启动即可</p> <h3 id="kafka消费"><a href="#kafka消费" class="header-anchor">#</a> kafka消费</h3> <p>为了方便，这里直接使用在控制台的方式来消费kafka数据的方式</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>kafka-console-consumer.sh --zookeeper mini1:2181 --from-beginning --topic example
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>为了方便，设置了从头开始消费，可以从控制台看到kafka消费的内容</p> <p><img src="/img/DatawareHouse/006y8mN6ly1g7czkvqqjtj311h0jcqcj.jpg" alt="img"></p> <h3 id="消费kafka数据然后写入到hbase中"><a href="#消费kafka数据然后写入到hbase中" class="header-anchor">#</a> 消费kafka数据然后写入到hbase中</h3> <p>写程序，将kafka数据解析成表字段形式，插入到hbase中</p> <h3 id="建立hive外部表"><a href="#建立hive外部表" class="header-anchor">#</a> 建立Hive外部表</h3> <p>建立Hive的外部表，从Hbase中映射数据。注意列族的配置</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">create</span> external <span class="token keyword">table</span> pet_medical<span class="token punctuation">.</span>hbase_hive_zfang<span class="token punctuation">(</span>
+    <span class="token keyword">key</span> string
+   <span class="token punctuation">,</span>user_name string
+   <span class="token punctuation">,</span>user_age <span class="token keyword">int</span>
+   <span class="token punctuation">,</span>user_addr string
+<span class="token punctuation">)</span>
+stored <span class="token keyword">by</span> <span class="token string">'org.apache.hadoop.hive.hbase.HBaseStorageHandler'</span>
+<span class="token keyword">with</span> serdeproperties <span class="token punctuation">(</span><span class="token string">&quot;hbase.columns.mapping&quot;</span><span class="token operator">=</span><span class="token string">&quot;:key,c1:user_name,c1:user_age,c1:user_addr&quot;</span><span class="token punctuation">)</span>
+tblproperties<span class="token punctuation">(</span><span class="token string">&quot;hbase.table.name&quot;</span><span class="token operator">=</span><span class="token string">&quot;test_zfang&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="将hbase数据库的数据映射到hive中"><a href="#将hbase数据库的数据映射到hive中" class="header-anchor">#</a> 将Hbase数据库的数据映射到Hive中</h3> <p>写程序自动完成。。</p> <div class="language-sql line-numbers-mode"><pre class="language-sql"><code><span class="token keyword">disable</span> <span class="token string">'test_zfang'</span>
+<span class="token keyword">create</span> <span class="token string">'test_zfang'</span><span class="token punctuation">,</span><span class="token string">'c1'</span>
+put <span class="token string">'test_zfang'</span><span class="token punctuation">,</span> <span class="token string">'row1'</span><span class="token punctuation">,</span> <span class="token string">'c1:user_name'</span><span class="token punctuation">,</span> <span class="token string">'zhangsan'</span>
+put <span class="token string">'test_zfang'</span><span class="token punctuation">,</span> <span class="token string">'row1'</span><span class="token punctuation">,</span> <span class="token string">'c1:user_age'</span><span class="token punctuation">,</span> <span class="token string">'29'</span>
+put <span class="token string">'test_zfang'</span><span class="token punctuation">,</span> <span class="token string">'row1'</span><span class="token punctuation">,</span> <span class="token string">'c1:user_addr'</span><span class="token punctuation">,</span> <span class="token string">'北京市'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新时间:</span> <span class="time">2021/5/30 下午1:36:14</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/DatawareHouse/5.how-to-reduce-derivative-demand.html" class="prev">
+        如何减少&quot;导数&quot;需求？
+      </a></span> <span class="next"><a href="/DatawareHouse/7.data_quality.html">
+        数据质量管理
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><div></div></div></div>
+    <script src="/assets/js/app.180c00c5.js" defer></script><script src="/assets/js/2.a52632a4.js" defer></script><script src="/assets/js/52.62a0a49e.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hadoop的hdfs | 浅墨散人</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="浅墨散人,大数据,数据仓库,python,基础,数仓,bigdata,datawarehouse,maven,vuepress,java,hadoop,个人,博客">
+    
+    <link rel="preload" href="/assets/css/0.styles.9894935f.css" as="style"><link rel="preload" href="/assets/js/app.180c00c5.js" as="script"><link rel="preload" href="/assets/js/2.a52632a4.js" as="script"><link rel="preload" href="/assets/js/14.2d8e25a1.js" as="script"><link rel="prefetch" href="/assets/js/10.e8f88356.js"><link rel="prefetch" href="/assets/js/100.d564af88.js"><link rel="prefetch" href="/assets/js/101.ed359fa2.js"><link rel="prefetch" href="/assets/js/102.94fcd251.js"><link rel="prefetch" href="/assets/js/103.02b7b2f9.js"><link rel="prefetch" href="/assets/js/104.24959504.js"><link rel="prefetch" href="/assets/js/105.e0d6c513.js"><link rel="prefetch" href="/assets/js/106.baf829ea.js"><link rel="prefetch" href="/assets/js/107.30956718.js"><link rel="prefetch" href="/assets/js/108.fe4a1842.js"><link rel="prefetch" href="/assets/js/109.c4bab523.js"><link rel="prefetch" href="/assets/js/11.6bcd991e.js"><link rel="prefetch" href="/assets/js/110.77ef5a75.js"><link rel="prefetch" href="/assets/js/111.c88a3e80.js"><link rel="prefetch" href="/assets/js/112.defa6a72.js"><link rel="prefetch" href="/assets/js/113.baffbf93.js"><link rel="prefetch" href="/assets/js/114.c48ed354.js"><link rel="prefetch" href="/assets/js/115.af4c952f.js"><link rel="prefetch" href="/assets/js/116.075913cf.js"><link rel="prefetch" href="/assets/js/117.520ca35f.js"><link rel="prefetch" href="/assets/js/118.3dfffd58.js"><link rel="prefetch" href="/assets/js/119.94e601ba.js"><link rel="prefetch" href="/assets/js/12.4e778070.js"><link rel="prefetch" href="/assets/js/120.91317a15.js"><link rel="prefetch" href="/assets/js/121.a059e4c3.js"><link rel="prefetch" href="/assets/js/122.9f78087b.js"><link rel="prefetch" href="/assets/js/123.b9bb61e0.js"><link rel="prefetch" href="/assets/js/124.4c8994fe.js"><link rel="prefetch" href="/assets/js/125.e8c2c3d9.js"><link rel="prefetch" href="/assets/js/126.0b8a54cc.js"><link rel="prefetch" href="/assets/js/127.d4b342c3.js"><link rel="prefetch" href="/assets/js/128.5bddd0d0.js"><link rel="prefetch" href="/assets/js/129.ae586f13.js"><link rel="prefetch" href="/assets/js/13.b8c77261.js"><link rel="prefetch" href="/assets/js/130.396e6504.js"><link rel="prefetch" href="/assets/js/131.2d55dceb.js"><link rel="prefetch" href="/assets/js/132.900ca269.js"><link rel="prefetch" href="/assets/js/133.062ada46.js"><link rel="prefetch" href="/assets/js/134.b3faeb99.js"><link rel="prefetch" href="/assets/js/135.9097b849.js"><link rel="prefetch" href="/assets/js/136.aa650ff3.js"><link rel="prefetch" href="/assets/js/137.0241ae99.js"><link rel="prefetch" href="/assets/js/138.12b49ab7.js"><link rel="prefetch" href="/assets/js/139.b50d7e75.js"><link rel="prefetch" href="/assets/js/140.3b8b6427.js"><link rel="prefetch" href="/assets/js/141.578527b6.js"><link rel="prefetch" href="/assets/js/142.2d0a60fa.js"><link rel="prefetch" href="/assets/js/143.2e5603d5.js"><link rel="prefetch" href="/assets/js/144.4f0519b8.js"><link rel="prefetch" href="/assets/js/145.ef91129b.js"><link rel="prefetch" href="/assets/js/146.afa67b28.js"><link rel="prefetch" href="/assets/js/147.dbfed115.js"><link rel="prefetch" href="/assets/js/148.52076f62.js"><link rel="prefetch" href="/assets/js/149.413ca0d4.js"><link rel="prefetch" href="/assets/js/15.5c39353a.js"><link rel="prefetch" href="/assets/js/150.5ca28815.js"><link rel="prefetch" href="/assets/js/151.66147548.js"><link rel="prefetch" href="/assets/js/152.e7e8d56f.js"><link rel="prefetch" href="/assets/js/153.10e5489e.js"><link rel="prefetch" href="/assets/js/154.609bedd8.js"><link rel="prefetch" href="/assets/js/155.89b0b0f8.js"><link rel="prefetch" href="/assets/js/156.e817e4b5.js"><link rel="prefetch" href="/assets/js/157.4fe6170a.js"><link rel="prefetch" href="/assets/js/158.0d185e2c.js"><link rel="prefetch" href="/assets/js/159.c57a28b7.js"><link rel="prefetch" href="/assets/js/16.1b28cb6d.js"><link rel="prefetch" href="/assets/js/17.dc692cbc.js"><link rel="prefetch" href="/assets/js/18.b4495b5c.js"><link rel="prefetch" href="/assets/js/19.5bf5eb61.js"><link rel="prefetch" href="/assets/js/20.b4e87a71.js"><link rel="prefetch" href="/assets/js/21.e800ff02.js"><link rel="prefetch" href="/assets/js/22.3445f85c.js"><link rel="prefetch" href="/assets/js/23.7cce4328.js"><link rel="prefetch" href="/assets/js/24.d322e90b.js"><link rel="prefetch" href="/assets/js/25.bfc014f1.js"><link rel="prefetch" href="/assets/js/26.5ebea46f.js"><link rel="prefetch" href="/assets/js/27.914a84c1.js"><link rel="prefetch" href="/assets/js/28.bc782b8d.js"><link rel="prefetch" href="/assets/js/29.62493a18.js"><link rel="prefetch" href="/assets/js/3.f3f7654f.js"><link rel="prefetch" href="/assets/js/30.bad9e501.js"><link rel="prefetch" href="/assets/js/31.4a38bdbd.js"><link rel="prefetch" href="/assets/js/32.903a497d.js"><link rel="prefetch" href="/assets/js/33.03b83687.js"><link rel="prefetch" href="/assets/js/34.f706b788.js"><link rel="prefetch" href="/assets/js/35.99a12707.js"><link rel="prefetch" href="/assets/js/36.90fd2978.js"><link rel="prefetch" href="/assets/js/37.60451941.js"><link rel="prefetch" href="/assets/js/38.28c89a9d.js"><link rel="prefetch" href="/assets/js/39.25838682.js"><link rel="prefetch" href="/assets/js/4.202991e4.js"><link rel="prefetch" href="/assets/js/40.9e68dc50.js"><link rel="prefetch" href="/assets/js/41.d8e72043.js"><link rel="prefetch" href="/assets/js/42.15b4371f.js"><link rel="prefetch" href="/assets/js/43.658c6921.js"><link rel="prefetch" href="/assets/js/44.76f5b021.js"><link rel="prefetch" href="/assets/js/45.a8f9ec74.js"><link rel="prefetch" href="/assets/js/46.5eb0a761.js"><link rel="prefetch" href="/assets/js/47.a42dd1d2.js"><link rel="prefetch" href="/assets/js/48.3845bd0a.js"><link rel="prefetch" href="/assets/js/49.bf2c89ab.js"><link rel="prefetch" href="/assets/js/5.17bb93d9.js"><link rel="prefetch" href="/assets/js/50.52c379d1.js"><link rel="prefetch" href="/assets/js/51.870e4f39.js"><link rel="prefetch" href="/assets/js/52.62a0a49e.js"><link rel="prefetch" href="/assets/js/53.427dbff8.js"><link rel="prefetch" href="/assets/js/54.4635e630.js"><link rel="prefetch" href="/assets/js/55.cd4343b0.js"><link rel="prefetch" href="/assets/js/56.3abdfddd.js"><link rel="prefetch" href="/assets/js/57.0117eb4a.js"><link rel="prefetch" href="/assets/js/58.55ab06d5.js"><link rel="prefetch" href="/assets/js/59.b1e6a01d.js"><link rel="prefetch" href="/assets/js/6.cac134c0.js"><link rel="prefetch" href="/assets/js/60.d9bb9e13.js"><link rel="prefetch" href="/assets/js/61.729595e5.js"><link rel="prefetch" href="/assets/js/62.4fec0c49.js"><link rel="prefetch" href="/assets/js/63.b9c92e6a.js"><link rel="prefetch" href="/assets/js/64.63b8c6b1.js"><link rel="prefetch" href="/assets/js/65.158270ae.js"><link rel="prefetch" href="/assets/js/66.3415f3e3.js"><link rel="prefetch" href="/assets/js/67.f04a4d7a.js"><link rel="prefetch" href="/assets/js/68.23a5849e.js"><link rel="prefetch" href="/assets/js/69.ea5e16f5.js"><link rel="prefetch" href="/assets/js/7.8e78b236.js"><link rel="prefetch" href="/assets/js/70.e857237f.js"><link rel="prefetch" href="/assets/js/71.fa576592.js"><link rel="prefetch" href="/assets/js/72.365c06ee.js"><link rel="prefetch" href="/assets/js/73.0f0f1b47.js"><link rel="prefetch" href="/assets/js/74.69873580.js"><link rel="prefetch" href="/assets/js/75.97e039ae.js"><link rel="prefetch" href="/assets/js/76.cb612fbb.js"><link rel="prefetch" href="/assets/js/77.1ea90dfe.js"><link rel="prefetch" href="/assets/js/78.615aa35c.js"><link rel="prefetch" href="/assets/js/79.aab26661.js"><link rel="prefetch" href="/assets/js/8.4522daab.js"><link rel="prefetch" href="/assets/js/80.1d4975ac.js"><link rel="prefetch" href="/assets/js/81.9c3be0a0.js"><link rel="prefetch" href="/assets/js/82.a1bbb975.js"><link rel="prefetch" href="/assets/js/83.a750334d.js"><link rel="prefetch" href="/assets/js/84.de429a3c.js"><link rel="prefetch" href="/assets/js/85.d041d296.js"><link rel="prefetch" href="/assets/js/86.0e0bbf44.js"><link rel="prefetch" href="/assets/js/87.4f84d9ab.js"><link rel="prefetch" href="/assets/js/88.ccabef36.js"><link rel="prefetch" href="/assets/js/89.2c400fa8.js"><link rel="prefetch" href="/assets/js/9.8def527a.js"><link rel="prefetch" href="/assets/js/90.43053d57.js"><link rel="prefetch" href="/assets/js/91.1e3fdb77.js"><link rel="prefetch" href="/assets/js/92.3f07495e.js"><link rel="prefetch" href="/assets/js/93.6644ee1c.js"><link rel="prefetch" href="/assets/js/94.b1e6ce61.js"><link rel="prefetch" href="/assets/js/95.bb1bd51a.js"><link rel="prefetch" href="/assets/js/96.9e2056ef.js"><link rel="prefetch" href="/assets/js/97.efbeddb2.js"><link rel="prefetch" href="/assets/js/98.ae0038a0.js"><link rel="prefetch" href="/assets/js/99.433a2542.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9894935f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/hero.png" alt="浅墨散人" class="logo"> <span class="site-name can-hide">浅墨散人</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Java/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/Java/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Maven/" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/Java/SpringBoot/" class="nav-link">
+  SpringBoot
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><span class="title">Python</span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Python/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Flask/" class="nav-link">
+  Flask
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Django/" class="nav-link">
+  Diango
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Pandas/" class="nav-link">
+  Pandas
+</a></li><li class="dropdown-item"><!----> <a href="/Python/SqlAlchemy/" class="nav-link">
+  SqlAlchemy
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><span class="title">大数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="大数据" class="mobile-dropdown-title"><span class="title">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BigData/Sqoop/" class="nav-link">
+  Sqoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Flume/" class="nav-link">
+  Flume
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hadoop/" class="nav-link router-link-active">
+  Hadoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hbase/" class="nav-link">
+  Hbase
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hive/" class="nav-link">
+  Hive
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kylin/" class="nav-link">
+  Kylin
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Zookeeper/" class="nav-link">
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Tez/" class="nav-link">
+  Tez
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/DataBase/MySQL/" class="nav-link">
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/Chrome/" class="nav-link">
+  Chrome
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Eclipse/" class="nav-link">
+  Eclipse
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/iTerm2/" class="nav-link">
+  iTerm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Markdown/" class="nav-link">
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/SublimeText/" class="nav-link">
+  SublimeText
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/VirtualBox/" class="nav-link">
+  VirtualBox
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/WebStrom/" class="nav-link">
+  WebStrom
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系统" class="dropdown-title"><span class="title">系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="系统" class="mobile-dropdown-title"><span class="title">系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/System/Linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/System/Mac/" class="nav-link">
+  Mac
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/Hexo/" class="nav-link">
+  Hexo
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Other/VuePress/" class="nav-link">
+  VuePress
+</a></li><li class="dropdown-item"><!----> <a href="/Other/BlockChain/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Finance/" class="nav-link">
+  金融
+</a></li></ul></div></div><div class="nav-item"><a href="/DatawareHouse/" class="nav-link">
+  数据仓库
+</a></div><div class="nav-item"><a href="/About/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/fangzheng0518" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Java/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/Java/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Maven/" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/Java/SpringBoot/" class="nav-link">
+  SpringBoot
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><span class="title">Python</span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Python/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Flask/" class="nav-link">
+  Flask
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Django/" class="nav-link">
+  Diango
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Pandas/" class="nav-link">
+  Pandas
+</a></li><li class="dropdown-item"><!----> <a href="/Python/SqlAlchemy/" class="nav-link">
+  SqlAlchemy
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><span class="title">大数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="大数据" class="mobile-dropdown-title"><span class="title">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BigData/Sqoop/" class="nav-link">
+  Sqoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Flume/" class="nav-link">
+  Flume
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hadoop/" class="nav-link router-link-active">
+  Hadoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hbase/" class="nav-link">
+  Hbase
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hive/" class="nav-link">
+  Hive
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kylin/" class="nav-link">
+  Kylin
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Zookeeper/" class="nav-link">
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Tez/" class="nav-link">
+  Tez
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/DataBase/MySQL/" class="nav-link">
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/Chrome/" class="nav-link">
+  Chrome
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Eclipse/" class="nav-link">
+  Eclipse
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/iTerm2/" class="nav-link">
+  iTerm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Markdown/" class="nav-link">
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/SublimeText/" class="nav-link">
+  SublimeText
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/VirtualBox/" class="nav-link">
+  VirtualBox
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/WebStrom/" class="nav-link">
+  WebStrom
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系统" class="dropdown-title"><span class="title">系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="系统" class="mobile-dropdown-title"><span class="title">系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/System/Linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/System/Mac/" class="nav-link">
+  Mac
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/Hexo/" class="nav-link">
+  Hexo
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Other/VuePress/" class="nav-link">
+  VuePress
+</a></li><li class="dropdown-item"><!----> <a href="/Other/BlockChain/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Finance/" class="nav-link">
+  金融
+</a></li></ul></div></div><div class="nav-item"><a href="/DatawareHouse/" class="nav-link">
+  数据仓库
+</a></div><div class="nav-item"><a href="/About/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/fangzheng0518" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Hadoop</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/BigData/Hadoop/" aria-current="page" class="sidebar-link">前言</a></li><li><a href="/BigData/Hadoop/hadoop-ecological-system.html" class="sidebar-link">Hadoop生态系统介绍</a></li><li><a href="/BigData/Hadoop/hadoop-hdfs.html" aria-current="page" class="active sidebar-link">Hadoop的hdfs</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop-hdfs.html#_1-hdfs中的一些概念" class="sidebar-link">1. HDFS中的一些概念</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop-hdfs.html#_1-1-数据块" class="sidebar-link">1.1 数据块</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop-hdfs.html#_1-2-namenode和datanode" class="sidebar-link">1.2 NameNode和DataNode</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop-hdfs.html#_1-3-secondary-namenode" class="sidebar-link">1.3 Secondary Namenode</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop-hdfs.html#_1-4-hdfs的优缺点" class="sidebar-link">1.4 HDFS的优缺点</a></li></ul></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop-hdfs.html#_2-hdfs的架构" class="sidebar-link">2. HDFS的架构</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop-hdfs.html#_2-1-hdfs架构之namenode和datanode" class="sidebar-link">2.1 HDFS架构之NameNode和DataNode</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop-hdfs.html#_2-2-namenode和secondary-namenode运行关系" class="sidebar-link">2.2 Namenode和Secondary Namenode运行关系</a></li></ul></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop-hdfs.html#_3-hdfs文件的读写流程" class="sidebar-link">3. HDFS文件的读写流程</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop-hdfs.html#_3-1-hdfs文件的读取" class="sidebar-link">3.1 HDFS文件的读取</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop-hdfs.html#_3-2-hdfs文件的写入" class="sidebar-link">3.2 HDFS文件的写入</a></li></ul></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop-hdfs.html#_4-hdfs常用命令" class="sidebar-link">4. HDFS常用命令</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop-hdfs.html#参考链接" class="sidebar-link">参考链接</a></li><li class="sidebar-sub-header"><a href="/BigData/Hadoop/hadoop-hdfs.html#常用命令" class="sidebar-link">常用命令</a></li></ul></li></ul></li><li><a href="/BigData/Hadoop/hadoop-introduce.html" class="sidebar-link">Hadoop介绍</a></li><li><a href="/BigData/Hadoop/hadoop-local-install.html" class="sidebar-link">Hadoop本地安装</a></li><li><a href="/BigData/Hadoop/hadoop1.1.2-install.html" class="sidebar-link">Hadoop1.1.2伪分布式安装笔记</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="_1-hdfs中的一些概念"><a href="#_1-hdfs中的一些概念" class="header-anchor">#</a> 1. HDFS中的一些概念</h2> <p>HDFS（Hadoop Distributed File System）：分布式文件系统，将一个文件分成多个块，分别存储(拷贝)到不同的节点上，它是Hadoop体系中数据存储管理的基础。它是一个高度容错的系统，能检测和应对硬件故障，用于在低成本的通用硬件上运行。HDFS简化了文件的一致性模型，通过流式数据访问，提供高吞吐量应用程序数据访问功能，适合带有大型数据集的应用程序。</p> <h3 id="_1-1-数据块"><a href="#_1-1-数据块" class="header-anchor">#</a> 1.1 数据块</h3> <p>每个磁盘都有<strong>数据块</strong>的概念，在HDFS中也有数据块的概念，HDFS中的所有文件都是分割成块存储在Datanode上的，每个块默认64M。。每个块都有多个副本存储在不同的机器上：默认有3个副本，3个副本不可能存放在同一个机器上。</p> <p><strong>HDFS副本存放策略</strong> <center><img src="/img/BigData/Hadoop/006tNc79ly1fz7oufy230j30go0bdq4d.jpg"> <br> <div class="imgtext">HDFS副本存放策略</div> <br></center></p> <p><strong>以下是HDFS文件存储架构图</strong></p> <ul><li>黄色：表示每台机器</li> <li>绿色：文件被分割出的块
+ <center><img src="/img/BigData/Hadoop/006tNc79ly1fz7ot1voh7j30go0a3dgq.jpg"> <br> <div class="imgtext">HDFS文件存储架构图</div> <br></center></li></ul> <p>例如：
+上图中part-0文件，有2个块。块1和块3只在2个机器上分别出现过2次。
+上图中part-1文件，有3个块。块2,4,5分别在不同的机器上各出现3次</p> <p>HDFS中也可以显示块信息，使用fsck命令
+例如：下面的命令将列出文件系统中各个文件由哪些块构成</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code> $ hadoop <span class="token function">fsck</span> / -files -blocks
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="_1-2-namenode和datanode"><a href="#_1-2-namenode和datanode" class="header-anchor">#</a> 1.2 NameNode和DataNode</h3> <p>HDFS的设计是主（Master）从（Slave）结构的。也就是，一个管理者（NameNode）和多个工作者（DataNode）组成。</p> <h4 id="_1-2-1-管理者-namenode"><a href="#_1-2-1-管理者-namenode" class="header-anchor">#</a> 1.2.1 管理者：Namenode</h4> <p>NameNode是主节点，它是一个中心服务器，负责管理整个文件系统的命名空间和控制着客户端对文件的访问。它不保存文件的内容，而是保存着文件的元数据（文件名称，所在目录，文件权限，文件拥有者，文件有多少块，每个块有多少副本，块都存在哪些节点上）。
+Namenode负责文件的元数据操作，Datanode处理文件内容的读写请求。
+跟文件相关的流不经过Namenode，只会询问该文件跟哪个Datanode有关系。
+副本存放在哪些Datanode上是由Namenode来控制。读取文件时，Namenode尽量让用户先读取最近的副本。
+Namenode全权管理数据块的复制，周期性的从集群中的每个Datanode接收心跳信号和块状态报告。
+Namenode和Datanode就是通过这两种方式来进行通信：
+心跳信号：意味着该Datanode节点工作正常
+块状态报告：包含了一个该Datanode上所有数据块的列表</p> <p><strong>元数据保存在内存中</strong>
+Namenode维护着整个文件系统树以及树内的所有文件。这些信息以两个文件的形式永久保存在磁盘上。命名空间镜像文件（fsimage）和操作日志（fsedits）文件
+​     <strong>1. fsimage是什么？</strong>
+​        fsimage是元数据镜像文件：Namenode启动后，文件的元数据被加载到内存中，加载到内存后也会把这些元数据写入到本地的磁盘中，这个文件就是fsimage文件。
+​        元数据镜像在内存中保存一份最新的，内存中的镜像=fsimage+fsedit
+​     <strong>2. fsedits是什么？</strong>
+​        fsedits是元数据操作日志文件：客户端要对文件进行读写操作，在这些操作产生的日志就存在了fsedit文件中。</p> <h4 id="_1-2-1-工作者-datanode"><a href="#_1-2-1-工作者-datanode" class="header-anchor">#</a> 1.2.1 工作者：Datanode</h4> <p>DataNode是从节点，它的作用很简单，就是存储文件的块数据。以及块数据的校验和。
+一个数据块在Ddtanode以文件存储在磁盘上，包括两个文件：数据本身和元数据（数据块的长度，块数据的校验和，时间戳）
+Datanode启动后向Namenode注册，通过后，周期性（1小时）的向Namenode上报所有块信息。
+心跳是3秒一次，如果超过10分钟没有收到某个Datanode的心跳。则认为该节点不可用。</p> <h3 id="_1-3-secondary-namenode"><a href="#_1-3-secondary-namenode" class="header-anchor">#</a> 1.3 Secondary Namenode</h3> <p>Secondary Namenode：Secondary表示助手的意思，也就是说Secondary Namenode表示NameNode的助手，辅助NameNode工作的一个节点。要了解Secondary Namenode节点都辅助NameNode做了哪些工作，我们需要先回顾下NameNode是做什么的？
+NameNode是HDFS中的一个主节点，主要是来管理其他DataNode从节点。它存储了HDFS系统的namespace和控制着客户端对HDFS文件系统的访问。NameNode在维护整个文件系统树的时候是以两个文件的形式永久保存在磁盘上。镜像文件(fsimage)和操作日志文件（fsedits）。考虑以下，这两个文件一直这样运行存在着有什么问题？</p> <ol><li>fsedits操作日志文件会越来越大，因为它保存着客户端对HDFS文件系统的访问日志。</li> <li>只有在NameNode重启后，edits logs才会合并到fsimage中，产生一个新的文件系统快照。但是NameNode是很少重启的。
+为了保证edit logs文件不会太大和fsimage是一个最新的文件，此时需要一个节点来备份这些文件。定期的合并这两个文件然后再推送给NameNode，这样就减轻NameNode工作的压力，同时也保证了假如Namenode节点宕机后数据无法恢复问题。虽然可能不会把所有的数据全部恢复出来，但是至少丢失的很少。</li></ol> <p>所以，Secondary Namenode做的就是这些辅助工作</p> <ol><li>Secondary NameNode所做的不过是在文件系统中设置一个检查点来帮助NameNode更好的工作。它不是要取代掉NameNode也不是NameNode的备份。</li> <li>SecondaryNameNode有两个作用，一是镜像备份，二是日志与镜像的定期合并。两个过程同时进行，称为checkpoint</li></ol> <p>在core-site.xml配置文件中有2个参数可配置，但一般来说我们不做修改。fs.checkpoint.period表示多长时间记录一次hdfs的镜像。默认是1小时。fs.checkpoint.size表示一次记录多大的size，默认64M。</p> <div class="language-xml line-numbers-mode"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>fs.checkpoint.period<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>3600<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">&gt;</span></span>The number of seconds between two periodic checkpoints.
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>fs.checkpoint.size<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>67108864<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">&gt;</span></span>The size of the current edit log (in bytes) that triggers a periodic checkpoint even if the fs.checkpoint.period hasn’t expired.
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>可以参考这篇博客，写的还是很详细的<a href="http://blog.csdn.net/xh16319/article/details/31375197" target="_blank" rel="noopener noreferrer">Secondary NameNode:它究竟有什么作用？<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="_1-4-hdfs的优缺点"><a href="#_1-4-hdfs的优缺点" class="header-anchor">#</a> 1.4 HDFS的优缺点</h3> <p><strong>优点：</strong></p> <ol><li>高容错性
+数据自动保存多个副本
+副本丢失后，自动恢复</li> <li>适合批处理
+移动计算而非数据
+数据位置暴露给计算框架</li> <li>适合大数据处理
+GB、TB、甚至PB级数据
+百万规模以上的文件数量
+10K+节点规模</li> <li>流式文件访问
+一次性写入，多次读取
+保证数据一致性</li> <li>可构建在廉价机器上
+通过多副本提高可靠性
+提供了容错和恢复机制</li></ol> <p><strong>缺点：</strong></p> <ol><li>低延迟与高吞吐率的数据访问 ，比如毫秒级</li> <li>小文件存取
+占用NameNode大量内存
+寻道时间超过读取时间</li> <li>并发写入、文件随机修改
+一个文件同一个时间只能有一个写者
+仅支持append</li></ol> <h2 id="_2-hdfs的架构"><a href="#_2-hdfs的架构" class="header-anchor">#</a> 2. HDFS的架构</h2> <p>HDFS以流式数据访问（一次写入，多次读取）模式来存储超大文件，运行于商用硬件集群上。超大文件是指GB,TB,PB的文件。目前已经有存储到PB级别的Hadoop集群了。</p> <p><strong>计算机字节关系</strong></p> <center><img src="/img/BigData/Hadoop/006tNc79ly1fz7ot3brltj308t09faa4.jpg"> <br> <div class="imgtext">计算机字节关系</div> <br></center> <p><strong>Hadoop1.x HDFS官方架构图</strong> <center><img src="/img/BigData/Hadoop/006tNc79ly1fz7ot4oxmij30go0b7my2.jpg"> <br> <div class="imgtext">Hadoop1.x HDFS官方架构图</div> <br></center></p> <h3 id="_2-1-hdfs架构之namenode和datanode"><a href="#_2-1-hdfs架构之namenode和datanode" class="header-anchor">#</a> 2.1 HDFS架构之NameNode和DataNode</h3> <p><strong>HDFS架构图</strong></p> <center><img src="/img/BigData/Hadoop/006tNc79ly1fz7ow1viz4j30h60ajwfp.jpg"> <br> <div class="imgtext">HDFS架构图</div> <br></center> <ol><li><p>客户端（HDFS Client）：如果想对文件进行读写的话，首先需要通过Namenode来获取一些信息。Namenode存储着命名空间（namespace）和元数据（metadata）</p> <p>客户端有如下工作：</p> <ol><li>文件的切分</li> <li>与Namenode交互，获取文件位置信息</li> <li>与Datanode交互，读取或者写入数据</li> <li>管理HDFS</li> <li>访问HDFS（浏览器，Shell命令，JavaAPI）</li></ol></li> <li><p>辅助节点（Secondary）：用于辅助Namenode工作，分担其工作量。主要工作是nameSpace的冷备份工作，并非热备份。定期将Namenode的镜像文件（fsimage）和操作日志（fsedit）进行合并，然后推送给Namenode
+<strong>1. fsimage是什么？</strong>
+​    是元数据镜像文件：Namenode启动后，文件的元数据被加载到内存中，加载到内存后也会把这些元数据写入到本地的磁盘中，这个文件就是fsimage文件。
+​    元数据镜像在内存中保存一份最新的，内存中的镜像=fsimage+fsedit
+<strong>2. fsedits是什么？</strong>
+​    是元数据操作日志文件：客户端要对文件进行读写操作，在这些操作产生的日志就存在了fsedit文件中。</p></li> <li><p>数据节点（Datanode）：Namenode和Datanode通信是通过心跳和块报告。每个文件被分割成不同的块，存在不同的机器的本地磁盘上。</p></li></ol> <h3 id="_2-2-namenode和secondary-namenode运行关系"><a href="#_2-2-namenode和secondary-namenode运行关系" class="header-anchor">#</a> 2.2 Namenode和Secondary Namenode运行关系</h3> <center><img src="/img/BigData/Hadoop/006tNc79ly1fz7ownlnl2j30iu0b7ab3.jpg"> <br> <div class="imgtext">Secondarynamenode工作原理图</div> <br></center> <p><strong>Secondarynamenode工作原理</strong>
+日志与镜像的定期合并总共分以下五步：</p> <ol><li>Secondary Namenode通知Namenode切换editlog</li> <li>Secondary Namenode通过Http方式从Namenode获取fsimage和editlog</li> <li>Secondary Namenode将fsimage载入内存，然后开始合并editlog</li> <li>Secondary Namenode将新的fsimage发回给Namenode</li> <li>Namenode收到fsiamge后将新的fsimage替换旧的fsimage</li></ol> <h2 id="_3-hdfs文件的读写流程"><a href="#_3-hdfs文件的读写流程" class="header-anchor">#</a> 3. HDFS文件的读写流程</h2> <h3 id="_3-1-hdfs文件的读取"><a href="#_3-1-hdfs文件的读取" class="header-anchor">#</a> 3.1 HDFS文件的读取</h3> <p><strong>HDFS文件读取：</strong> <center><img src="/img/BigData/Hadoop/006tNc79ly1fz7ot5jcn3j30jm0bejsb.jpg"> <br> <div class="imgtext">HDFS文件读取流程图</div> <br></center></p> <ol><li>首先调用FileSystem对象的open方法，其实是一个DistributedFileSystem的实例</li> <li>DistributedFileSystem通过rpc获得文件的第一批个block的locations，同一block按照重复数会返回多个locations，这些locations按照hadoop拓扑结构排序，距离客户端近的排在前面.</li> <li>前两步会返回一个FSDataInputStream对象，该对象会被封装成DFSInputStream对象，DFSInputStream可以方便的管理datanode和namenode数据流。客户端调用read方法，DFSInputStream最会找出离客户端最近的datanode并连接。</li> <li>数据从datanode源源不断的流向客户端。</li> <li>如果第一块的数据读完了，就会关闭指向第一块的datanode连接，接着读取下一块。这些操作对客户端来说是透明的，客户端的角度看来只是读一个持续不断的流。</li> <li>如果第一批block都读完了，DFSInputStream就会去namenode拿下一批blocks的location，然后继续读，如果所有的块都读完，这时就会关闭掉所有的流。</li></ol> <h3 id="_3-2-hdfs文件的写入"><a href="#_3-2-hdfs文件的写入" class="header-anchor">#</a> 3.2 HDFS文件的写入</h3> <p><strong>HDFS文件写入：</strong></p> <center><img src="/img/BigData/Hadoop/006tNc79ly1fz7ot2u6xsj30ir0aw0tr.jpg"> <br> <div class="imgtext">HDFS文件写入流程图</div> <br></center> <ol><li>客户端通过调用DistributedFileSystem的create方法创建新文件</li> <li>DistributedFileSystem通过RPC调用namenode去创建一个没有blocks关联的新文件，创建前，namenode会做各种校验，比如文件是否存在，客户端有无权限去创建等。如果校验通过，namenode就会记录下新文件，否则就会抛出IO异常.</li> <li>前两步结束后会返回FSDataOutputStream的对象，和读文件的时候相似，FSDataOutputStream被封装成DFSOutputStream，DFSOutputStream可以协调namenode和datanode。客户端开始写数据到DFSOutputStream,DFSOutputStream会把数据切成一个个小packet，然后排成队列data quene。</li> <li>DataStreamer会去处理接受data quene，他先问询namenode这个新的block最适合存储的在哪几个datanode里，比如重复数是3，那么就找到3个最适合的datanode，把他们排成一个pipeline.DataStreamer把packet按队列输出到管道的第一个datanode中，第一个datanode又把packet输出到第二个datanode中，以此类推。</li> <li>DFSOutputStream还有一个对列叫ack quene，也是有packet组成，等待datanode的收到响应，当pipeline中的所有datanode都表示已经收到的时候，这时akc quene才会把对应的packet包移除掉。</li> <li>客户端完成写数据后调用close方法关闭写入流</li> <li>DataStreamer把剩余得包都刷到pipeline里然后等待ack信息，收到最后一个ack后，通知datanode把文件标示为已完成。</li></ol> <p>读写流程参考自：<a href="http://blog.csdn.net/woshiwanxin102213/article/details/19990487" target="_blank" rel="noopener noreferrer">HDFS笔记（特点、原理与基本架构）<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h2 id="_4-hdfs常用命令"><a href="#_4-hdfs常用命令" class="header-anchor">#</a> 4. HDFS常用命令</h2> <h3 id="参考链接"><a href="#参考链接" class="header-anchor">#</a> 参考链接</h3> <p>官方文档：
+<a href="http://hadoop.apache.org/docs/r1.0.4/cn/hdfs_shell.html" target="_blank" rel="noopener noreferrer">http://hadoop.apache.org/docs/r1.0.4/cn/hdfs_shell.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="常用命令"><a href="#常用命令" class="header-anchor">#</a> 常用命令</h3> <ol><li><p>mkdir 创建目录（不支持级联创建目录）</p></li> <li><p>rm 删除非空目录和文件</p></li> <li><p>rmr 递归删除，可以删除非空目录</p> <p>例：删除test目录中的hadoop-2.7.4.tar.gz文件
+<code>hadoop fs -rmr /test/hadoop-2.7.4.tar.gz</code></p> <p>例：删除test目录及目录中的所有文件
+<code>hadoop fs -rmr /test</code></p></li> <li><p>put 上传文件到HDFS</p> <p>例：上传jdk-8u131-linux-i586.rpm文件到HDFS的/test目录中
+<code>hadoop fs -put jdk-8u131-linux-i586.rpm /test</code></p></li></ol></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新时间:</span> <span class="time">2021/5/30 下午1:36:14</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/BigData/Hadoop/hadoop-ecological-system.html" class="prev">
+        Hadoop生态系统介绍
+      </a></span> <span class="next"><a href="/BigData/Hadoop/hadoop-introduce.html">
+        Hadoop介绍
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><div></div></div></div>
+    <script src="/assets/js/app.180c00c5.js" defer></script><script src="/assets/js/2.a52632a4.js" defer></script><script src="/assets/js/14.2d8e25a1.js" defer></script>
+  </body>
+</html>

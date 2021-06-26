@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Git常用命令整理 | 浅墨散人</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="浅墨散人,大数据,数据仓库,python,基础,数仓,bigdata,datawarehouse,maven,vuepress,java,hadoop,个人,博客">
+    
+    <link rel="preload" href="/assets/css/0.styles.9894935f.css" as="style"><link rel="preload" href="/assets/js/app.180c00c5.js" as="script"><link rel="preload" href="/assets/js/2.a52632a4.js" as="script"><link rel="preload" href="/assets/js/92.3f07495e.js" as="script"><link rel="prefetch" href="/assets/js/10.e8f88356.js"><link rel="prefetch" href="/assets/js/100.d564af88.js"><link rel="prefetch" href="/assets/js/101.ed359fa2.js"><link rel="prefetch" href="/assets/js/102.94fcd251.js"><link rel="prefetch" href="/assets/js/103.02b7b2f9.js"><link rel="prefetch" href="/assets/js/104.24959504.js"><link rel="prefetch" href="/assets/js/105.e0d6c513.js"><link rel="prefetch" href="/assets/js/106.baf829ea.js"><link rel="prefetch" href="/assets/js/107.30956718.js"><link rel="prefetch" href="/assets/js/108.fe4a1842.js"><link rel="prefetch" href="/assets/js/109.c4bab523.js"><link rel="prefetch" href="/assets/js/11.6bcd991e.js"><link rel="prefetch" href="/assets/js/110.77ef5a75.js"><link rel="prefetch" href="/assets/js/111.c88a3e80.js"><link rel="prefetch" href="/assets/js/112.defa6a72.js"><link rel="prefetch" href="/assets/js/113.baffbf93.js"><link rel="prefetch" href="/assets/js/114.c48ed354.js"><link rel="prefetch" href="/assets/js/115.af4c952f.js"><link rel="prefetch" href="/assets/js/116.075913cf.js"><link rel="prefetch" href="/assets/js/117.520ca35f.js"><link rel="prefetch" href="/assets/js/118.3dfffd58.js"><link rel="prefetch" href="/assets/js/119.94e601ba.js"><link rel="prefetch" href="/assets/js/12.4e778070.js"><link rel="prefetch" href="/assets/js/120.91317a15.js"><link rel="prefetch" href="/assets/js/121.a059e4c3.js"><link rel="prefetch" href="/assets/js/122.9f78087b.js"><link rel="prefetch" href="/assets/js/123.b9bb61e0.js"><link rel="prefetch" href="/assets/js/124.4c8994fe.js"><link rel="prefetch" href="/assets/js/125.e8c2c3d9.js"><link rel="prefetch" href="/assets/js/126.0b8a54cc.js"><link rel="prefetch" href="/assets/js/127.d4b342c3.js"><link rel="prefetch" href="/assets/js/128.5bddd0d0.js"><link rel="prefetch" href="/assets/js/129.ae586f13.js"><link rel="prefetch" href="/assets/js/13.b8c77261.js"><link rel="prefetch" href="/assets/js/130.396e6504.js"><link rel="prefetch" href="/assets/js/131.2d55dceb.js"><link rel="prefetch" href="/assets/js/132.900ca269.js"><link rel="prefetch" href="/assets/js/133.062ada46.js"><link rel="prefetch" href="/assets/js/134.b3faeb99.js"><link rel="prefetch" href="/assets/js/135.9097b849.js"><link rel="prefetch" href="/assets/js/136.aa650ff3.js"><link rel="prefetch" href="/assets/js/137.0241ae99.js"><link rel="prefetch" href="/assets/js/138.12b49ab7.js"><link rel="prefetch" href="/assets/js/139.b50d7e75.js"><link rel="prefetch" href="/assets/js/14.2d8e25a1.js"><link rel="prefetch" href="/assets/js/140.3b8b6427.js"><link rel="prefetch" href="/assets/js/141.578527b6.js"><link rel="prefetch" href="/assets/js/142.2d0a60fa.js"><link rel="prefetch" href="/assets/js/143.2e5603d5.js"><link rel="prefetch" href="/assets/js/144.4f0519b8.js"><link rel="prefetch" href="/assets/js/145.ef91129b.js"><link rel="prefetch" href="/assets/js/146.afa67b28.js"><link rel="prefetch" href="/assets/js/147.dbfed115.js"><link rel="prefetch" href="/assets/js/148.52076f62.js"><link rel="prefetch" href="/assets/js/149.413ca0d4.js"><link rel="prefetch" href="/assets/js/15.5c39353a.js"><link rel="prefetch" href="/assets/js/150.5ca28815.js"><link rel="prefetch" href="/assets/js/151.66147548.js"><link rel="prefetch" href="/assets/js/152.e7e8d56f.js"><link rel="prefetch" href="/assets/js/153.10e5489e.js"><link rel="prefetch" href="/assets/js/154.609bedd8.js"><link rel="prefetch" href="/assets/js/155.89b0b0f8.js"><link rel="prefetch" href="/assets/js/156.e817e4b5.js"><link rel="prefetch" href="/assets/js/157.4fe6170a.js"><link rel="prefetch" href="/assets/js/158.0d185e2c.js"><link rel="prefetch" href="/assets/js/159.c57a28b7.js"><link rel="prefetch" href="/assets/js/16.1b28cb6d.js"><link rel="prefetch" href="/assets/js/17.dc692cbc.js"><link rel="prefetch" href="/assets/js/18.b4495b5c.js"><link rel="prefetch" href="/assets/js/19.5bf5eb61.js"><link rel="prefetch" href="/assets/js/20.b4e87a71.js"><link rel="prefetch" href="/assets/js/21.e800ff02.js"><link rel="prefetch" href="/assets/js/22.3445f85c.js"><link rel="prefetch" href="/assets/js/23.7cce4328.js"><link rel="prefetch" href="/assets/js/24.d322e90b.js"><link rel="prefetch" href="/assets/js/25.bfc014f1.js"><link rel="prefetch" href="/assets/js/26.5ebea46f.js"><link rel="prefetch" href="/assets/js/27.914a84c1.js"><link rel="prefetch" href="/assets/js/28.bc782b8d.js"><link rel="prefetch" href="/assets/js/29.62493a18.js"><link rel="prefetch" href="/assets/js/3.f3f7654f.js"><link rel="prefetch" href="/assets/js/30.bad9e501.js"><link rel="prefetch" href="/assets/js/31.4a38bdbd.js"><link rel="prefetch" href="/assets/js/32.903a497d.js"><link rel="prefetch" href="/assets/js/33.03b83687.js"><link rel="prefetch" href="/assets/js/34.f706b788.js"><link rel="prefetch" href="/assets/js/35.99a12707.js"><link rel="prefetch" href="/assets/js/36.90fd2978.js"><link rel="prefetch" href="/assets/js/37.60451941.js"><link rel="prefetch" href="/assets/js/38.28c89a9d.js"><link rel="prefetch" href="/assets/js/39.25838682.js"><link rel="prefetch" href="/assets/js/4.202991e4.js"><link rel="prefetch" href="/assets/js/40.9e68dc50.js"><link rel="prefetch" href="/assets/js/41.d8e72043.js"><link rel="prefetch" href="/assets/js/42.15b4371f.js"><link rel="prefetch" href="/assets/js/43.658c6921.js"><link rel="prefetch" href="/assets/js/44.76f5b021.js"><link rel="prefetch" href="/assets/js/45.a8f9ec74.js"><link rel="prefetch" href="/assets/js/46.5eb0a761.js"><link rel="prefetch" href="/assets/js/47.a42dd1d2.js"><link rel="prefetch" href="/assets/js/48.3845bd0a.js"><link rel="prefetch" href="/assets/js/49.bf2c89ab.js"><link rel="prefetch" href="/assets/js/5.17bb93d9.js"><link rel="prefetch" href="/assets/js/50.52c379d1.js"><link rel="prefetch" href="/assets/js/51.870e4f39.js"><link rel="prefetch" href="/assets/js/52.62a0a49e.js"><link rel="prefetch" href="/assets/js/53.427dbff8.js"><link rel="prefetch" href="/assets/js/54.4635e630.js"><link rel="prefetch" href="/assets/js/55.cd4343b0.js"><link rel="prefetch" href="/assets/js/56.3abdfddd.js"><link rel="prefetch" href="/assets/js/57.0117eb4a.js"><link rel="prefetch" href="/assets/js/58.55ab06d5.js"><link rel="prefetch" href="/assets/js/59.b1e6a01d.js"><link rel="prefetch" href="/assets/js/6.cac134c0.js"><link rel="prefetch" href="/assets/js/60.d9bb9e13.js"><link rel="prefetch" href="/assets/js/61.729595e5.js"><link rel="prefetch" href="/assets/js/62.4fec0c49.js"><link rel="prefetch" href="/assets/js/63.b9c92e6a.js"><link rel="prefetch" href="/assets/js/64.63b8c6b1.js"><link rel="prefetch" href="/assets/js/65.158270ae.js"><link rel="prefetch" href="/assets/js/66.3415f3e3.js"><link rel="prefetch" href="/assets/js/67.f04a4d7a.js"><link rel="prefetch" href="/assets/js/68.23a5849e.js"><link rel="prefetch" href="/assets/js/69.ea5e16f5.js"><link rel="prefetch" href="/assets/js/7.8e78b236.js"><link rel="prefetch" href="/assets/js/70.e857237f.js"><link rel="prefetch" href="/assets/js/71.fa576592.js"><link rel="prefetch" href="/assets/js/72.365c06ee.js"><link rel="prefetch" href="/assets/js/73.0f0f1b47.js"><link rel="prefetch" href="/assets/js/74.69873580.js"><link rel="prefetch" href="/assets/js/75.97e039ae.js"><link rel="prefetch" href="/assets/js/76.cb612fbb.js"><link rel="prefetch" href="/assets/js/77.1ea90dfe.js"><link rel="prefetch" href="/assets/js/78.615aa35c.js"><link rel="prefetch" href="/assets/js/79.aab26661.js"><link rel="prefetch" href="/assets/js/8.4522daab.js"><link rel="prefetch" href="/assets/js/80.1d4975ac.js"><link rel="prefetch" href="/assets/js/81.9c3be0a0.js"><link rel="prefetch" href="/assets/js/82.a1bbb975.js"><link rel="prefetch" href="/assets/js/83.a750334d.js"><link rel="prefetch" href="/assets/js/84.de429a3c.js"><link rel="prefetch" href="/assets/js/85.d041d296.js"><link rel="prefetch" href="/assets/js/86.0e0bbf44.js"><link rel="prefetch" href="/assets/js/87.4f84d9ab.js"><link rel="prefetch" href="/assets/js/88.ccabef36.js"><link rel="prefetch" href="/assets/js/89.2c400fa8.js"><link rel="prefetch" href="/assets/js/9.8def527a.js"><link rel="prefetch" href="/assets/js/90.43053d57.js"><link rel="prefetch" href="/assets/js/91.1e3fdb77.js"><link rel="prefetch" href="/assets/js/93.6644ee1c.js"><link rel="prefetch" href="/assets/js/94.b1e6ce61.js"><link rel="prefetch" href="/assets/js/95.bb1bd51a.js"><link rel="prefetch" href="/assets/js/96.9e2056ef.js"><link rel="prefetch" href="/assets/js/97.efbeddb2.js"><link rel="prefetch" href="/assets/js/98.ae0038a0.js"><link rel="prefetch" href="/assets/js/99.433a2542.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9894935f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/hero.png" alt="浅墨散人" class="logo"> <span class="site-name can-hide">浅墨散人</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Java/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/Java/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Maven/" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/Java/SpringBoot/" class="nav-link">
+  SpringBoot
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><span class="title">Python</span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Python/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Flask/" class="nav-link">
+  Flask
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Django/" class="nav-link">
+  Diango
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Pandas/" class="nav-link">
+  Pandas
+</a></li><li class="dropdown-item"><!----> <a href="/Python/SqlAlchemy/" class="nav-link">
+  SqlAlchemy
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><span class="title">大数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="大数据" class="mobile-dropdown-title"><span class="title">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BigData/Sqoop/" class="nav-link">
+  Sqoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Flume/" class="nav-link">
+  Flume
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hadoop/" class="nav-link">
+  Hadoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hbase/" class="nav-link">
+  Hbase
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hive/" class="nav-link">
+  Hive
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kylin/" class="nav-link">
+  Kylin
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Zookeeper/" class="nav-link">
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Tez/" class="nav-link">
+  Tez
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/DataBase/MySQL/" class="nav-link">
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/Chrome/" class="nav-link">
+  Chrome
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Eclipse/" class="nav-link">
+  Eclipse
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/iTerm2/" class="nav-link">
+  iTerm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Markdown/" class="nav-link">
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/SublimeText/" class="nav-link">
+  SublimeText
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/VirtualBox/" class="nav-link">
+  VirtualBox
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/WebStrom/" class="nav-link">
+  WebStrom
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系统" class="dropdown-title"><span class="title">系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="系统" class="mobile-dropdown-title"><span class="title">系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/System/Linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/System/Mac/" class="nav-link">
+  Mac
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/Hexo/" class="nav-link">
+  Hexo
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Git/" class="nav-link router-link-active">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Other/VuePress/" class="nav-link">
+  VuePress
+</a></li><li class="dropdown-item"><!----> <a href="/Other/BlockChain/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Finance/" class="nav-link">
+  金融
+</a></li></ul></div></div><div class="nav-item"><a href="/DatawareHouse/" class="nav-link">
+  数据仓库
+</a></div><div class="nav-item"><a href="/About/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/fangzheng0518" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Java/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/Java/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Maven/" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/Java/SpringBoot/" class="nav-link">
+  SpringBoot
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><span class="title">Python</span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Python/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Flask/" class="nav-link">
+  Flask
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Django/" class="nav-link">
+  Diango
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Pandas/" class="nav-link">
+  Pandas
+</a></li><li class="dropdown-item"><!----> <a href="/Python/SqlAlchemy/" class="nav-link">
+  SqlAlchemy
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><span class="title">大数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="大数据" class="mobile-dropdown-title"><span class="title">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BigData/Sqoop/" class="nav-link">
+  Sqoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Flume/" class="nav-link">
+  Flume
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hadoop/" class="nav-link">
+  Hadoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hbase/" class="nav-link">
+  Hbase
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hive/" class="nav-link">
+  Hive
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kafka/" class="nav-link">
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kylin/" class="nav-link">
+  Kylin
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Zookeeper/" class="nav-link">
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Tez/" class="nav-link">
+  Tez
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/DataBase/MySQL/" class="nav-link">
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/Chrome/" class="nav-link">
+  Chrome
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Eclipse/" class="nav-link">
+  Eclipse
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/iTerm2/" class="nav-link">
+  iTerm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Markdown/" class="nav-link">
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/SublimeText/" class="nav-link">
+  SublimeText
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/VirtualBox/" class="nav-link">
+  VirtualBox
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/WebStrom/" class="nav-link">
+  WebStrom
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系统" class="dropdown-title"><span class="title">系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="系统" class="mobile-dropdown-title"><span class="title">系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/System/Linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/System/Mac/" class="nav-link">
+  Mac
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/Hexo/" class="nav-link">
+  Hexo
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Git/" class="nav-link router-link-active">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Other/VuePress/" class="nav-link">
+  VuePress
+</a></li><li class="dropdown-item"><!----> <a href="/Other/BlockChain/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Finance/" class="nav-link">
+  金融
+</a></li></ul></div></div><div class="nav-item"><a href="/DatawareHouse/" class="nav-link">
+  数据仓库
+</a></div><div class="nav-item"><a href="/About/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/fangzheng0518" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Git</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Other/Git/" aria-current="page" class="sidebar-link">前言</a></li><li><a href="/Other/Git/git-keys.html" aria-current="page" class="active sidebar-link">Git常用命令整理</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Other/Git/git-keys.html#常用命令大全" class="sidebar-link">常用命令大全</a></li><li class="sidebar-sub-header"><a href="/Other/Git/git-keys.html#git-pull和本地文件冲突" class="sidebar-link">Git pull和本地文件冲突</a></li><li class="sidebar-sub-header"><a href="/Other/Git/git-keys.html#git回退某个文件到指定版本" class="sidebar-link">Git回退某个文件到指定版本</a></li><li class="sidebar-sub-header"><a href="/Other/Git/git-keys.html#git放弃所有修改-强制pull代码" class="sidebar-link">Git放弃所有修改，强制pull代码</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="常用命令大全"><a href="#常用命令大全" class="header-anchor">#</a> 常用命令大全</h2> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">git</span> init                                                  <span class="token comment"># 初始化本地git仓库（创建新仓库）</span>
+<span class="token function">git</span> config --global user.name <span class="token string">&quot;xxx&quot;</span>                       <span class="token comment"># 配置用户名</span>
+<span class="token function">git</span> config --global user.email <span class="token string">&quot;xxx@xxx.com&quot;</span>              <span class="token comment"># 配置邮件</span>
+<span class="token function">git</span> config --global color.ui <span class="token boolean">true</span>                         <span class="token comment"># git status等命令自动着色</span>
+<span class="token function">git</span> config --global color.status auto
+<span class="token function">git</span> config --global color.diff auto
+<span class="token function">git</span> config --global color.branch auto
+<span class="token function">git</span> config --global color.interactive auto
+<span class="token function">git</span> clone git+ssh://git@000.000.00.000/VT.git             <span class="token comment"># clone远程仓库</span>
+<span class="token function">git</span> status                                                <span class="token comment"># 查看当前版本状态（是否修改）</span>
+<span class="token function">git</span> <span class="token function">add</span> xyz                                               <span class="token comment"># 添加xyz文件至index</span>
+<span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>                                                 <span class="token comment"># 增加当前子目录下所有更改过的文件至index</span>
+<span class="token function">git</span> commit -m <span class="token string">'xxx'</span>                                       <span class="token comment"># 提交</span>
+<span class="token function">git</span> commit --amend -m <span class="token string">'xxx'</span>                               <span class="token comment"># 合并上一次提交（用于反复修改）</span>
+<span class="token function">git</span> commit -am <span class="token string">'xxx'</span>                                      <span class="token comment"># 将add和commit合为一步</span>
+<span class="token function">git</span> <span class="token function">rm</span> xxx                                                <span class="token comment"># 删除index中的文件</span>
+<span class="token function">git</span> <span class="token function">rm</span> -r *                                               <span class="token comment"># 递归删除</span>
+<span class="token function">git</span> log                                                   <span class="token comment"># 显示提交日志</span>
+<span class="token function">git</span> log -1                                                <span class="token comment"># 显示1行日志 -n为n行</span>
+<span class="token function">git</span> log -5
+<span class="token function">git</span> log --stat                                            <span class="token comment"># 显示提交日志及相关变动文件</span>
+<span class="token function">git</span> log -p -m
+<span class="token function">git</span> log --oneline                                         <span class="token comment"># 在一行显示log</span>
+<span class="token function">git</span> show dfb02e6e4f2f7b573337763e5c0013802e392818         <span class="token comment"># 显示某个提交的详细内容</span>
+<span class="token function">git</span> show dfb02                                            <span class="token comment"># 可以只用commitid的前几位</span>
+<span class="token function">git</span> show HEAD                                             <span class="token comment"># 显示HEAD提交日志</span>
+<span class="token function">git</span> show HEAD^                                            <span class="token comment"># 显示HEAD的父（上一个版本）的提交日志 ^^为上两个版本 ^5为上5个版本</span>
+<span class="token function">git</span> tag                                                   <span class="token comment"># 显示已存在的tag</span>
+<span class="token function">git</span> tag -a v2.0 -m <span class="token string">'xxx'</span>                                  <span class="token comment"># 增加v2.0的tag</span>
+<span class="token function">git</span> show v2.0                                             <span class="token comment"># 显示v2.0的日志及详细内容</span>
+<span class="token function">git</span> log v2.0                                              <span class="token comment"># 显示v2.0的日志</span>
+<span class="token function">git</span> <span class="token function">diff</span>                                                  <span class="token comment"># 显示所有未添加至index的变更</span>
+<span class="token function">git</span> <span class="token function">diff</span> --cached                                         <span class="token comment"># 显示所有已添加index但还未commit的变更</span>
+<span class="token function">git</span> <span class="token function">diff</span> HEAD^                                            <span class="token comment"># 比较与上一个版本的差异</span>
+<span class="token function">git</span> <span class="token function">diff</span> HEAD -- ./lib                                    <span class="token comment"># 比较与HEAD版本lib目录的差异</span>
+<span class="token function">git</span> <span class="token function">diff</span> origin/master<span class="token punctuation">..</span>master                            <span class="token comment"># 比较远程分支master上有本地分支master上没有的</span>
+<span class="token function">git</span> <span class="token function">diff</span> origin/master<span class="token punctuation">..</span>master --stat                     <span class="token comment"># 只显示差异的文件，不显示具体内容</span>
+<span class="token function">git</span> remote <span class="token function">add</span> origin git+ssh://git@192.168.53.168/VT.git <span class="token comment"># 增加远程定义（用于push/pull/fetch）</span>
+<span class="token function">git</span> branch                                                <span class="token comment"># 显示本地分支</span>
+<span class="token function">git</span> branch --contains <span class="token number">50089</span>                               <span class="token comment"># 显示包含提交50089的分支</span>
+<span class="token function">git</span> branch -a                                             <span class="token comment"># 显示所有分支</span>
+<span class="token function">git</span> branch -r                                             <span class="token comment"># 显示所有原创分支</span>
+<span class="token function">git</span> branch --merged                                       <span class="token comment"># 显示所有已合并到当前分支的分支</span>
+<span class="token function">git</span> branch --no-merged                                    <span class="token comment"># 显示所有未合并到当前分支的分支</span>
+<span class="token function">git</span> branch -m master master_copy                          <span class="token comment"># 本地分支改名</span>
+<span class="token function">git</span> checkout -b master_copy                               <span class="token comment"># 从当前分支创建新分支master_copy并检出</span>
+<span class="token function">git</span> checkout -b master master_copy                        <span class="token comment"># 上面的完整版</span>
+<span class="token function">git</span> checkout features/performance                         <span class="token comment"># 检出已存在的features/performance分支</span>
+<span class="token function">git</span> checkout --track hotfixes/BJVEP933                    <span class="token comment"># 检出远程分支hotfixes/BJVEP933并创建本地跟踪分支</span>
+<span class="token function">git</span> checkout v2.0                                         <span class="token comment"># 检出版本v2.0</span>
+<span class="token function">git</span> checkout -b devel origin/develop                      <span class="token comment"># 从远程分支develop创建新本地分支devel并检出</span>
+<span class="token function">git</span> checkout -- README                                    <span class="token comment"># 检出head版本的README文件（可用于修改错误回退）</span>
+<span class="token function">git</span> merge origin/master                                   <span class="token comment"># 合并远程master分支至当前分支</span>
+<span class="token function">git</span> cherry-pick ff44785404a8e                             <span class="token comment"># 合并提交ff44785404a8e的修改</span>
+<span class="token function">git</span> push origin master                                    <span class="token comment"># 将当前分支push到远程master分支</span>
+<span class="token function">git</span> push origin :hotfixes/BJVEP933                        <span class="token comment"># 删除远程仓库的hotfixes/BJVEP933分支</span>
+<span class="token function">git</span> push --tags                                           <span class="token comment"># 把所有tag推送到远程仓库</span>
+<span class="token function">git</span> fetch                                                 <span class="token comment"># 获取所有远程分支（不更新本地分支，另需merge）</span>
+<span class="token function">git</span> fetch --prune                                         <span class="token comment"># 获取所有原创分支并清除服务器上已删掉的分支</span>
+<span class="token function">git</span> pull origin master                                    <span class="token comment"># 获取远程分支master并merge到当前分支</span>
+<span class="token function">git</span> <span class="token function">mv</span> README README2                                     <span class="token comment"># 重命名文件README为README2</span>
+<span class="token function">git</span> reset --hard HEAD                                     <span class="token comment"># 将当前版本重置为HEAD（通常用于merge失败回退）</span>
+<span class="token function">git</span> rebase
+<span class="token function">git</span> branch -d hotfixes/BJVEP933                           <span class="token comment"># 删除分支hotfixes/BJVEP933（本分支修改已合并到其他分支）</span>
+<span class="token function">git</span> branch -D hotfixes/BJVEP933                           <span class="token comment"># 强制删除分支hotfixes/BJVEP933</span>
+<span class="token function">git</span> ls-files                                              <span class="token comment"># 列出git index包含的文件</span>
+<span class="token function">git</span> show-branch                                           <span class="token comment"># 图示当前分支历史</span>
+<span class="token function">git</span> show-branch --all                                     <span class="token comment"># 图示所有分支历史</span>
+<span class="token function">git</span> whatchanged                                           <span class="token comment"># 显示提交历史对应的文件修改</span>
+<span class="token function">git</span> revert dfb02e6e4f2f7b573337763e5c0013802e392818       <span class="token comment"># 撤销提交dfb02e6e4f2f7b573337763e5c0013802e392818</span>
+<span class="token function">git</span> ls-tree HEAD                                          <span class="token comment"># 内部命令：显示某个git对象</span>
+<span class="token function">git</span> rev-parse v2.0                                        <span class="token comment"># 内部命令：显示某个ref对于的SHA1 HASH</span>
+<span class="token function">git</span> reflog                                                <span class="token comment"># 显示所有提交，包括孤立节点</span>
+<span class="token function">git</span> show HEAD@<span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span>
+<span class="token function">git</span> show master@<span class="token punctuation">{</span>yesterday<span class="token punctuation">}</span>                               <span class="token comment"># 显示master分支昨天的状态</span>
+<span class="token function">git</span> log --pretty<span class="token operator">=</span>format:<span class="token string">'%h %s'</span> --graph                   <span class="token comment"># 图示提交日志</span>
+<span class="token function">git</span> show HEAD~3
+<span class="token function">git</span> show -s --pretty<span class="token operator">=</span>raw 2be7fcb476
+<span class="token function">git</span> stash                                                 <span class="token comment"># 暂存当前修改，将所有至为HEAD状态</span>
+<span class="token function">git</span> stash list                                            <span class="token comment"># 查看所有暂存</span>
+<span class="token function">git</span> stash show -p stash@<span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span>                               <span class="token comment"># 参考第一次暂存</span>
+<span class="token function">git</span> stash apply stash@<span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span>                                 <span class="token comment"># 应用第一次暂存</span>
+<span class="token function">git</span> <span class="token function">grep</span> <span class="token string">&quot;delete from&quot;</span>                                    <span class="token comment"># 文件中搜索文本“delete from”</span>
+<span class="token function">git</span> <span class="token function">grep</span> -e <span class="token string">'#define'</span> --and -e SORT_DIRENT
+<span class="token function">git</span> gc
+<span class="token function">git</span> <span class="token function">fsck</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br></div></div><p><img src="/img/Other/Git/006tNbRwgy1fw34hx6o4nj31kg14g4qq.jpg" alt=""></p> <h2 id="git-pull和本地文件冲突"><a href="#git-pull和本地文件冲突" class="header-anchor">#</a> Git pull和本地文件冲突</h2> <p><strong>1. 先将本地修改存储起来</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>$ git stash
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>这样本地的所有修改就都被暂时存储起来 。是用git stash list可以看到保存的信息：</p> <p><img src="/img/Other/Git/006tNbRwgy1fysayytl3lj30bb00nglj.jpg" alt=""></p> <p>其中stash@{0}就是刚才保存的标记。</p> <p><strong>2. pull内容</strong></p> <p>暂存了本地修改之后，就可以pull了。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>$ git pull
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><strong>3. 还原暂存的内容</strong></p> <div class="language- line-numbers-mode"><pre class="language-text"><code>$ git stash pop stash@{0}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>系统提示如下类似的信息：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>Auto-merging c/environ.c
+CONFLICT (content): Merge conflict in c/environ.c
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>意思就是系统自动合并修改的内容，但是其中有冲突，需要解决其中的冲突。</p> <p><strong>4. 解决文件中冲突的的部分</strong></p> <p>打开冲突的文件，会看到类似如下的内容：</p> <p><img src="/img/Other/Git/006tNbRwgy1fys4bm0jwlj306p027t8h.jpg" alt=""></p> <p>其中Updated upstream 和=====之间的内容就是pull下来的内容，====和stashed changes之间的内容就是本地修改的内容。碰到这种情况，git也不知道哪行内容是需要的，所以要自行确定需要的内容。</p> <p>解决完成之后，就可以正常的提交了。</p> <h2 id="git回退某个文件到指定版本"><a href="#git回退某个文件到指定版本" class="header-anchor">#</a> Git回退某个文件到指定版本</h2> <p><img src="/img/Other/Git/006tNc79gy1fyusvixfokj31780jiq7u.jpg" alt="image-20190104195755594"></p> <ol><li><p>使用<code>git log data_xiaonuan_mysql.clinic_book1.sh</code> 首先要找到要回滚的版本的hash值，上图中hash值是</p></li> <li><p><code>git checkout ea1855040 data_xiaonuan_mysql.clinic_book1.sh</code> 利用 <code>hash</code> 回滚特定文件，注意，这里为了方便操作，使用 <code>hash</code> 的前六位就可以</p></li> <li><p><code>git commit -m 'fix:回退版本'</code> 回滚后需要提交</p></li></ol> <h2 id="git放弃所有修改-强制pull代码"><a href="#git放弃所有修改-强制pull代码" class="header-anchor">#</a> Git放弃所有修改，强制pull代码</h2> <p>开发时，对于本地的项目中修改不做保存操作（或代码改崩），可以用到Git pull的强制覆盖，具体代码如下：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">git</span> fetch --all
+<span class="token function">git</span> reset --hard origin/master
+<span class="token function">git</span> pull //可以省略
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p><code>git fetch</code> 指令是下载远程仓库最新内容，不做合并</p> <p><code>git reset</code> 指令把HEAD指向master最新版本</p></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新时间:</span> <span class="time">2021/5/30 下午1:36:14</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/Other/Git/" class="prev router-link-active">
+        前言
+      </a></span> <!----></p></div> </main></div><div class="global-ui"><!----><div></div></div></div>
+    <script src="/assets/js/app.180c00c5.js" defer></script><script src="/assets/js/2.a52632a4.js" defer></script><script src="/assets/js/92.3f07495e.js" defer></script>
+  </body>
+</html>

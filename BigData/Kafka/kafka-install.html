@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>kafka_2.11-0.10.1.1安装 | 浅墨散人</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="description" content="浅墨散人,大数据,数据仓库,python,基础,数仓,bigdata,datawarehouse,maven,vuepress,java,hadoop,个人,博客">
+    
+    <link rel="preload" href="/assets/css/0.styles.9894935f.css" as="style"><link rel="preload" href="/assets/js/app.180c00c5.js" as="script"><link rel="preload" href="/assets/js/2.a52632a4.js" as="script"><link rel="preload" href="/assets/js/29.62493a18.js" as="script"><link rel="prefetch" href="/assets/js/10.e8f88356.js"><link rel="prefetch" href="/assets/js/100.d564af88.js"><link rel="prefetch" href="/assets/js/101.ed359fa2.js"><link rel="prefetch" href="/assets/js/102.94fcd251.js"><link rel="prefetch" href="/assets/js/103.02b7b2f9.js"><link rel="prefetch" href="/assets/js/104.24959504.js"><link rel="prefetch" href="/assets/js/105.e0d6c513.js"><link rel="prefetch" href="/assets/js/106.baf829ea.js"><link rel="prefetch" href="/assets/js/107.30956718.js"><link rel="prefetch" href="/assets/js/108.fe4a1842.js"><link rel="prefetch" href="/assets/js/109.c4bab523.js"><link rel="prefetch" href="/assets/js/11.6bcd991e.js"><link rel="prefetch" href="/assets/js/110.77ef5a75.js"><link rel="prefetch" href="/assets/js/111.c88a3e80.js"><link rel="prefetch" href="/assets/js/112.defa6a72.js"><link rel="prefetch" href="/assets/js/113.baffbf93.js"><link rel="prefetch" href="/assets/js/114.c48ed354.js"><link rel="prefetch" href="/assets/js/115.af4c952f.js"><link rel="prefetch" href="/assets/js/116.075913cf.js"><link rel="prefetch" href="/assets/js/117.520ca35f.js"><link rel="prefetch" href="/assets/js/118.3dfffd58.js"><link rel="prefetch" href="/assets/js/119.94e601ba.js"><link rel="prefetch" href="/assets/js/12.4e778070.js"><link rel="prefetch" href="/assets/js/120.91317a15.js"><link rel="prefetch" href="/assets/js/121.a059e4c3.js"><link rel="prefetch" href="/assets/js/122.9f78087b.js"><link rel="prefetch" href="/assets/js/123.b9bb61e0.js"><link rel="prefetch" href="/assets/js/124.4c8994fe.js"><link rel="prefetch" href="/assets/js/125.e8c2c3d9.js"><link rel="prefetch" href="/assets/js/126.0b8a54cc.js"><link rel="prefetch" href="/assets/js/127.d4b342c3.js"><link rel="prefetch" href="/assets/js/128.5bddd0d0.js"><link rel="prefetch" href="/assets/js/129.ae586f13.js"><link rel="prefetch" href="/assets/js/13.b8c77261.js"><link rel="prefetch" href="/assets/js/130.396e6504.js"><link rel="prefetch" href="/assets/js/131.2d55dceb.js"><link rel="prefetch" href="/assets/js/132.900ca269.js"><link rel="prefetch" href="/assets/js/133.062ada46.js"><link rel="prefetch" href="/assets/js/134.b3faeb99.js"><link rel="prefetch" href="/assets/js/135.9097b849.js"><link rel="prefetch" href="/assets/js/136.aa650ff3.js"><link rel="prefetch" href="/assets/js/137.0241ae99.js"><link rel="prefetch" href="/assets/js/138.12b49ab7.js"><link rel="prefetch" href="/assets/js/139.b50d7e75.js"><link rel="prefetch" href="/assets/js/14.2d8e25a1.js"><link rel="prefetch" href="/assets/js/140.3b8b6427.js"><link rel="prefetch" href="/assets/js/141.578527b6.js"><link rel="prefetch" href="/assets/js/142.2d0a60fa.js"><link rel="prefetch" href="/assets/js/143.2e5603d5.js"><link rel="prefetch" href="/assets/js/144.4f0519b8.js"><link rel="prefetch" href="/assets/js/145.ef91129b.js"><link rel="prefetch" href="/assets/js/146.afa67b28.js"><link rel="prefetch" href="/assets/js/147.dbfed115.js"><link rel="prefetch" href="/assets/js/148.52076f62.js"><link rel="prefetch" href="/assets/js/149.413ca0d4.js"><link rel="prefetch" href="/assets/js/15.5c39353a.js"><link rel="prefetch" href="/assets/js/150.5ca28815.js"><link rel="prefetch" href="/assets/js/151.66147548.js"><link rel="prefetch" href="/assets/js/152.e7e8d56f.js"><link rel="prefetch" href="/assets/js/153.10e5489e.js"><link rel="prefetch" href="/assets/js/154.609bedd8.js"><link rel="prefetch" href="/assets/js/155.89b0b0f8.js"><link rel="prefetch" href="/assets/js/156.e817e4b5.js"><link rel="prefetch" href="/assets/js/157.4fe6170a.js"><link rel="prefetch" href="/assets/js/158.0d185e2c.js"><link rel="prefetch" href="/assets/js/159.c57a28b7.js"><link rel="prefetch" href="/assets/js/16.1b28cb6d.js"><link rel="prefetch" href="/assets/js/17.dc692cbc.js"><link rel="prefetch" href="/assets/js/18.b4495b5c.js"><link rel="prefetch" href="/assets/js/19.5bf5eb61.js"><link rel="prefetch" href="/assets/js/20.b4e87a71.js"><link rel="prefetch" href="/assets/js/21.e800ff02.js"><link rel="prefetch" href="/assets/js/22.3445f85c.js"><link rel="prefetch" href="/assets/js/23.7cce4328.js"><link rel="prefetch" href="/assets/js/24.d322e90b.js"><link rel="prefetch" href="/assets/js/25.bfc014f1.js"><link rel="prefetch" href="/assets/js/26.5ebea46f.js"><link rel="prefetch" href="/assets/js/27.914a84c1.js"><link rel="prefetch" href="/assets/js/28.bc782b8d.js"><link rel="prefetch" href="/assets/js/3.f3f7654f.js"><link rel="prefetch" href="/assets/js/30.bad9e501.js"><link rel="prefetch" href="/assets/js/31.4a38bdbd.js"><link rel="prefetch" href="/assets/js/32.903a497d.js"><link rel="prefetch" href="/assets/js/33.03b83687.js"><link rel="prefetch" href="/assets/js/34.f706b788.js"><link rel="prefetch" href="/assets/js/35.99a12707.js"><link rel="prefetch" href="/assets/js/36.90fd2978.js"><link rel="prefetch" href="/assets/js/37.60451941.js"><link rel="prefetch" href="/assets/js/38.28c89a9d.js"><link rel="prefetch" href="/assets/js/39.25838682.js"><link rel="prefetch" href="/assets/js/4.202991e4.js"><link rel="prefetch" href="/assets/js/40.9e68dc50.js"><link rel="prefetch" href="/assets/js/41.d8e72043.js"><link rel="prefetch" href="/assets/js/42.15b4371f.js"><link rel="prefetch" href="/assets/js/43.658c6921.js"><link rel="prefetch" href="/assets/js/44.76f5b021.js"><link rel="prefetch" href="/assets/js/45.a8f9ec74.js"><link rel="prefetch" href="/assets/js/46.5eb0a761.js"><link rel="prefetch" href="/assets/js/47.a42dd1d2.js"><link rel="prefetch" href="/assets/js/48.3845bd0a.js"><link rel="prefetch" href="/assets/js/49.bf2c89ab.js"><link rel="prefetch" href="/assets/js/5.17bb93d9.js"><link rel="prefetch" href="/assets/js/50.52c379d1.js"><link rel="prefetch" href="/assets/js/51.870e4f39.js"><link rel="prefetch" href="/assets/js/52.62a0a49e.js"><link rel="prefetch" href="/assets/js/53.427dbff8.js"><link rel="prefetch" href="/assets/js/54.4635e630.js"><link rel="prefetch" href="/assets/js/55.cd4343b0.js"><link rel="prefetch" href="/assets/js/56.3abdfddd.js"><link rel="prefetch" href="/assets/js/57.0117eb4a.js"><link rel="prefetch" href="/assets/js/58.55ab06d5.js"><link rel="prefetch" href="/assets/js/59.b1e6a01d.js"><link rel="prefetch" href="/assets/js/6.cac134c0.js"><link rel="prefetch" href="/assets/js/60.d9bb9e13.js"><link rel="prefetch" href="/assets/js/61.729595e5.js"><link rel="prefetch" href="/assets/js/62.4fec0c49.js"><link rel="prefetch" href="/assets/js/63.b9c92e6a.js"><link rel="prefetch" href="/assets/js/64.63b8c6b1.js"><link rel="prefetch" href="/assets/js/65.158270ae.js"><link rel="prefetch" href="/assets/js/66.3415f3e3.js"><link rel="prefetch" href="/assets/js/67.f04a4d7a.js"><link rel="prefetch" href="/assets/js/68.23a5849e.js"><link rel="prefetch" href="/assets/js/69.ea5e16f5.js"><link rel="prefetch" href="/assets/js/7.8e78b236.js"><link rel="prefetch" href="/assets/js/70.e857237f.js"><link rel="prefetch" href="/assets/js/71.fa576592.js"><link rel="prefetch" href="/assets/js/72.365c06ee.js"><link rel="prefetch" href="/assets/js/73.0f0f1b47.js"><link rel="prefetch" href="/assets/js/74.69873580.js"><link rel="prefetch" href="/assets/js/75.97e039ae.js"><link rel="prefetch" href="/assets/js/76.cb612fbb.js"><link rel="prefetch" href="/assets/js/77.1ea90dfe.js"><link rel="prefetch" href="/assets/js/78.615aa35c.js"><link rel="prefetch" href="/assets/js/79.aab26661.js"><link rel="prefetch" href="/assets/js/8.4522daab.js"><link rel="prefetch" href="/assets/js/80.1d4975ac.js"><link rel="prefetch" href="/assets/js/81.9c3be0a0.js"><link rel="prefetch" href="/assets/js/82.a1bbb975.js"><link rel="prefetch" href="/assets/js/83.a750334d.js"><link rel="prefetch" href="/assets/js/84.de429a3c.js"><link rel="prefetch" href="/assets/js/85.d041d296.js"><link rel="prefetch" href="/assets/js/86.0e0bbf44.js"><link rel="prefetch" href="/assets/js/87.4f84d9ab.js"><link rel="prefetch" href="/assets/js/88.ccabef36.js"><link rel="prefetch" href="/assets/js/89.2c400fa8.js"><link rel="prefetch" href="/assets/js/9.8def527a.js"><link rel="prefetch" href="/assets/js/90.43053d57.js"><link rel="prefetch" href="/assets/js/91.1e3fdb77.js"><link rel="prefetch" href="/assets/js/92.3f07495e.js"><link rel="prefetch" href="/assets/js/93.6644ee1c.js"><link rel="prefetch" href="/assets/js/94.b1e6ce61.js"><link rel="prefetch" href="/assets/js/95.bb1bd51a.js"><link rel="prefetch" href="/assets/js/96.9e2056ef.js"><link rel="prefetch" href="/assets/js/97.efbeddb2.js"><link rel="prefetch" href="/assets/js/98.ae0038a0.js"><link rel="prefetch" href="/assets/js/99.433a2542.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9894935f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/hero.png" alt="浅墨散人" class="logo"> <span class="site-name can-hide">浅墨散人</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Java/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/Java/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Maven/" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/Java/SpringBoot/" class="nav-link">
+  SpringBoot
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><span class="title">Python</span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Python/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Flask/" class="nav-link">
+  Flask
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Django/" class="nav-link">
+  Diango
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Pandas/" class="nav-link">
+  Pandas
+</a></li><li class="dropdown-item"><!----> <a href="/Python/SqlAlchemy/" class="nav-link">
+  SqlAlchemy
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><span class="title">大数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="大数据" class="mobile-dropdown-title"><span class="title">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BigData/Sqoop/" class="nav-link">
+  Sqoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Flume/" class="nav-link">
+  Flume
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hadoop/" class="nav-link">
+  Hadoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hbase/" class="nav-link">
+  Hbase
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hive/" class="nav-link">
+  Hive
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kafka/" class="nav-link router-link-active">
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kylin/" class="nav-link">
+  Kylin
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Zookeeper/" class="nav-link">
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Tez/" class="nav-link">
+  Tez
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/DataBase/MySQL/" class="nav-link">
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/Chrome/" class="nav-link">
+  Chrome
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Eclipse/" class="nav-link">
+  Eclipse
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/iTerm2/" class="nav-link">
+  iTerm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Markdown/" class="nav-link">
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/SublimeText/" class="nav-link">
+  SublimeText
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/VirtualBox/" class="nav-link">
+  VirtualBox
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/WebStrom/" class="nav-link">
+  WebStrom
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系统" class="dropdown-title"><span class="title">系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="系统" class="mobile-dropdown-title"><span class="title">系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/System/Linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/System/Mac/" class="nav-link">
+  Mac
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/Hexo/" class="nav-link">
+  Hexo
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Other/VuePress/" class="nav-link">
+  VuePress
+</a></li><li class="dropdown-item"><!----> <a href="/Other/BlockChain/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Finance/" class="nav-link">
+  金融
+</a></li></ul></div></div><div class="nav-item"><a href="/DatawareHouse/" class="nav-link">
+  数据仓库
+</a></div><div class="nav-item"><a href="/About/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/fangzheng0518" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow down"></span></button> <button type="button" aria-label="Java" class="mobile-dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Java/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Java/DesignPattern/" class="nav-link">
+  设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/Java/JVM/" class="nav-link">
+  JVM
+</a></li><li class="dropdown-item"><!----> <a href="/Java/Maven/" class="nav-link">
+  Maven
+</a></li><li class="dropdown-item"><!----> <a href="/Java/SpringBoot/" class="nav-link">
+  SpringBoot
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Python" class="dropdown-title"><span class="title">Python</span> <span class="arrow down"></span></button> <button type="button" aria-label="Python" class="mobile-dropdown-title"><span class="title">Python</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Python/Basic/" class="nav-link">
+  基础
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Flask/" class="nav-link">
+  Flask
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Django/" class="nav-link">
+  Diango
+</a></li><li class="dropdown-item"><!----> <a href="/Python/Pandas/" class="nav-link">
+  Pandas
+</a></li><li class="dropdown-item"><!----> <a href="/Python/SqlAlchemy/" class="nav-link">
+  SqlAlchemy
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><span class="title">大数据</span> <span class="arrow down"></span></button> <button type="button" aria-label="大数据" class="mobile-dropdown-title"><span class="title">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/BigData/Sqoop/" class="nav-link">
+  Sqoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Flume/" class="nav-link">
+  Flume
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hadoop/" class="nav-link">
+  Hadoop
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hbase/" class="nav-link">
+  Hbase
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Hive/" class="nav-link">
+  Hive
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kafka/" class="nav-link router-link-active">
+  Kafka
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Kylin/" class="nav-link">
+  Kylin
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Zookeeper/" class="nav-link">
+  Zookeeper
+</a></li><li class="dropdown-item"><!----> <a href="/BigData/Tez/" class="nav-link">
+  Tez
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow down"></span></button> <button type="button" aria-label="数据库" class="mobile-dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/DataBase/MySQL/" class="nav-link">
+  MySQL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="工具" class="dropdown-title"><span class="title">工具</span> <span class="arrow down"></span></button> <button type="button" aria-label="工具" class="mobile-dropdown-title"><span class="title">工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Tools/Chrome/" class="nav-link">
+  Chrome
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Eclipse/" class="nav-link">
+  Eclipse
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/IDEA/" class="nav-link">
+  IDEA
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/iTerm2/" class="nav-link">
+  iTerm2
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/Markdown/" class="nav-link">
+  Markdown
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/SublimeText/" class="nav-link">
+  SublimeText
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/VirtualBox/" class="nav-link">
+  VirtualBox
+</a></li><li class="dropdown-item"><!----> <a href="/Tools/WebStrom/" class="nav-link">
+  WebStrom
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系统" class="dropdown-title"><span class="title">系统</span> <span class="arrow down"></span></button> <button type="button" aria-label="系统" class="mobile-dropdown-title"><span class="title">系统</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/System/Linux/" class="nav-link">
+  Linux
+</a></li><li class="dropdown-item"><!----> <a href="/System/Mac/" class="nav-link">
+  Mac
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/Other/Hexo/" class="nav-link">
+  Hexo
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Git/" class="nav-link">
+  Git
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/Other/VuePress/" class="nav-link">
+  VuePress
+</a></li><li class="dropdown-item"><!----> <a href="/Other/BlockChain/" class="nav-link">
+  区块链
+</a></li><li class="dropdown-item"><!----> <a href="/Other/Finance/" class="nav-link">
+  金融
+</a></li></ul></div></div><div class="nav-item"><a href="/DatawareHouse/" class="nav-link">
+  数据仓库
+</a></div><div class="nav-item"><a href="/About/" class="nav-link">
+  关于我
+</a></div> <a href="https://github.com/fangzheng0518" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Kafka</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/BigData/Kafka/" aria-current="page" class="sidebar-link">前言</a></li><li><a href="/BigData/Kafka/kafka-install.html" aria-current="page" class="active sidebar-link">kafka_2.11-0.10.1.1安装</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#单机模式安装" class="sidebar-link">单机模式安装</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#下载" class="sidebar-link">下载</a></li><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#解压" class="sidebar-link">解压</a></li><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#配置kafka环境变量" class="sidebar-link">配置kafka环境变量</a></li><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#配置kafka" class="sidebar-link">配置kafka</a></li><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#验证安装" class="sidebar-link">验证安装</a></li></ul></li><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#集群模式安装" class="sidebar-link">集群模式安装</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#kafka的server-properties配置" class="sidebar-link">kafka的server.properties配置</a></li><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#拷贝kafka目录至其他从节点" class="sidebar-link">拷贝kafka目录至其他从节点</a></li><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#修改每个节点的borker-id" class="sidebar-link">修改每个节点的borker.id</a></li><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#修改每个节点的host-name" class="sidebar-link">修改每个节点的host.name</a></li><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#启动kafka集群" class="sidebar-link">启动kafka集群</a></li></ul></li><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#常见错误" class="sidebar-link">常见错误</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#no-kafka-server-to-stop" class="sidebar-link">No kafka server to stop</a></li><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#unable-to-connect-to-zookeeper-server-within-timeout-6000" class="sidebar-link">Unable to connect to zookeeper server within timeout: 6000</a></li></ul></li><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#kafka-manager的安装" class="sidebar-link">Kafka-manager的安装</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#下载解压" class="sidebar-link">下载解压</a></li><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#配置kafka-manager" class="sidebar-link">配置kafka-manager</a></li><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#启动kafka-manager" class="sidebar-link">启动kafka-manager</a></li><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#关闭kafka-manager" class="sidebar-link">关闭kafka-manager</a></li><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#访问kafka-manager" class="sidebar-link">访问kafka-manager</a></li></ul></li><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#附录" class="sidebar-link">附录</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#kafka常用命令" class="sidebar-link">kafka常用命令</a></li><li class="sidebar-sub-header"><a href="/BigData/Kafka/kafka-install.html#centos防火墙相关命令" class="sidebar-link">CentOS防火墙相关命令</a></li></ul></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="单机模式安装"><a href="#单机模式安装" class="header-anchor">#</a> 单机模式安装</h2> <blockquote><p><a href="http://kafka.apache.org/0101/documentation.html" target="_blank" rel="noopener noreferrer">官方文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h3 id="下载"><a href="#下载" class="header-anchor">#</a> 下载</h3> <p>下载<a href="https://archive.apache.org/dist/kafka/0.10.1.1/kafka_2.11-0.10.1.1.tgz" target="_blank" rel="noopener noreferrer">kafka_2.11-0.10.1.1.tgz<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="解压"><a href="#解压" class="header-anchor">#</a> 解压</h3> <p>将压缩包拷贝到<code>/usr/local/hadoop</code>然后解压</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>$ <span class="token function">cp</span> kafka_2.11-0.10.1.1.tgz /usr/local/hadoop
+$ <span class="token function">tar</span> -zxvf kafka_2.11-0.10.1.1.tgz
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h3 id="配置kafka环境变量"><a href="#配置kafka环境变量" class="header-anchor">#</a> 配置kafka环境变量</h3> <p>编辑<code>/etc/profile</code>文件，增加如下配置</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># kafka_2.11-0.10.1.1</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">KAFKA_HOME</span><span class="token operator">=</span>/usr/local/hadoop/kafka_2.11-0.10.1.1
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token variable">${<span class="token environment constant">PATH</span>}</span><span class="token builtin class-name">:</span><span class="token variable">${KAFKA_HOME}</span>/bin
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>使配置生效</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>$ <span class="token builtin class-name">source</span> /etc/profile
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="配置kafka"><a href="#配置kafka" class="header-anchor">#</a> 配置kafka</h3> <p>编辑<code>/usr/local/hadoop/kafka_2.11-0.10.1.1/config/server.properties</code>文件，修改如下配置。第21行</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code> <span class="token number">21</span> broker.id<span class="token operator">=</span><span class="token number">1</span>
+ <span class="token number">22</span> log.dirs<span class="token operator">=</span>/usr/local/hadoop/kafka_2.11-0.10.1.1/log-2
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><div class="custom-block danger"><p class="custom-block-title">注意</p> <p>这里的【broker.id】需要在集群中唯一，log-2目录也分别设置</p></div> <h3 id="验证安装"><a href="#验证安装" class="header-anchor">#</a> 验证安装</h3> <h4 id="启动kafka"><a href="#启动kafka" class="header-anchor">#</a> 启动kafka</h4> <p><span style="color:red;">注意：需要先启动zookeeper集群</span></p> <p>启动命令：<code>kafka-server-start.sh -daemon ../config/server.properties</code></p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@mini1 config<span class="token punctuation">]</span><span class="token comment"># cd /usr/local/hadoop/kafka_2.11-0.10.1.1/bin/</span>
+<span class="token punctuation">[</span>root@mini1 bin<span class="token punctuation">]</span><span class="token comment"># kafka-server-start.sh -daemon ../config/server.properties</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>通过jps，如果能看到kafka进程，表示启动成功。</p> <h4 id="通过zookeeper查看"><a href="#通过zookeeper查看" class="header-anchor">#</a> 通过zookeeper查看</h4> <p>通过zookeeper客户端查看目录结构</p> <p>启动zookeeper客户端:  <code>./zkCli.sh</code></p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>$ <span class="token punctuation">[</span>root@mini1 config<span class="token punctuation">]</span><span class="token comment"># cd /usr/local/hadoop/zookeeper-3.4.10/bin/</span>
+$ <span class="token punctuation">[</span>root@mini1 bin<span class="token punctuation">]</span><span class="token comment"># ./zkCli.sh</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>通过<code>ls /brokers/ids</code>查看当前已经启动的kafka代理节点</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>zk: localhost:2181<span class="token punctuation">(</span>CONNECTED<span class="token punctuation">)</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token function">ls</span> /brokers/ids
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>可以看到，当前的代理节点只有一个1，也就是刚才我们配置的broker.id。</p> <p>至此，kafka的单机模式已经安装完毕。</p> <h2 id="集群模式安装"><a href="#集群模式安装" class="header-anchor">#</a> 集群模式安装</h2> <p>当单机模式安装完成后，可以接着安装集群模式。这里是三台节点。</p> <table><thead><tr><th>IP</th> <th><strong>hostname</strong></th></tr></thead> <tbody><tr><td>192.168.56.121</td> <td>mini1</td></tr> <tr><td>192.168.56.122</td> <td>mini2</td></tr> <tr><td>192.168.56.123</td> <td>mini3</td></tr></tbody></table> <p>集群的安装也比较简单，只需要做一些配置，然后将安装目录拷贝到其他机器上即可。</p> <h3 id="kafka的server-properties配置"><a href="#kafka的server-properties配置" class="header-anchor">#</a> kafka的server.properties配置</h3> <p>编辑<code>/usr/local/hadoop/kafka_2.11-0.10.1.1/config/server.properties</code>文件，增加kafka连接zookeeper集群的配置</p> <p>在文件的第117行，修改如下配置。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>zookeeper.connect<span class="token operator">=</span>mini1:2181,mini2:2181,mini3:2181
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="拷贝kafka目录至其他从节点"><a href="#拷贝kafka目录至其他从节点" class="header-anchor">#</a> 拷贝kafka目录至其他从节点</h3> <p>将kafka目录拷贝至mini2和mini3节点上</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>$ <span class="token punctuation">[</span>root@mini1 hadoop<span class="token punctuation">]</span><span class="token comment"># scp -r kafka_2.11-0.10.1.1/ mini2:/usr/local/hadoop/</span>
+$ <span class="token punctuation">[</span>root@mini1 hadoop<span class="token punctuation">]</span><span class="token comment"># scp -r kafka_2.11-0.10.1.1/ mini3:/usr/local/hadoop/</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>将/etc/profile配置文件拷贝至mini2和mini3节点上</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>$ <span class="token punctuation">[</span>root@mini1 config<span class="token punctuation">]</span><span class="token comment"># scp /etc/profile mini2:/etc/profile</span>
+$ <span class="token punctuation">[</span>root@mini1 config<span class="token punctuation">]</span><span class="token comment"># scp /etc/profile mini3:/etc/profile</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><div class="custom-block danger"><p class="custom-block-title">注意</p> <p>然后分别在mini2和mini3上执行<code>source /etc/profile</code>使配置文件立即生效</p></div> <h3 id="修改每个节点的borker-id"><a href="#修改每个节点的borker-id" class="header-anchor">#</a> 修改每个节点的borker.id</h3> <p>修改mini2的kafka的borker.id为2</p> <p>修改mini3的kafka的borker.id为3</p> <p>注意：当然也可以改为其他值，只要保证在集群中是唯一的即可。</p> <h3 id="修改每个节点的host-name"><a href="#修改每个节点的host-name" class="header-anchor">#</a> 修改每个节点的host.name</h3> <p>在该版本中，如果不设置host.name，则在创建主题及向主题发送消息时发生NOT_LEADER_FOR_PARTITION异常。</p> <p>分别在mini1、mini2、mini3三台机器上修改server.properties文件，增加host.name=本机IP的配置</p> <p>编辑<code>/usr/local/hadoop/kafka_2.11-0.10.1.1/config/server.properties</code>文件，增加host.name=192.168.56.121的配置</p> <p>在文件的第117行，修改如下配置。</p> <p>例如：</p> <p>mini1的<code>server.properties</code>完整配置如下</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>broker.id<span class="token operator">=</span><span class="token number">1</span>
+log.dirs<span class="token operator">=</span>/usr/local/hadoop/kafka_2.11-0.10.1.1/log-1
+advertised.host.name<span class="token operator">=</span><span class="token number">192.168</span>.56.121
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>mini2的<code>server.properties</code>完整配置如下</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>broker.id<span class="token operator">=</span><span class="token number">2</span>
+log.dirs<span class="token operator">=</span>/usr/local/hadoop/kafka_2.11-0.10.1.1/log-2
+advertised.host.name<span class="token operator">=</span><span class="token number">192.168</span>.56.122
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>mini3的<code>server.properties</code>完整配置如下</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>broker.id<span class="token operator">=</span><span class="token number">3</span>
+log.dirs<span class="token operator">=</span>/usr/local/hadoop/kafka_2.11-0.10.1.1/log-3
+advertised.host.name<span class="token operator">=</span><span class="token number">192.168</span>.56.123
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="启动kafka集群"><a href="#启动kafka集群" class="header-anchor">#</a> 启动kafka集群</h3> <h4 id="分别启动"><a href="#分别启动" class="header-anchor">#</a> 分别启动</h4> <p>分别在mini2和mini3上执行如下命令启动kafka</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@mini1 config<span class="token punctuation">]</span><span class="token comment"># cd /usr/local/hadoop/kafka_2.11-0.10.1.1/bin/</span>
+<span class="token punctuation">[</span>root@mini1 bin<span class="token punctuation">]</span><span class="token comment"># kafka-server-start.sh -daemon ../config/server.properties</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>然后在三台节点上，分别通过jps命令查看是否有&quot;kafka&quot;进程</p> <p>然后在zookeeper客户端上查看kafka的代理数</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>zk: localhost:2181<span class="token punctuation">(</span>CONNECTED<span class="token punctuation">)</span> <span class="token number">0</span><span class="token punctuation">]</span> <span class="token function">ls</span> /brokers/ids
+<span class="token punctuation">[</span><span class="token number">1</span>, <span class="token number">2</span>, <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span>zk: localhost:2181<span class="token punctuation">(</span>CONNECTED<span class="token punctuation">)</span> <span class="token number">1</span><span class="token punctuation">]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>可以看到，现在kafka的代理数已经是1，2，3了。</p> <h4 id="集群启动脚本"><a href="#集群启动脚本" class="header-anchor">#</a> 集群启动脚本</h4> <p>kafka本身没有提供集群启动脚本，不过可以自己实现。</p> <p>注意：</p> <ol><li><p>brokers为你集群的所有hostname</p></li> <li><p>KAFKA_HOME为你的安装路径</p></li></ol> <p><strong>kafka-cluster-start.sh</strong></p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token assign-left variable">brokers</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">&quot;mini1 mini2 mini3&quot;</span><span class="token punctuation">)</span>
+<span class="token assign-left variable">KAFKA_HOME</span><span class="token operator">=</span><span class="token string">&quot;/bigdata/kafka/&quot;</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;INFO:Begin to start kafka cluster...&quot;</span>
+
+<span class="token keyword">for</span> <span class="token for-or-select variable">broker</span> <span class="token keyword">in</span> <span class="token variable">${brokers<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>
+<span class="token keyword">do</span>
+	<span class="token builtin class-name">echo</span> <span class="token string">&quot;  INFO:Start kafka on <span class="token variable">${broker}</span>&quot;</span>
+	<span class="token function">ssh</span> <span class="token variable">${broker}</span> -C <span class="token string">&quot;source /etc/profile; sh <span class="token variable">${KAFKA_HOME}</span>/bin/kafka-server-start.sh -daemon <span class="token variable">${KAFKA_HOME}</span>/config/server.properties&quot;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> -eq <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+		<span class="token builtin class-name">echo</span> <span class="token string">&quot; INFO:[<span class="token variable">${broker}</span>] Start successfully &quot;</span>
+	<span class="token keyword">fi</span>
+<span class="token keyword">done</span>
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;INFO:Kafka cluster starts successfully !&quot;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p><strong>kafka-cluster-stop.sh</strong></p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token assign-left variable">brokers</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">&quot;mini1 mini2 mini3&quot;</span><span class="token punctuation">)</span>
+<span class="token assign-left variable">KAFKA_HOME</span><span class="token operator">=</span><span class="token string">&quot;/bigdata/kafka/&quot;</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;INFO:Begin to stop kafka cluster...&quot;</span>
+
+<span class="token keyword">for</span> <span class="token for-or-select variable">broker</span> <span class="token keyword">in</span> <span class="token variable">${brokers<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>
+<span class="token keyword">do</span>
+	<span class="token builtin class-name">echo</span> <span class="token string">&quot;  INFO:stop kafka on <span class="token variable">${broker}</span>&quot;</span>
+	<span class="token function">ssh</span> <span class="token variable">${broker}</span> -C <span class="token string">&quot;source /etc/profile; sh <span class="token variable">${KAFKA_HOME}</span>/bin/kafka-server-stop.sh &quot;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> -eq <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+		<span class="token builtin class-name">echo</span> <span class="token string">&quot; INFO:[<span class="token variable">${broker}</span>] stop successfully &quot;</span>
+	<span class="token keyword">fi</span>
+<span class="token keyword">done</span>
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;INFO:Kafka cluster stop successfully !&quot;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>至此，kafka的集群模式已经安装成功！</p> <h2 id="常见错误"><a href="#常见错误" class="header-anchor">#</a> 常见错误</h2> <h3 id="no-kafka-server-to-stop"><a href="#no-kafka-server-to-stop" class="header-anchor">#</a> No kafka server to stop</h3> <p>在我通过kafka-server-stop.sh脚本关闭kafka时得到如下错误，通过jps能看到kafka进程，但是却stop不掉。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@mini1 bin<span class="token punctuation">]</span><span class="token comment"># jps</span>
+<span class="token number">1809</span> SecondaryNameNode
+<span class="token number">1620</span> NameNode
+<span class="token number">3237</span> Kafka
+<span class="token number">1960</span> ResourceManager
+<span class="token number">3290</span> Jps
+<span class="token number">2653</span> ZooKeeperMain
+<span class="token number">2238</span> QuorumPeerMain
+<span class="token punctuation">[</span>root@mini1 bin<span class="token punctuation">]</span><span class="token comment"># kafka-server-stop.sh</span>
+No kafka server to stop
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p><strong>原因是有一些操作系统无法通过该命令找到pid，从而无法kill掉该进程。</strong></p> <p>kafka-server-stop.sh脚本内容如下，将17行注释，修改为18行内容即可。</p> <p><img src="/img/BigData/Kafka/006tNbRwly1fw6rro423pj31fy0fytcg.jpg" alt=""></p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code> <span class="token number">17</span> <span class="token comment">#PIDS=$(ps ax | grep -i 'kafka\.Kafka' | grep java | grep -v grep | awk '{print $1}')</span>
+ <span class="token number">18</span> <span class="token assign-left variable">PIDS</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>jps <span class="token operator">|</span> <span class="token function">grep</span> -i <span class="token string">'Kafka'</span> <span class="token operator">|</span><span class="token function">awk</span> <span class="token string">'{print <span class="token variable">$1</span>}'</span><span class="token variable">)</span></span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>注意：修改完成后，将kafka-server-stop.sh文件拷贝至其他从节点mini2和mini3上</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@mini1 bin<span class="token punctuation">]</span><span class="token comment"># scp /usr/local/hadoop/kafka_2.11-0.10.1.1//bin/kafka-server-stop.sh mini2:/usr/local/hadoop/kafka_2.11-0.10.1.1/bin/</span>
+kafka-server-stop.sh                                                                                                 <span class="token number">100</span>% <span class="token number">1025</span>     <span class="token number">1</span>.0KB/s   00:00
+<span class="token punctuation">[</span>root@mini1 bin<span class="token punctuation">]</span><span class="token comment"># scp /usr/local/hadoop/kafka_2.11-0.10.1.1//bin/kafka-server-stop.sh mini3:/usr/local/hadoop/kafka_2.11-0.10.1.1/bin/</span>
+kafka-server-stop.sh                                                                                                 <span class="token number">100</span>% <span class="token number">1025</span>     <span class="token number">1</span>.0KB/s   00:00
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><h3 id="unable-to-connect-to-zookeeper-server-within-timeout-6000"><a href="#unable-to-connect-to-zookeeper-server-within-timeout-6000" class="header-anchor">#</a> Unable to connect to zookeeper server within timeout: 6000</h3> <p>无法连接到zookeeper，请尝试查看zookeeper的端口是否可用</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span><span class="token number">2018</span>-10-29 <span class="token number">15</span>:41:02,558<span class="token punctuation">]</span> FATAL Fatal error during KafkaServerStartable startup. Prepare to <span class="token function">shutdown</span> <span class="token punctuation">(</span>kafka.server.KafkaServerStartable<span class="token punctuation">)</span>
+org.I0Itec.zkclient.exception.ZkTimeoutException: Unable to connect to zookeeper server within timeout: <span class="token number">6000</span>
+	at org.I0Itec.zkclient.ZkClient.connect<span class="token punctuation">(</span>ZkClient.java:1232<span class="token punctuation">)</span>
+	at org.I0Itec.zkclient.ZkClient.<span class="token operator">&lt;</span>init<span class="token operator">&gt;</span><span class="token punctuation">(</span>ZkClient.java:156<span class="token punctuation">)</span>
+	at org.I0Itec.zkclient.ZkClient.<span class="token operator">&lt;</span>init<span class="token operator">&gt;</span><span class="token punctuation">(</span>ZkClient.java:130<span class="token punctuation">)</span>
+	at kafka.utils.ZkUtils$.createZkClientAndConnection<span class="token punctuation">(</span>ZkUtils.scala:76<span class="token punctuation">)</span>
+	at kafka.utils.ZkUtils$.apply<span class="token punctuation">(</span>ZkUtils.scala:58<span class="token punctuation">)</span>
+	at kafka.server.KafkaServer.initZk<span class="token punctuation">(</span>KafkaServer.scala:327<span class="token punctuation">)</span>
+	at kafka.server.KafkaServer.startup<span class="token punctuation">(</span>KafkaServer.scala:200<span class="token punctuation">)</span>
+	at kafka.server.KafkaServerStartable.startup<span class="token punctuation">(</span>KafkaServerStartable.scala:39<span class="token punctuation">)</span>
+	at kafka.Kafka$.main<span class="token punctuation">(</span>Kafka.scala:67<span class="token punctuation">)</span>
+	at kafka.Kafka.main<span class="token punctuation">(</span>Kafka.scala<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>CentOS开启防火墙及端口的命令：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>查看防火墙状态：service iptables status
+
+开启防火墙<span class="token punctuation">(</span>重启后永久生效<span class="token punctuation">)</span>：chkconfig iptables on
+
+关闭防火墙<span class="token punctuation">(</span>重启后永久生效<span class="token punctuation">)</span>：chkconfig iptables off
+
+开启防火墙<span class="token punctuation">(</span>即时生效，重启后失效<span class="token punctuation">)</span>：service iptables start
+
+关闭防火墙<span class="token punctuation">(</span>即时生效，重启后失效<span class="token punctuation">)</span>：service iptables stop
+
+重启防火墙:service iptables restartd
+
+查看打开的端口:/etc/init.d/iptables status
+
+开启6000端口：iptables -A INPUT -p tcp --dport <span class="token number">6000</span> -j ACCEPT 
+
+保存并重启防火墙：
+/etc/rc.d/init.d/iptables save
+/etc/init.d/iptables restart
+
+打开49152~65534之间的端口
+iptables -A INPUT -p tcp --dport <span class="token number">49152</span>:65534 -j ACCEPT  
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><div class="custom-block danger"><p class="custom-block-title">WARNING</p> <p>例如刚才的错误，先打开6000端口，然后关闭防火墙。分别在其他从节点机器上都关闭防火墙</p></div> <h2 id="kafka-manager的安装"><a href="#kafka-manager的安装" class="header-anchor">#</a> Kafka-manager的安装</h2> <p>kafka-manager是雅虎开源的Kafka的web端管理工具</p> <p><a href="https://github.com/yahoo/kafka-manager" target="_blank" rel="noopener noreferrer">官网地址<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <p>注意：上面下载的是源码，下载后需要按照后面步骤进行编译。如果觉得麻烦，可以直接从下面地址下载编译好的 kafka-manager-1.3.3.7.zip。
+链接: <a href="http://pan.baidu.com/s/1qY8sGoO" target="_blank" rel="noopener noreferrer">http://pan.baidu.com/s/1qY8sGoO<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 密码: ye7b</p> <h3 id="下载解压"><a href="#下载解压" class="header-anchor">#</a> 下载解压</h3> <p>下载编译好的zip文件后，上传至服务器的任意节点。然后解压。例如：我把kafka-manager放到mini1节点上了。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@mini1 hadoop<span class="token punctuation">]</span><span class="token comment"># cd kafka-manager-1.3.3.7/</span>
+<span class="token punctuation">[</span>root@mini1 kafka-manager-1.3.3.7<span class="token punctuation">]</span><span class="token comment"># ll</span>
+total <span class="token number">40</span>
+drwxr-xr-x. <span class="token number">3</span> root root  <span class="token number">4096</span> Oct <span class="token number">13</span> <span class="token number">19</span>:00 application.home_IS_UNDEFINED
+drwxr-xr-x. <span class="token number">2</span> root root  <span class="token number">4096</span> Oct <span class="token number">13</span> <span class="token number">18</span>:58 bin
+drwxr-xr-x. <span class="token number">2</span> root root  <span class="token number">4096</span> Oct <span class="token number">13</span> <span class="token number">19</span>:00 conf
+drwxr-xr-x. <span class="token number">2</span> root root <span class="token number">12288</span> Oct <span class="token number">13</span> <span class="token number">18</span>:58 lib
+-rw-r--r--. <span class="token number">1</span> root root  <span class="token number">6335</span> Jun  <span class="token number">5</span>  <span class="token number">2017</span> README.md
+-rw-r--r--. <span class="token number">1</span> root root     <span class="token number">4</span> Oct <span class="token number">13</span> <span class="token number">19</span>:03 RUNNING_PID
+drwxr-xr-x. <span class="token number">3</span> root root  <span class="token number">4096</span> Oct <span class="token number">13</span> <span class="token number">18</span>:58 share
+<span class="token punctuation">[</span>root@mini1 kafka-manager-1.3.3.7<span class="token punctuation">]</span><span class="token comment">#</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h3 id="配置kafka-manager"><a href="#配置kafka-manager" class="header-anchor">#</a> 配置kafka-manager</h3> <p>编辑<code>/usr/local/hadoop/kafka-manager-1.3.3.7/conf/application.conf</code>文件，修改如下内容。</p> <p>修改kafka-manager连接的zookeeper地址，文件的第23行。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token number">23</span> kafka-manager.zkhosts<span class="token operator">=</span><span class="token string">&quot;mini1:2181,mini2:2181,mini3:2181&quot;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="启动kafka-manager"><a href="#启动kafka-manager" class="header-anchor">#</a> 启动kafka-manager</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>$ <span class="token builtin class-name">cd</span> /usr/local/hadoop/kafka-manager-1.3.3.7
+$ bin/kafka-manager -Dconfig.file<span class="token operator">=</span>conf/application.conf -Dhttp.port<span class="token operator">=</span><span class="token number">8090</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>注意端口占用的情况，默认使用9000端口。</p> <p>如果启动不成功，则可以按提示删除如下文件即可。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@mini1 kafka-manager-1.3.3.7<span class="token punctuation">]</span><span class="token comment"># bin/kafka-manager -Dconfig.file=conf/application.conf -Dhttp.port=8090</span>
+This application is already running <span class="token punctuation">(</span>Or delete /usr/local/hadoop/kafka-manager-1.3.3.7/RUNNING_PID <span class="token function">file</span><span class="token punctuation">)</span>.
+<span class="token punctuation">[</span>root@mini1 kafka-manager-1.3.3.7<span class="token punctuation">]</span><span class="token comment"># rm -rf /usr/local/hadoop/kafka-manager-1.3.3.7/RUNNING_PID</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h3 id="关闭kafka-manager"><a href="#关闭kafka-manager" class="header-anchor">#</a> 关闭kafka-manager</h3> <p>kafka-manager并没有通过stop.sh脚本来停止kafka-manager，需要手工kill掉<code>ProdServerStart</code>进程</p> <p>kafka-manager进程：<code>ProdServerStart</code></p> <p>然后删除RUNNING_PID文件</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@mini1 conf<span class="token punctuation">]</span><span class="token comment"># jps</span>
+<span class="token number">3664</span> Kafka
+<span class="token number">1809</span> SecondaryNameNode
+<span class="token number">1620</span> NameNode
+<span class="token number">1960</span> ResourceManager
+<span class="token number">3736</span> ZooKeeperMain
+<span class="token number">4398</span> Jps
+<span class="token number">2238</span> QuorumPeerMain
+<span class="token number">4287</span> ProdServerStart
+<span class="token punctuation">[</span>root@mini1 conf<span class="token punctuation">]</span><span class="token comment"># kill -9 4287</span>
+<span class="token punctuation">[</span>root@mini1 conf<span class="token punctuation">]</span><span class="token comment"># rm -rf /usr/local/hadoop/kafka-manager-1.3.3.7/RUNNING_PID</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><ol><li><code>ps -ef | grep ProdServerStart</code></li> <li><code>kill -9</code>进程kafka-manager的进程ID</li> <li><code>rm -rf /usr/local/hadoop/kafka-manager-1.3.3.7/RUNNING_PID</code></li></ol> <h3 id="访问kafka-manager"><a href="#访问kafka-manager" class="header-anchor">#</a> 访问kafka-manager</h3> <p><img src="/img/BigData/Kafka/006tNbRwly1fw6t5sgn9lj31ik0ji0up.jpg" alt=""></p> <h2 id="附录"><a href="#附录" class="header-anchor">#</a> 附录</h2> <h3 id="kafka常用命令"><a href="#kafka常用命令" class="header-anchor">#</a> kafka常用命令</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>
+<span class="token comment"># 启动kafka服务，三台主机分别输入此指令：</span>
+kafka-server-start.sh <span class="token variable">$KAFKA_HOME</span>/config/server.properties <span class="token operator">&amp;</span>
+
+<span class="token comment"># 以后台的方式启动</span>
+<span class="token function">nohup</span> kafka-server-start.sh <span class="token variable">$KAFKA_HOME</span>/config/server.properties <span class="token operator">&amp;</span>
+
+<span class="token comment"># 查看topic名</span>
+kafka-topics.sh --list --zookeeper hadoop-001:2181
+
+<span class="token comment"># 创建topic名</span>
+kafka-topics.sh --create --zookeeper hadoop-001:2181 --replication-factor <span class="token number">3</span> --partitions <span class="token number">1</span> --topic first
+
+<span class="token comment"># 创建生产者</span>
+kafka-console-producer.sh --broker-list hadoop-001:9092,hadoop-002:9092,hadoop-003:9092 --topic first
+
+<span class="token comment"># 创建消费者</span>
+kafka-console-consumer.sh --zookeeper hadoop-001:2181 --from-beginning --topic first
+
+<span class="token comment"># 1）查看当前服务器中的所有topic</span>
+kafka-topics.sh --list --zookeeper hadoop-001:2181
+
+<span class="token comment"># 2）创建topic</span>
+kafka-topics.sh --create --zookeeper hadoop-001:2181 --replication-factor <span class="token number">3</span> --partitions <span class="token number">1</span> --topic first
+
+<span class="token comment"># 选项说明：</span>
+<span class="token comment"># --topic 定义topic名</span>
+<span class="token comment"># --replication-factor  定义副本数</span>
+<span class="token comment"># --partitions  定义分区数</span>
+
+<span class="token comment"># 3）  删除topic</span>
+kafka-topics.sh --delete --zookeeper hadoop-001:2181 --topic first
+<span class="token comment"># 需要server.properties中设置delete.topic.enable=true否则只是标记删除或者直接重启。</span>
+
+<span class="token comment"># 4）发送消息</span>
+kafka-console-producer.sh --broker-list hadoop-001:9092 --topic first
+<span class="token operator">&gt;</span>hello world
+
+<span class="token operator">&gt;</span>hadoop  hadoop
+
+<span class="token comment"># 5）消费消息</span>
+kafka-console-consumer.sh --zookeeper hadoop-001:2181 --from-beginning --topic first
+
+<span class="token comment"># 6）查看某个Topic的详情</span>
+kafka-topics.sh --topic first --describe --zookeeper hadoop-002:2181
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br></div></div><h3 id="centos防火墙相关命令"><a href="#centos防火墙相关命令" class="header-anchor">#</a> CentOS防火墙相关命令</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 查看防火墙状态：</span>
+<span class="token function">service</span> iptables status
+
+<span class="token comment"># 开启防火墙(重启后永久生效)：</span>
+<span class="token function">chkconfig</span> iptables on
+
+<span class="token comment"># 关闭防火墙(重启后永久生效)：</span>
+<span class="token function">chkconfig</span> iptables off
+
+<span class="token comment"># 开启防火墙(即时生效，重启后失效)：</span>
+<span class="token function">service</span> iptables start
+
+<span class="token comment"># 关闭防火墙(即时生效，重启后失效)：</span>
+<span class="token function">service</span> iptables stop
+
+<span class="token comment"># 重启防火墙:</span>
+<span class="token function">service</span> iptables restartd
+
+<span class="token comment"># 查看打开的端口:</span>
+/etc/init.d/iptables status
+
+<span class="token comment"># 开启6000端口：</span>
+iptables -A INPUT -p tcp --dport <span class="token number">6000</span> -j ACCEPT 
+
+<span class="token comment"># 保存并重启防火墙：</span>
+/etc/rc.d/init.d/iptables save
+/etc/init.d/iptables restart
+
+<span class="token comment"># 打开49152~65534之间的端口</span>
+iptables -A INPUT -p tcp --dport <span class="token number">49152</span>:65534 -j ACCEPT  
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br></div></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">最后更新时间:</span> <span class="time">2021/5/30 下午1:36:14</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/BigData/Kafka/" class="prev router-link-active">
+        前言
+      </a></span> <!----></p></div> </main></div><div class="global-ui"><!----><div></div></div></div>
+    <script src="/assets/js/app.180c00c5.js" defer></script><script src="/assets/js/2.a52632a4.js" defer></script><script src="/assets/js/29.62493a18.js" defer></script>
+  </body>
+</html>
